@@ -1,12 +1,32 @@
 
-#! Lists
-#Farklı veri tiplerini tek bir yerde tutar
-#Listeler verileri kalıcı olarak depolamazlar
-#Listeler RAM'de (geçiçi) verileri tutar, heap alanında referansları saklanıyor.
-#Index mantığı, 0. indexten başlayıp pozitif yönde ilerler
+#! LISTS
+#* Farklı veri tiplerini tek bir yerde tutmaya yarayan veri koleksiyonlarıdır.
+#* Listeler verileri kalıcı olarak depolamazlar, listeler RAM'de depolanır.
+#* LİSTELER DEĞİŞTİRİLEBİLİR (MUTABLE) BİR VERİ KOLEKSİYONUDUR
+
+#SYNTAX YAPISI
+meyveler = ["elma", "muz", "kiraz"]
+karisik_liste = [10, "Merhaba", 3.14, True] #burdan öğrenmemiz gereken şu, listelerde FARKLI VERI TİPLERİ AYNI ANDA DEPOLANABİLİR!!
+
+#? Index Nedir, nasıl çalışır
+#* Index, bir listedeki her bir öğenin konumunu belirten sayısal etikettir. 
+#* Listeler sıralı olduğu için, her öğenin sabit bir konumu vardır.
+#* Negatif indeksleme ile listenin son öğesine -1. elemanı ile ulaşabildiğimizi gösterir.
+
+#SYNTAX OLARAK GÖSTERİMİ
+isimler = ["Ali", "Burak", "Cem", "Deniz"]
+# Index:    0       1       2        3
+# Negatif: -4      -3      -2       -1
+
+print(isimler[0])   # Çıktı: Ali (İlk öğe)
+print(isimler[3])   # Çıktı: Deniz
+print(isimler[-1])  # Çıktı: Deniz (Son öğe)
+
+#? Listelerde yerleşik metodlar
+#* Bu metotlar, liste adından sonra nokta (.) (Bu duruma nokta notasyonu denir) koyularak çağrılır.
 
 #todo Listelerde metot kullanımı: 
-#region boxers 
+#region Hocanın çözümü, boxers 
 boxers = ['Mike Tyson', 'Muhammed Ali', 'Lenox Lewix', "Evander Holyfiled", "George Foreman"]
 
 #? Listenin sonuna "Rocky Marciano"
@@ -50,10 +70,9 @@ for i in range(len(boxers)): #boxers listesinin uzunluğu kadar
 
 for ch in 'adal su': #"adal su" kısım da string aslında liste mantığı gibi çalışabilir.
     print(ch,end='-') #bundaki her karakteri de teker teker dolaşabiliyorum.
-
 #endregion
 
-#region Formula 1 Drivers
+#region Kendi çözümüm, Formula 1 Drivers
 drivers = [
     "Oscar Piastri", "Lando Norris", 
     "George Russell", "Kimi Antonelli",
@@ -94,247 +113,247 @@ for driver in drivers:
 
 #endregion
 
+#todo Girilen data sheetten ilkisim.soyisim@outlook.com şeklinde mail_adresses üretilip ekrana yazdırılan uygulama.
+#* İpucu1: split() fonksiyonu
+#* İpucu2: bir listenin uzunluğu ne olursa olsun son elemanına nasıl ulaşırım
+users = ["Burak Yılmaz", "Adal Su Uygur", "Yasemin Uygur Erdem", "Sami Lütfü Esen Berk"]
+
+#region Kendi denemem2
+mail_addresses = []
+mail_uzantisi = "@outlook.com"
+
+for user in users:
+    name_slices = user.split(" ")
+    ilkisim = name_slices[0]
+    soyisim = name_slices[-1]
+    mail_addresses.append(f"{ilkisim}.{soyisim}{mail_uzantisi}")
+print(mail_addresses)
+#endregion YAPTIM KIZ
+
+#region Kendi denemem1
+
+users_splited = users.split(" ")
+mail_adress = []
+
+for user in users:
+    user = user.lower()
+    name_piece = user.split(" ")
+    first_name = name_piece[0]
+    last_name = name_piece[1]
+
+#endregion
+
+#region Hocanın çözümü
+
+users = ['Burak Yılmaz', 'Rana Nur Ceylan', 'İpek Yılmaz', 'kerim Abdurrahman Burak Yılmaz']
+mail_addresses = []
+domain_name = "@outlook.com"
+for user in users:
+    user_names = user.lower().split(" ")
+    mail_address = (f"{user_names[0]}.{user_names[-1]}{domain_name}")
+    mail_addresses.append(mail_address)
+print(mail_addresses)
+#endregion
+
+#todo Girilen sampledaki sesli harfleri, sessiz harfleri, typoları ayrı listelere ekleyen uygulama. İlgili listelerde eleman tekrarı olmamalı. Space ignore.
+sample = "buRa1k _Ayi?Lm2aZu"
+sesli_harfler = []
+sessiz_harfler = []
+typo_char = []
+space_char = []
+
+#region kendi çözümüm
+
+for char in sample.lower():
+    if char.isalpha():
+        if char in "aeıioöuü":
+            if char not in sesli_harfler:
+                sesli_harfler.append(char)
+        else:
+            if char not in sessiz_harfler:
+                sessiz_harfler.append(char)
+    else:
+        if char == " ":
+            continue #ignore attık
+        elif char not in typo_char:
+            typo_char.append(char)
+
+print(f"{sessiz_harfler}\n{sesli_harfler}\n{typo_char}")
+#endregion YAPTIKKKKKK
+
+#region Hocanın çözümü
+
+word = input("Type something: ")
+
+for ch in word.lower():
+    if ch.isalpha(): #karakter alfabetik mi diye bakıyoruz.
+        if ch not in sesli_harfler and ch not in sessiz_harfler:
+            if ch in "aeıioöuü":
+                sesli_harfler.append(ch)
+            else:
+                sessiz_harfler.append(ch)
+    else:
+        if ch == " ":
+            continue
+        typo_char.append(ch)
+
+print(sesli_harfler)
+print(sessiz_harfler)
+print(typo_char)
+#endregion
+
+#todo 10ar tane rastgele sayı üretilip 2 listeye eklenecek. 3. listeye aktarılacak. appen kullanılması yasak, index mantığıyla çalışılacak.
+lst_1 = []
+lst_2 = []
+lst_3 = []
+from random import randint
+
+#region kendi çözümüm
+for i in range(10):
+    sayi_1 = randint(a=0,b=100)
+    lst_1.insert(i, sayi_1)
+    sayi_2 = randint(a=0,b=100)
+    lst_2.insert(i, sayi_2)
+    lst_3.insert(i, lst_1[i] + lst_2[i])
+print(lst_1)
+print(lst_2)
+print(lst_3)
+#endregion
+
+#region hocanın çözümü
+for i in range(10):
+#    print(randint(a=0,b=100)) #1. adım, ürettik evet 10 tane
+    lst_1.insert(i, randint(a=0,b=100)) #2. adım ooh hemen üretilen kodla lst_1'e ekleyek
+    lst_2.insert(i, randint(a=0, b=100)) #4. adım, bak bunu da ürettik hatta test edelim yine.
+
+    lst_3.insert(i, lst_1[i]+lst_2[i]) #6. adım, oh misler gibi çalıştı bak, bir deyazdıralım da görelim
+#print(lst_1) #3. test adımı, ee düzgün çalışıyor demekki o zaman lst_2'ye de aynı şekilde ekleyek
+#print(lst_2) #5. adım, çözdük, o zaman devamke
+print(f"{lst_1}\n{lst_2}\n{lst_3}")
+#endregion
+
+#? Nested List Yapısı
+#* Liste içerisinde liste yapısıdır, en basit anlatımıyla matematikteki matriks yapısı gibi düşün.
+
+alisveris_sepeti = [
+    "Ekmek",                        # 0. indexteki Tekil Ürün
+    "Süt",                          # 1. indexteki Tekil Ürün
+    ["Elma", "Muz", "Portakal"],    # 2. indexteki öğeler (Meyveler Kutusu)
+    ["Kalem", "Silgi"],             # 3. indexteki öğeler (Kırtasiye Kutusu)
+    15.99                           # 4 indexteki ürün (fiyat)
+]
+# alisveris_sepeti listesi 5 öğeye sahiptir ve 2 ve 3. indexteki öğeler de ayrıca listelerdir.
+print(alisveris_sepeti[2][2]) #Listenin 2. indexteki elemanının 2. indexindeki elemanını yazdır.
+
+#? Slicing (Dilimleme)
+#* Pandas (veri analizinde de) kullanılır, çok önemli!!!!
+#* Mevcut bir listenin belirli bir bölümünü alarak yeni bir liste oluşturma işlemidir. Bu dilimleme orjinal listeyi değiştirmez.
+
+#SYNTAX YAPISI
+#           yeni_liste = eski_liste [başlangıç_index(DAHİL) : bitiş_index(HARİÇ) : adım] 
+#             default değerleri --- [       0 (SIFIR)       :    listenin_sonu   :  1  ]
+
+fruits = [
+    "Apple", "Banana", "Orange", "Mango", "Pineapple",
+    "Strawberry", "Grapes", "Watermelon", "Peach", "Cherry",
+    "Papaya", "Kiwi", "Blueberry", "Raspberry", "Guava",
+    "Pomegranate", "Lemon", "Apricot", "Fig", "Pear"
+]
+
+print(fruits[2:7]) #birinci değer başlangıç indexi, ikinci değer n-1 olacak şekilde kapanış indexi
+print(fruits[:3]) #burada başlangıç belirtilmedi yani başlangıç 0 ve burada : ile 3.ye kadar diyoruz
+print(fruits[1::2]) #birden başla, iki iki zıplayarak git demek çift iki nokta ile 
+print(fruits[::4]) #gene başlangıCı vermedi ama 4er 4er zıplayarak git anlamına geldi 
+
+print(fruits[::-1]) #0dan başla, -1 -1 git dedik ve aslında listeyi tersine çevirmiş olduk. 
+# eksi koyunca reverse ediliyor gibi düşün, 0. eleman direkt son eleman gibi düşün
+print(fruits[10::-3]) #başlangıç verdik diye burda reverse düşünme, 10. elemandan başla geriye doğru 3er adımla git
+print(fruits[::-2])
+
+#? Unpacking - Unboxing
+#* Bir koleksiyonun öğelerini alıp bu öğeleri ayrı ayrı değişkenlere atanması durumudur.
+
+my_family = [ #Bu listemiz
+    ["Adal Su Uygur", 29, "Analyst-Unemployed"],
+    ["Yasemin Uygur Erdem", 33, "Guidance Counselor"],
+    ["Habiba Uygur", 37, "English Teacher"],
+    ["Süreyya Uygur", 61, "Retired"],
+    ["Abdülrezzak Uygur", 67, "Chauffeur"]
+]
+
+for item in my_family: #şimdi ailedeki her bir öğeyi dışarı çıkartıyoruz (bu da unboxing aslında)
+    print(item)
+
+#* Unpacking yaparken karşılaması gereken valueların tam olması lazım, eksik veya fazla olursa patlar
+for name, age, occupation in my_family: #myfamilyden bana gelen bilgileri öyle bir karşılayayım ki tık tık tık eşleşsin
+    print(                              #Ki bu da unboxing bak
+        f"Full name: {name}\n"
+        f"Age: {age}\n"
+        f"Occupation: {occupation}"
+    )
+
+#todo Login bilgileri eşleşirse, ürün search ve fiyat output.
+#todo Yanlış loginde yeni kayıt. username'ler unique
+#bütün ürünlerin toplam fiyatı nedir
+#ürün adı laptop olan ürünlerin fiyatlarını toplayalım
+#kullanıcı ürün search edebilsin, yani ürün search etti monitör yazdı varsa fiyatını verdi
+#fiyatı 200 tl altında olan ürünler listelensin
+#register olsun, yani kayıt da olsun; username varsa hali hazırda ekleyemesin
+users = [
+    ["beast", "123"],
+    ["bear", "456"],
+    ["keko", "789"]
+]
+
+products = [
+    ["Laptop", 850],
+    ["Smartphone", 499],
+    ["Headphones", 79],
+    ["Keyboard", 45],
+    ["Monitor", 220],
+    ["Mouse", 25],
+    ["Smartwatch", 150],
+    ["Tablet", 310],
+    ["External Hard Drive", 95],
+    ["Webcam", 60],
+    ["Laptop", 850]
+]
+
+#region kendi çözümüm
+
+username = input("username: ").lower()
+password = input("password")
+
+for user, parola in users: #döngüdeki her bir girdiyi user ve parola değişkenlerine atadık.
+    if user == username and parola == password: #eğer user ve pasaport inputlarla eşleşiyorsa sağlıklı giriş sağlandı.
+        print("Login successful")
+        break
+    else: #eşleşmiyorsa 
+        new_user = bool(input("Giriş başarısız, yeni bir üyelik açmak ister misiniz? (1/0)")) #yeni bir üyelik ister miyiz dedik
+        if new_user == True: #evet derse
+            new_username = input("Username: ") #username istedik
+            if new_username == user: #ve username bizim tanımladığımız userlarda varsa
+                while True:
+                    print("Username already taken, pick another one.")
+                    new_username = input("Username: ")
+                    if new_username != user:
 
 
-
-# #! users = ["Burak Yılmaz", "Rana Nur Ceylan", "İpek Yılmaz", "Kerim Abdurrahman Burak Yılmaz"]
-# #? kurumsal mail adresi craft edicez
-# #? sample --- rana.ceylan@outlook.com yani: ilkisim.soyidim@outlook.com
-# #? craft edilen mail adresleri maid_adress listesine eklenerek ekrana basılacak
-# #? ipucu: split() fonksiyonu, bir listenin uzunluğu ne olursa olsun son elemanına nasıl ulaşırım? 
-
-# #region Kendi denemem
-
-# # users = ["Burak Yılmaz", "Rana Nur Ceylan", "İpek Yılmaz", "Kerim Abdurrahman Burak Yılmaz"]
-
-# # users_splited = users.split(" ")
-
-# # mail_adress = []
-
-# # for user in users:
-# #     user = user.lower()
-# #     name_piece = user.split(" ")
-# #     first_name = name_piece[0]
-# #     last_name = name_piece[1]
-# #     mail_adress.__add__
-
-# #endregion
-
-# #region Hocanın çözümü
-
-# # users = ['Burak Yılmaz', 'Rana Nur Ceylan', 'İpek Yılmaz', 'kerim Abdurrahman Burak Yılmaz']
-# # mail_addresses = []
-# # domain_name = "@outlook.com"
-# # for user in users:
-# #     user_names = user.lower().split(" ")
-# #     mail_address = (f"{user_names[0]}.{user_names[-1]}{domain_name}")
-# #     mail_addresses.append(mail_address)
-# # print(mail_addresses)
-
-# #endregion
-
-# #region hocanın örnek ödevi
-# #! end userdan bir söz öbeği alalım mesela anladım hocam teşekkür ederim gibi
-# #! sample = buRa1k _Ayi?Lm2aZu
-# #! sesli harfleri sesli_harfler[] (listesine)
-# #! sessiz harfleri ---- sessiz_harfler[]
-# #! yazım hatalarını ---- typo_characters = []
-# #! space karakteri ignore
-# #! ilgili listelerdeki hiçbir eleman tekrar etmeyecek. Hep küçük harflerden devam 
-
-# # sesli_harfler = []
-# # sessiz_harfler = []
-# # typo_characters = []
-
-# # word = input("Type something: ")
-
-# # for ch in word.lower():
-# #     if ch.isalpha(): #karakter alfabetik mi diye bakıyoruz.
-# #         if ch not in sesli_harfler and ch not in sessiz_harfler:
-# #             if ch in "aeıioöuü":
-# #                 sesli_harfler.append(ch)
-# #             else:
-# #                 sessiz_harfler.append(ch)
-# #     else:
-# #         if ch == " ":
-# #             continue
-# #         typo_characters.append(ch)
-
-# # print(sesli_harfler)
-# # print(sessiz_harfler)
-# # print(typo_characters)
-
-# #endregion
-
-# #region ders örneği 
-# #lst1 ve lst2 içerisine rastgele 10 tane sayı üretip doldurun
-# #doldurma işlemini index mantığına göre yapın
-# #örneğin list[0] + lst[0] toplanarak lst 3'ün indexine yazılacak, append yok
-
-# #region kendi çözümüm
-# # lst_1 = []
-# # lst_2 = []
-# # lst_3 = []
-
-# # from random import randint
-
-# # for i in range(10):
-# #     sayi_1 = randint(a=0,b=100)
-# #     lst_1.insert(i, sayi_1)
-# #     sayi_2 = randint(a=0,b=100)
-# #     lst_2.insert(i, sayi_2)
-# #     lst_3.insert(i, sayi_1+sayi_2)
-
-# # print(lst_1)
-# # print(lst_2)
-# # print(lst_3)
-
-# #endregion
-
-# #region hocanın çözümü
-# # lst_1 = []
-# # lst_2 = []
-# # lst_3 = []
-
-# # from random import randint
-
-# # for i in range(10):
-
-# # #    print(randint(a=0,b=100)) #1. adım, ürettik evet 10 tane
-# #     lst_1.insert(i, randint(a=0,b=100)) #2. adım ooh hemen üretilen kodla lst_1'e ekleyek
-# #     lst_2.insert(i, randint(a=0, b=100)) #4. adım, bak bunu da ürettik hatta test edelim yine.
-
-# #     lst_3.insert(i, lst_1[i]+lst_2[i]) #6. adım, oh misler gibi çalıştı bak, bir deyazdıralım da görelim
-# # #print(lst_1) #3. test adımı, ee düzgün çalışıyor demekki o zaman lst_2'ye de aynı şekilde ekleyek
-# # #print(lst_2) #5. adım, çözdük, o zaman devamke
-# # print(f"{lst_1}\n{lst_2}\n{lst_3}")
-# #endregion
-# #endregion
-
-# #region nested list
-
-# # ilceler = [
-# #     ["Sarıyer"],
-# #     ["Etiler", "Nispetiye", "Ulus"],
-# #     ["Suadiye", ["Feneryolu", "Erenköy"]],
-# #     [["Beşiktaş", "Maçka"], "Harbiye", ["Nişantaşı"]]
-# # ]
-
-# # #ana listenin 4 elemanı var ama ilceler listesinin elemanlarının içerisinde de listeler var
-# # #matriks gibi düşün matematikteki
-
-# # print(ilceler[3][0][0])
-
-# #endregion
-
-# #region Slicing (Dilimleme)
-# #Pandas (veri analizinde de yani) kullanılır, çok önemli
-
-# # fruits = [
-# #     "Apple", "Banana", "Orange", "Mango", "Pineapple",
-# #     "Strawberry", "Grapes", "Watermelon", "Peach", "Cherry",
-# #     "Papaya", "Kiwi", "Blueberry", "Raspberry", "Guava",
-# #     "Pomegranate", "Lemon", "Apricot", "Fig", "Pear"
-# # ]
-
-# #dilimleme mevzuda: iki nokta üst üste özel karakter yani her şey bunun altından çıkıyor
-
-# # print(fruits[2:7]) #birinci değer başlangıç indexi, ikinci değer n-1 olacak şekilde kapanış indexi
-# # print(fruits[:3]) #burada başlangıç belirtilmedi yani başlangıç 0 ve burada : ile 3.ye kadar diyoruz
-# # print(fruits[1::2]) #birden başla, iki iki zıplayarak git demek çift iki nokta ile 
-# #print(fruits[::4]) #gene başlangıvı vermedi ama 4er 4er zıplayarak git 
-
-# #print(fruits[::-1]) #0dan başla, -1 -1 git dedik ve aslında listeyi tersine çevirmiş olduk. 
-# # eksi koyunca reverse ediliyor gibi düşün, 0. eleman direkt son eleman gibi düşün
-# # print(fruits[10::-3]) #başlangıç verdik diye burda reverse düşünme, 10. elemandan başla geriye doğru 3er adımla git
-
-# # print(fruits[::-2])
-
-# #endregion
-
-# #region Unpacking - unboxing
-
-# # my_family = [
-# #     ["Adal Su Uygur", 29, "Analyst"],
-# #     ["Yasemin Uygur Erdem", 33, "Teacher"],
-# #     ["Abdülfettah Uygur", 37, "Engineer"],
-# #     ["Süreyya Uygur", 61, "Retired"],
-# #     ["Abdülrezzak Uygur", 67, "Old? :D"]
-# # ]
-
-# # for item in my_family:
-# #     print(item)
-
-
-# # for name, age, occupation in my_family: #myfamilyden bana gelen bilgileri öyle bir karşılayayım ki tık tık tık eşleşsin
-# #     print(
-# #         f"Full name: {name}\n"
-# #         f"Age: {age}\n"
-# #         f"Occupation: {occupation}"
-# #     )
-# # #Unpacking yaparken karşılaması gereken valueların tam olması lazım, eksik veya fazla olursa patlar
-
-# #endregion
-
-
-# #region örnek
-# #login istedik, kullanici adi ve sifre iste listeyi mi kontrol et
-# #bütün ürünlerin toplam fiyatı nedir
-# #ürün adı laptop olan ürünlerin fiyatlarını toplayalım
-# #kullanıcı ürün search edebilsin, yani ürün search etti monitör yazdı varsa fiyatını verdi
-# #fiyatı 200 tl altında olan ürünler listelensin
-# #register olsun, yani kayıt da olsun; username varsa hali hazırda ekleyemesin
-
-# users = [
-#     ["beast", "123"],
-#     ["bear", "456"],
-#     ["keko", "789"]
-# ]
-
-# products = [
-#     ["Laptop", 850],
-#     ["Smartphone", 499],
-#     ["Headphones", 79],
-#     ["Keyboard", 45],
-#     ["Monitor", 220],
-#     ["Mouse", 25],
-#     ["Smartwatch", 150],
-#     ["Tablet", 310],
-#     ["External Hard Drive", 95],
-#     ["Webcam", 60],
-#     ["Laptop", 850]
-# ]
-
-# username = input("username: ").lower()
-# password = input("password")
-
-# for user, parola in users: #döngüdeki her bir girdiyi user ve parola değişkenlerine atadık.
-#     if user == username and parola == password: #eğer user ve pasaport inputlarla eşleşiyorsa sağlıklı giriş sağlandı.
-#         print("Login successful")
-#         break
-#     else: #eşleşmiyorsa 
-#         new_user = bool(input("Giriş başarısız, yeni bir üyelik açmak ister misiniz? (1/0)")) #yeni bir üyelik ister miyiz dedik
-#         if new_user == True: #evet derse
-#             new_username = input("Username: ") #username istedik
-#             if new_username == user: #ve username bizim tanımladığımız userlarda varsa
-#                 while True:
-#                     print("Username already taken, pick another one.")
-#                     new_username = input("Username: ")
-#                     if new_username != user:
-#                     break
-
-#         #Buraya kod bloğu gelecek.
-# print("Giriş başarısız.")
+        #Buraya kod bloğu gelecek.
+                        print("Giriş başarısız.") #burada saçmaladım tekrar yazmayı
+                        #denemem lazım, sildim fala nbişiler bişiler
 
 
 
 
-#         # new_login = input("Yeni hesap açmak ister misiniz?")
-#         # if new_login == True:
-#         #     new_username = input("username: ").lower()
-#         #     if new_username == user:
-#         #         print("Aynı giriş kabul edilemez, farklı bir giriş deneyin.")
-#         #     new_password = input("Password: ")
+new_login = input("Yeni hesap açmak ister misiniz?")
+if new_login == True:
+    new_username = input("username: ").lower()
+    if new_username == user:
+        print("Aynı giriş kabul edilemez, farklı bir giriş deneyin.")
+    new_password = input("Password: ")
+#endregion
 
+#region hocanın çözümü
 
-
+#endregion
