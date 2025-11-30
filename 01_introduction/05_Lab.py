@@ -321,37 +321,6 @@ products = [
 
 #region kendi çözümüm
 
-username = input("username: ").lower()
-password = input("password")
-
-for user, parola in users: #döngüdeki her bir girdiyi user ve parola değişkenlerine atadık.
-    if user == username and parola == password: #eğer user ve pasaport inputlarla eşleşiyorsa sağlıklı giriş sağlandı.
-        print("Login successful")
-        break
-    else: #eşleşmiyorsa 
-        new_user = bool(input("Giriş başarısız, yeni bir üyelik açmak ister misiniz? (1/0)")) #yeni bir üyelik ister miyiz dedik
-        if new_user == True: #evet derse
-            new_username = input("Username: ") #username istedik
-            if new_username == user: #ve username bizim tanımladığımız userlarda varsa
-                while True:
-                    print("Username already taken, pick another one.")
-                    new_username = input("Username: ")
-                    if new_username != user:
-
-
-        #Buraya kod bloğu gelecek.
-                        print("Giriş başarısız.") #burada saçmaladım tekrar yazmayı
-                        #denemem lazım, sildim fala nbişiler bişiler
-
-
-
-
-new_login = input("Yeni hesap açmak ister misiniz?")
-if new_login == True:
-    new_username = input("username: ").lower()
-    if new_username == user:
-        print("Aynı giriş kabul edilemez, farklı bir giriş deneyin.")
-    new_password = input("Password: ")
 #endregion
 
 #region hocanın çözümü
