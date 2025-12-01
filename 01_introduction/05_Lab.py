@@ -294,11 +294,13 @@ for name, age, occupation in my_family: #myfamilyden bana gelen bilgileri öyle 
 
 #todo Login bilgileri eşleşirse, ürün search ve fiyat output.
 #todo Yanlış loginde yeni kayıt. username'ler unique
-#bütün ürünlerin toplam fiyatı nedir
-#ürün adı laptop olan ürünlerin fiyatlarını toplayalım
-#kullanıcı ürün search edebilsin, yani ürün search etti monitör yazdı varsa fiyatını verdi
-#fiyatı 200 tl altında olan ürünler listelensin
-#register olsun, yani kayıt da olsun; username varsa hali hazırda ekleyemesin
+# kullanıcı login olacak
+# register olsun
+# bütün ürünlerin toplam fiyatı nedir
+# ürün adı laptop olan ürünlerin fiyatlarını toplayalım
+# kullanıcı ürün search 
+# fiyatı 200 TL altında olan ürünler listelensin
+
 users = [
     ["beast", "123"],
     ["bear", "456"],
@@ -324,5 +326,75 @@ products = [
 #endregion
 
 #region hocanın çözümü
+
+while True:
+    #login mi sign in mi olsun diye sorduk
+    first_process = input('Sign In --> 1\nSign Up -- 2\nTuşlayınız: ')
+    match first_process:
+        case '1':
+            kullanici_adi = input('User Name: ')
+            sifre = input('Password: ')
+            
+            is_exists = False #kullanıcı adı var mı diye kontrol ediyoruz
+            for user in users: #bilgi birikimi henüz yetersiz, teker teker kontrol ediyoruz ^^
+                if user[0] == kullanici_adi and user[1] == sifre:
+                    is_exists = True
+                    break
+            
+            if is_exists:
+                print(f'Giriş başarılı..!\nHoşgeldiniz, {kullanici_adi}')
+                while True:
+                    second_process = input('İşlem Adı Giriniz: ')
+                    
+                    match second_process:
+                        case 'toplam fiyat':
+                            total = 0
+                            for product in products:
+                                total += product[1]
+                            print(f'Toplam Fiyatlar: {total}')
+                        case 'laptop toplam fiyat':
+                            total = 0
+                            for product in products:
+                                if product[0] == 'Laptop':
+                                    total += product[1]
+                            print(f'Toplam Fiyatlar: {total}')
+                        case 'ürün ara':
+                            urun_adi = input('Ürün adı giriniz: ')
+                            for product in products:
+                                if product[0] == urun_adi:
+                                    print(f'Ürün Adı: {product[0]}\nFiyatı: {product[1]}')
+                            else:
+                                print('Aradığınız ürün bulunmamaktadır..!')
+                        case 'fiyat aralığına göre ara':
+                            alt = int(input('Alt limit fiyato: '))
+                            ust = int(input('Üst limit fiyato: '))
+                            for product in products:
+                                if product[1] >= alt and product[1] <= ust:
+                                    print(f'Ürün Adı: {product[0]}\nFiyatı: {product[1]}')
+                        case 'çıkış':
+                            print('Uygulama kapatılıyor...!')
+                            break
+                        case _:
+                            print('Lütfen doğru işlem türü giriniz..!')
+            else:
+                print('Kullanıcı adı yada şifre hatalı..!')
+        case '2':
+            kullanici_adi = input('User Name: ')
+            sifre = input('Password: ')
+
+            is_exist = False
+            for user in users:
+                if user[0] == kullanici_adi:
+                    is_exist = True
+                    break
+
+            if is_exist:
+                print('Kullanıcı adı zaten var.')
+            else:
+                new_user = [kullanici_adi, sifre]
+                users.append(new_user)
+                print('Üyelik işleminiz tamamlandı.')
+        case _:
+            print('Lütfen uygun işlem numarasını giriniz..!')
 
 #endregion
