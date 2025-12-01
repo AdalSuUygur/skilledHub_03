@@ -47,4 +47,14 @@ for i in range(1,11):
         print(f"{i} x {j} = {i * j}")
     print("-------------------")
 
+#List comprehenstion ile yapılması:
+lst_7 = [
+        i*j for i in range(1, 11) for j in range(1,11)
+    ]
+print(lst_7)
 
+print(
+    [
+        [f"{i} x {j} = {i*j}"] for i in range(1,11) for j in range(1,11)
+    ]
+)
