@@ -62,22 +62,36 @@
 #okuması da yazması da zor, neden tercih ediliyor ki? memory time falan filan, ileriki derslerde görücez ^^ 
 
 #? Filter Function
-#* Listeler üzerinde filtrelemeye yarayan fonksiyon
+# #* Listeler üzerinde filtrelemeye yarayan fonksiyon
 
-#Oluşturulan listeden pozitif olanları list comprehension ile ayıklayarak yeni bir liste yaratma uygulaması
+# #Oluşturulan listeden pozitif olanları list comprehension ile ayıklayarak yeni bir liste yaratma uygulaması
 from random import randint
 numbers = [randint(a=-100, b=100) for i in range(1000)]
 
-#todo path i --- list comprehension
-# lst_pozitif = [item for item in lst_8 if item >=0]
-# print(lst_pozitif)
+# #todo path i --- list comprehension
+# # lst_pozitif = [item for item in lst_8 if item >=0]
+# # print(lst_pozitif)
 
-#todo path ii --- filter()
-temp_lst = filter(lambda x: x>0, numbers) #iterable, elemanları tek tek gezilebilir.
-#ilk argümanda başka bir fonksiyon yazılır.
-#ilkel tanım: 
-#lambda burda isimsiz bir fonksiyon yaratır, bu fonksiyon öyle bir fonksiyon ki numbers listemizin tek tek bütün elemanlarını alıp işleme sokuyor.
-#bence kümelere benziyo ama 
+# #todo path ii --- filter()
+# temp_lst = filter(lambda x: x>0, numbers) #iterable, elemanları tek tek gezilebilir.
+# #ilk argümanda başka bir fonksiyon yazılır.
+# #ilkel tanım: 
+# #lambda burda isimsiz bir fonksiyon yaratır, bu fonksiyon öyle bir fonksiyon ki numbers listemizin tek tek bütün elemanlarını alıp işleme sokuyor.
+# #bence kümelere benziyo ama 
 
-pozitive_numbers = list(temp_lst) #gelen inputları listeye çevirdik, öbür türlü aslında liste değil, gelen inputu çevirmek gibi aynı mantık
-print(pozitive_numbers)
+# pozitive_numbers = list(temp_lst) #gelen inputları listeye çevirdik, öbür türlü aslında liste değil, gelen inputu çevirmek gibi aynı mantık
+# print(pozitive_numbers)
+
+#todo filter fonksiyonu ile çift sayıları filtrelereyim ve liste olarak ekrana yazdıralım
+temp_lst = filter(lambda x: x % 2 == 0, numbers)
+even_numbers = list(temp_lst)
+print(even_numbers)
+
+from time import time_ns #nanosecond olarak ölçmeye yarayan fonksiyon
+#! ödev: 10 000 tane sayı üretilir,
+#liste oluşturulur (comprehension ise)
+#bir timer bunun başına ve sonuna, birbirlerinden çıkartıp kaç nanosecond tuttuğu ve PATH1
+#filter fonksiyonunun başına ve sonuna timer koyup çıkartıp kaç nanosecond tuttuğunu PATH2
+#bir de for döngüsü ile kurulan listeye bir timer koy PATH3
+#pathler içinde benchmark testi
+#yetmez, memory de ölçerim diyosan ölç! yabay zekadan yararlan (ne yabay? XDDDD)
