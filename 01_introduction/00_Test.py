@@ -20,5 +20,17 @@ print(lst_random)
 lst_3 = [i**2 for i in range(10)]
 print(lst_3)
 
-#
+#0-100 arasındaki çift sayıları listeye eklenmesi
+lst_4 = [i for i in range(101) if i%2 == 0] #0 ile 100 dahil olsun diye
+print(lst_4)
 
+#içerisinde a harfi geçen meyvelerin listeye alınması
+fruits = [
+    "Apple", "Banana", "Orange", "Mango", "Pineapple",
+    "Strawberry", "Grapes", "Watermelon", "Peach", "Cherry",
+    "Papaya", "Kiwi", "Blueberry", "Raspberry", "Guava",
+    "Pomegranate", "Lemon", "Apricot", "Fig", "Pear"
+]
+
+lst_5 = [fruit for fruit in fruits if "a" in fruit.lower()]
+print(lst_5)
