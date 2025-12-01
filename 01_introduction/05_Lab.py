@@ -155,11 +155,11 @@ print(fruits[::-2])
 #* Bir koleksiyonun öğelerini alıp bu öğeleri ayrı ayrı değişkenlere atanması durumudur.
 
 my_family = [ #Bu listemiz
-    ["Adal Su Uygur", 29, "Analyst-Unemployed"],
-    ["Yasemin Uygur Erdem", 33, "Guidance Counselor"],
-    ["Habiba Uygur", 37, "English Teacher"],
-    ["Süreyya Uygur", 61, "Retired"],
-    ["Abdülrezzak Uygur", 67, "Chauffeur"]
+    ["Lale Selam", 29, "Analyst-Unemployed"],
+    ["Aslı Meram", 33, "Guidance Counselor"],
+    ["Karam Çalık", 37, "English Teacher"],
+    ["Alık Balık", 61, "Retired"],
+    ["Sade Kanık", 67, "Chauffeur"]
 ]
 
 for item in my_family: #şimdi ailedeki her bir öğeyi dışarı çıkartıyoruz (bu da unboxing aslında)
@@ -173,4 +173,12 @@ for name, age, occupation in my_family: #myfamilyden bana gelen bilgileri öyle 
         f"Occupation: {occupation}"
     )
 
+#? enumarete() built-in-function
+#* Var olan listenin içerisinde dolaşırken fonksiyonun içerisine verilirse, listenin indexini ve itemını verir.
+
+for index, item in enumerate(meyveler):
+    print(
+        f"Index value: {index}\n"
+        f"Item Value: {item}"
+    )
 
