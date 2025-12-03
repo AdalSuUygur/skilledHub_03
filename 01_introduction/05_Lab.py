@@ -314,8 +314,7 @@ del path_1 # Belleği serbest bırak
 # --- PATH 2: Filter + Lambda ---
 timer_start = time_ns() # Kronometreyi başlat
 
-path_2_temp = filter(lambda x: x>0, numbers)
-path_2 = list(path_2_temp)
+path_2 = list(filter(lambda x: x>0, numbers))
 #print(path_2) #test
 
 timer_finish = time_ns() # Kronometreyi durdur
@@ -356,3 +355,4 @@ if en_hizli == sure_path1: print("KAZANAN: Path 1 (List Comprehension)")
 elif en_hizli == sure_path2: print("KAZANAN: Path 2 (Filter)")
 else: print("KAZANAN: Path 3 (For Loop)")
 #endregion
+
