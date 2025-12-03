@@ -281,4 +281,3 @@ temp_lst = filter(lambda x: x % 2 == 0, numbers)
 even_numbers = list(temp_lst)
 print(even_numbers)
 
-
