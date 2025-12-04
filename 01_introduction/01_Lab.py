@@ -23,6 +23,8 @@ substraction = number_1 - number_3
 #Neden number_2 değişkenini almıyoruz? Çünkü o string bir ifade, ve integer + string ifadesi hata verir program patlar.
 print(substraction)
 
+#region Examples
+
 #todo Kullanıcıdan kenar bilgisi alınarak kare alan&çevre hesabı
 edge = float(input("Edge: "))
 square_area = edge * edge
@@ -66,3 +68,5 @@ print(f"Ürünün adı {urun_adi}'dır ve fiyatı {fiyat}'tır.")
 #burda f-string içerisindeki {} içerisinde işlem yapılabildiğini öğrendik.
 kenar = int(input("Karenin kenarı = "))
 print(f"Karenin alanı = {kenar * kenar}")
+
+#endregion
