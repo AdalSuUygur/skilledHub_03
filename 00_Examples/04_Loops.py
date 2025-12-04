@@ -55,3 +55,20 @@
 #     toplam = i + toplam
 #     print(f'her adımdaki toplam: {toplam}')
 # print(f'sonuçtaki toplam: {toplam}')
+
+
+#todo Girilen şifrenin min 8 karakter uzunluğunda ve boşluksuz olduğunu doğrulayan uygulama
+# password = input("Please enter your password: ")
+# is_valid = True
+# for char in password:
+#     if char == " ":
+#         is_valid = False
+#         msg = "gap is not accepted in passwords"
+#     elif len(password) < 8:
+#         is_valid = False
+#         msg = "length is too short"
+
+# if is_valid:
+#     print("Your password is valid!")
+# else:
+#     print(msg)
