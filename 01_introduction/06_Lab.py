@@ -4,7 +4,7 @@
 import time
 import tracemalloc
 
-bolunen = 89754544654123
+bolunen = 2
 bolen = 0
 test1 = "IF_ELSE"
 test2 = "TRY_EXCEPT"
