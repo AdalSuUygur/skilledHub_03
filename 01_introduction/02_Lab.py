@@ -2,9 +2,10 @@
 #! Control Flow Statements / Karar Mekanizmaları (If-Else, Match-Case)
 #* Belirli bir koşulun sağlanıp sağlanmamasına göre farklı kod bloklarının çalıştırılmasının standart yoludur.
 
+#region If - Elif - Else
 #? If - Elif - Else SYNTAX
-# if - elif - else bloğunda herhangi bir şart tutarsa diğer şartlara bakılmaz.
-# Mantıksal operatörler (and, or, not) kullanarak birden fazla karmaşık koşulu aynı anda kontrol etmeye olanak tanır.
+#* if - elif - else bloğunda herhangi bir şart tutarsa diğer şartlara bakılmaz.
+#* Mantıksal operatörler (and, or, not) kullanarak birden fazla karmaşık koşulu aynı anda kontrol etmeye olanak tanır.
 kosul_1 = ""
 kosul_2 = ""
 if kosul_1:
@@ -28,8 +29,9 @@ elif number_1 == number_2:
 else:
     print(f'{number_2} daha büyüktür {number_1}')
 
+#region Ternary If (Tek satır if)
 #? Ternary If (Tek satır if) SYNTAX
-# Tek satırda if-else gibi düşün. Tek mi çift mi gibi tek şart olan durumlarda kullanılır.
+#* Tek satırda if-else gibi düşün. Tek mi çift mi gibi tek şart olan durumlarda kullanılır.
 
 #değişken = [True ise atanacak değer] if [koşul] else [False ise atanacak değer]
 sayi = 0
@@ -43,6 +45,7 @@ print(status)
 #todo Girilen sayının negatif mi pozitif mi olduğunu kontrol eden ternary if
 number = int(input("Number: "))
 print(f"Status {'positive' if number > 0 else 'negative'}") #f-string fonksiyonu içinde yazdık.
+#endregion
 
 #todo Girilen sayının negatif mi pozitif mi olduğunu kontrol eden If-Elif-Else bloğu
 number = int(input("Sayıyı giriniz: "))
@@ -243,15 +246,16 @@ print(f'Kitap fiyatı: {kitap_fiyat} TL\n'
       f'İndirim miktarı: {kitap_fiyat * kitap_sayisi * indirim} TL\n'
       f'İndirim sonrası ödenecek tutar: {indirimli_odenecek} TL')
 
-
 #todo Sınav sonucuna göre harf notunu yazdıran nested+ternary if yapısı
 exam_score = 85
 result = "AA" if exam_score >= 80 else "BB" if exam_score >= 60 else "CC"
 print(result)
 
+#endregion
+#region Match-case yapısı:
 #? Match-case yapısı:
-# if else'e alternatif olarak gelen bir yapı. (C ailesindeki switch-case) match-case status kontrolü için sıklıkla tercih edilir ancak case'de and/or kullanmak daha zor.
-# Genel olarak birebir uyum (==) sağlandığında case ifadesi daha tercih edilir.
+#* if else'e alternatif olarak gelen bir yapı. (C ailesindeki switch-case) match-case status kontrolü için sıklıkla tercih edilir ancak case'de and/or kullanmak daha zor.
+#* Genel olarak birebir uyum (==) sağlandığında case ifadesi daha tercih edilir.
 
 #todo Subscription yapılan üyeliklerdeki statusu beliren uygulama
 boxing_gloves_status = "passive"
@@ -310,3 +314,4 @@ elif season == "autumn" or season == "fall":
     print(f'{season} season includes: September, October, November months.')
 else:
     print("There is no such a thing love.")
+#endregion
