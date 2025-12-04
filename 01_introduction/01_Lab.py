@@ -1,8 +1,8 @@
 
 #! Variables (Değişkenler)
-#Programlamada değişken (variable), verileri geçici olarak saklamak için kullanılan, isimlendirilmiş bir bellek alanıdır.
-#Değişkenin adı, programda runtime'da çalıştırılır.
-#Python özelinde: Değişkenler içerisine atılan değerin tipine bürünürler, önceden tanımlama gerektirmez.
+#* Programlamada değişken (variable), verileri geçici olarak saklamak için kullanılan, isimlendirilmiş bir bellek alanıdır.
+#* Değişkenin adı, programda runtime'da çalıştırılır.
+#* Python özelinde: Değişkenler içerisine atılan değerin tipine bürünürler, önceden tanımlama gerektirmez.
 
 #? SYNTAX
 x = 10 #integer
