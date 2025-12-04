@@ -22,11 +22,62 @@ print(isimler[0])   # Çıktı: Ali (İlk öğe)
 print(isimler[3])   # Çıktı: Deniz
 print(isimler[-1])  # Çıktı: Deniz (Son öğe)
 
+#region Listelerde Yerleşik Metodlar
 #? Listelerde yerleşik metodlar
 #* Bu metotlar, liste adından sonra nokta (.) (Bu duruma nokta notasyonu denir) koyularak çağrılır.
 
 #todo Listelerde metot kullanımı: 
-#region Hocanın çözümü, boxers 
+#region Formula 1 Drivers
+drivers = [
+    "Oscar Piastri", "Lando Norris", 
+    "George Russell", "Kimi Antonelli",
+    "Max Verstappen", "Yuki Tsunoda",
+    "Charles Leclerc", "Lewis Hamilton"]
+print(drivers) #buraya herhangi bir şey eklemedik yani albon'u görmeyeceğiz.
+
+#region append()
+drivers.append("Alexander Albon") #Append metodu ile albonu liste sonuna ekledik
+print(drivers) #burada ise albonu görürüz
+
+#region insert()
+drivers.insert(1,  "Carlos Sainz") #Insert metodu ile 1. index değerine "Carlos Sainz"'i sıkıştırdık.
+print(drivers) #Burada 1. indexte sainzi görürüz
+
+last_drivers = [
+    "Liam Lawson", "Isack Hadjar",
+    "Esteban Ocon", "Oliver Bearman",
+    "Lance Stroll", "Fernando Alonso", 
+    "Nico Hulkenberg", "Gabriel Bortoleto"
+    "Pierre Gasly", "Franco Colapinto"
+] #yeni bir liste tanımladık ve burada kalan diğer driverları yazdık.
+
+#region extend()
+drivers.extend(last_drivers) #drivers listesine last_drivers listesini ekledik
+print(drivers) #burada iki listenin birleşmiş halini görürüz
+
+#region indexteki değeri çekmek list_name[index]
+print(drivers[2]) #Bu 2. indexteki değeri çekiyor, print fonksiyonu ile de yazdırdık.
+
+#region indexteki değeri değiştirmek
+drivers[4] = "DUTDUT DURUT" #MAX VERSTAPPEEEEN!
+print(drivers) #4. Indexteki değeri (Kimi Antonelli) "DUTDUT DURUT" ile değiştirdik.
+
+#region pop()
+drivers.pop(4) #burda da DUTDUR DURUT" ifadesini index'i ile sildik.
+print(drivers)
+
+#region remove
+#buraya veya gelmeli
+drivers.remove("DUTDUT DURUT") #burada da içeriğini girdik, ilk denk geldiğini siler.
+print(drivers)
+
+#region her bir driverı yazdırma
+for driver in drivers:
+    print(driver)
+
+#endregion
+
+#region Boxers 
 boxers = ['Mike Tyson', 'Muhammed Ali', 'Lenox Lewix', "Evander Holyfiled", "George Foreman"]
 
 #? Listenin sonuna "Rocky Marciano"
@@ -72,47 +123,7 @@ for ch in 'adal su': #"adal su" kısım da string aslında liste mantığı gibi
     print(ch,end='-') #bundaki her karakteri de teker teker dolaşabiliyorum.
 #endregion
 
-#region Kendi çözümüm, Formula 1 Drivers
-drivers = [
-    "Oscar Piastri", "Lando Norris", 
-    "George Russell", "Kimi Antonelli",
-    "Max Verstappen", "Yuki Tsunoda",
-    "Charles Leclerc", "Lewis Hamilton"]
-print(drivers) #buraya herhangi bir şey eklemedik yani albon'u görmeyeceğiz.
-
-drivers.append("Alexander Albon") #Append metodu ile albonu liste sonuna ekledik
-print(drivers) #burada ise albonu görürüz
-
-drivers.insert(1,  "Carlos Sainz") #Insert metodu ile 1. index değerine "Carlos Sainz"'i sıkıştırdık.
-print(drivers) #Burada 1. indexte sainzi görürüz
-
-last_drivers = [
-    "Liam Lawson", "Isack Hadjar",
-    "Esteban Ocon", "Oliver Bearman",
-    "Lance Stroll", "Fernando Alonso", 
-    "Nico Hulkenberg", "Gabriel Bortoleto"
-    "Pierre Gasly", "Franco Colapinto"
-] #yeni bir liste tanımladık ve burada kalan diğer driverları yazdık.
-
-drivers.extend(last_drivers) #drivers listesine last_drivers listesini ekledik
-print(drivers) #burada iki listenin birleşmiş halini görürüz
-
-print(drivers[2]) #Bu 2. indexteki değeri çekiyor, print fonksiyonu ile de yazdırdık.
-
-drivers[4] = "DUTDUT DURUT" #MAX VERSTAPPEEEEN!
-print(drivers) #4. Indexteki değeri (Kimi Antonelli) "DUTDUT DURUT" ile değiştirdik.
-
-drivers.pop(4) #burda da DUTDUR DURUT" ifadesini index'i ile sildik.
-print(drivers)
-#buraya veya gelmeli
-drivers.remove("DUTDUT DURUT") #burada da içeriğini girdik, ilk denk geldiğini siler.
-print(drivers)
-
-for driver in drivers:
-    print(driver)
-
-#endregion
-
+#region Nested List
 #? Nested List Yapısı
 #* Liste içerisinde liste yapısıdır, en basit anlatımıyla matematikteki matriks yapısı gibi düşün.
 

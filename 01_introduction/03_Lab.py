@@ -1,6 +1,6 @@
 
 #! Exception Handling (Try-Except-Finally)
-# try-except-finally bloğu, programın çalışması sırasında oluşabilecek istisnaları (exceptions) yönetmek için kullanılan bir mekanizmadır.
+#* try-except-finally bloğu, programın çalışması sırasında oluşabilecek istisnaları (exceptions) yönetmek için kullanılan bir mekanizmadır.
 
 # SYNTAX YAPISI
 try: #Hata beklediğimiz kodları try bloğunun içine alıyoruz.
