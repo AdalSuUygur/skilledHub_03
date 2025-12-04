@@ -45,6 +45,7 @@ if sayi %2 == 0:
     print(f'{sayi} çift')
 else:
     print(f'{sayi} tek')
+#endregion
 
 #region Ternary If (Tek satır if)
 #? Ternary If (Tek satır if) SYNTAX
@@ -71,6 +72,8 @@ elif number == 0:
     print("Sayınız nötrdür.")
 else: 
     print("Sayınız negatiftir.")
+
+#endregion
 
 #region Match-case yapısı:
 #? Match-case yapısı:
@@ -106,3 +109,4 @@ else:
             print(f'Ödenecek Tutar: {kitap * adet_kitap * 0.80}')
         case _:
             print('En fazla 20 kitap satın alabilirsiniz.')
+#endregion
