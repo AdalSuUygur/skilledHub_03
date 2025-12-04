@@ -77,6 +77,7 @@ print(drivers)
 for driver in drivers:
     print(driver)
 
+#endregion
 
 #region Nested List
 #? Nested List Yapısı
@@ -91,3 +92,4 @@ alisveris_sepeti = [
 ]
 # alisveris_sepeti listesi 5 öğeye sahiptir ve 2 ve 3. indexteki öğeler de ayrıca listelerdir.
 print(alisveris_sepeti[2][2]) #Listenin 2. indexteki elemanının 2. indexindeki elemanını yazdır.
+#endregion
