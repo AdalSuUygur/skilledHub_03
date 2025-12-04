@@ -6,6 +6,7 @@
 #* Ama başarılı olursa bu sefer de inanılmaz seratonin hormonları salgılanır. 
 #* Bu yüzden aslında çok bilmediğimiz noktalara ayak basmamak lazım bazen heves kırmamak için.
 
+#region While Loop
 #? While Loop
 # Belirli bir koşul True olduğu sürece içerisindeki kod bloğunu çalıştırmaya devam eder. 
 # Ne zaman duracağını, yani sayacı veya koşulu değiştirmeyi programcının kendisi yönetmelidir.
@@ -312,6 +313,9 @@ else:
         print(f'{sayi} asal değildir.')
 #endregion
 
+#endregion
+
+#region For Loop
 #? FOR DÖNGÜSÜ
 #* bir koleksiyonun elemanları üzerinde veya belirli bir sayı aralığı üzerinde sırayla ilerlemek (iterate etmek) için kullanılan döngüdür.
 
@@ -381,4 +385,5 @@ while i <= deneme:
         print(f"{i}. hakkınız, yanlış tahmin.")
     i += 1
 
+#endregion
 #endregion
