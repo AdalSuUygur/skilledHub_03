@@ -1,4 +1,210 @@
 
+
+#! 04_lists ve 05_lists examples tekrar çöz
+#! small projects içindeki benchmarkı tekrar çöz, anla, gerekirse diğer projelerede benchmark ekle
+
+# # #todo Login bilgileri eşleşirse, ürün search ve fiyat output.
+# # #todo Yanlış loginde yeni kayıt. username'ler unique
+# # #bütün ürünlerin toplam fiyatı nedir
+# # #ürün adı laptop olan ürünlerin fiyatlarını toplayalım
+# # #kullanıcı ürün search edebilsin, yani ürün search etti monitör yazdı varsa fiyatını verdi
+# # #fiyatı 200 tl altında olan ürünler listelensin
+# # #register olsun, yani kayıt da olsun; username varsa hali hazırda ekleyemesin
+# users = [
+#     ["beast", "123"],
+#     ["bear", "456"],
+#     ["keko", "789"]
+# ]
+
+# products = [
+#     ["Laptop", 850],
+#     ["Smartphone", 499],
+#     ["Headphones", 79],
+#     ["Keyboard", 45],
+#     ["Monitor", 220],
+#     ["Mouse", 25],
+#     ["Smartwatch", 150],
+#     ["Tablet", 310],
+#     ["External Hard Drive", 95],
+#     ["Webcam", 60],
+#     ["Laptop", 850]
+# ]
+
+
+#region benchmark testing
+
+#todo generate ile numbers listesini kur (liste olmayacak haliyle.)
+#todo Benchmark testing between listComprehension / lambdaFilter / forLoop
+#Random sayılardan oluşan bir liste üretilir (a=-100, b=100)
+#Path1 ile list comprehension, Path2 ile lambda filter, Path3 ile for loop ile pozitif sayılar ayıklanır.
+#Bu pathler arasında benchmark testi yapılır.
+
+from random import randint #random sayı üretmeye yarayan fonksiyon
+import tracemalloc #memory hesabı için kullanacağız
+import time #nanosecond olarak ölçmeye yarayan fonksiyon
+from time import time_ns
+import sys
+
+ADET = 1_000_000 
+print(f"{ADET} adet sayı üretiliyor, lütfen bekleyiniz")
+# Sayı üretme süresini teste dahil etmiyoruz, o yüzden dışarıda yapıyoruz.
+numbers = (randint(a=-100, b=100) for i in range(ADET))#[randint(a=-100, b=100) for i in range(ADET)]
+#numbers_with_generate = (randint(a=-100, b=100) for i in range(ADET)) #liste olarak tanımlamadık ve memory tüketimi azaldı
+print("Sayılar üretildi, yarış başlıyor!\n" + "-"*50)
+
+
+# --- PATH 1: List Comprehension ---
+timer_start = time_ns() # Kronometreyi başlat
+
+path_1 = [number for number in numbers if number > 0]
+#print(path_1) #test
+
+timer_finish = time_ns() # Kronometreyi durdur
+sure_path1 = timer_finish - timer_start
+
+size_path1 = sys.getsizeof(path_1) # Bellek Boyutu Ölçümü
+
+print(f"Path 1 (List Comp) : {sure_path1:,} ns") #Okunabilirlik için binlik ayırıcı (,)
+print(f"  Bellek Boyutu (Tahmini): {size_path1:,} byte")
+
+del path_1 # Belleği serbest bırak
+
+
+# --- PATH 2: Filter + Lambda ---
+timer_start = time_ns() # Kronometreyi başlat
+
+path_2 = list(filter(lambda x: x>0, numbers))
+#print(path_2) #test
+
+timer_finish = time_ns() # Kronometreyi durdur
+
+sure_path2 = timer_finish - timer_start
+size_path2 = sys.getsizeof(path_2) # Bellek Boyutu Ölçümü
+
+print(f"Path 2 (Filter)    : {sure_path2:,} ns")
+print(f"  Bellek Boyutu (Tahmini): {size_path2:,} byte")
+
+del path_2
+
+
+#PATH3 for loop
+timer_start = time_ns() # Kronometreyi başlat
+
+path_3 = []
+for number in numbers:
+    if number > 0:
+        path_3.append(number)
+#print(path_3) #test
+
+timer_finish = time_ns() # Kronometreyi durdur
+sure_path3 = timer_finish - timer_start
+
+size_path3 = sys.getsizeof(path_3)
+
+print(f"Path 3 (For Loop)  : {sure_path3:,} ns")
+print(f"  Bellek Boyutu (Tahmini): {size_path3:,} byte")
+del path_3
+
+
+print("-" * 30)
+
+
+en_hizli = min(sure_path1, sure_path2, sure_path3)
+if en_hizli == sure_path1: print("KAZANAN: Path 1 (List Comprehension)")
+elif en_hizli == sure_path2: print("KAZANAN: Path 2 (Filter)")
+else: print("KAZANAN: Path 3 (For Loop)")
+#endregion
+
+#todo Girilen data sheetten ilkisim.soyisim@outlook.com şeklinde mail_adresses üretilip ekrana yazdırılan uygulama.
+#* İpucu1: split() fonksiyonu
+#* İpucu2: bir listenin uzunluğu ne olursa olsun son elemanına nasıl ulaşırım
+users = ["Burak Yılmaz", "Adal Su Uygur", "Yasemin Uygur Erdem", "Sami Lütfü Esen Berk"]
+
+#region Kendi denemem2
+mail_addresses = []
+mail_uzantisi = "@outlook.com"
+
+for user in users:
+    name_slices = user.split(" ")
+    ilkisim = name_slices[0]
+    soyisim = name_slices[-1]
+    mail_addresses.append(f"{ilkisim}.{soyisim}{mail_uzantisi}")
+print(mail_addresses)
+#endregion YAPTIM KIZ
+
+#region Kendi denemem1
+
+users_splited = users.split(" ")
+mail_adress = []
+
+for user in users:
+    user = user.lower()
+    name_piece = user.split(" ")
+    first_name = name_piece[0]
+    last_name = name_piece[1]
+
+#endregion
+
+#region Hocanın çözümü
+
+users = ['Burak Yılmaz', 'Rana Nur Ceylan', 'İpek Yılmaz', 'kerim Abdurrahman Burak Yılmaz']
+mail_addresses = []
+domain_name = "@outlook.com"
+for user in users:
+    user_names = user.lower().split(" ")
+    mail_address = (f"{user_names[0]}.{user_names[-1]}{domain_name}")
+    mail_addresses.append(mail_address)
+print(mail_addresses)
+#endregion
+
+#todo Girilen sampledaki sesli harfleri, sessiz harfleri, typoları ayrı listelere ekleyen uygulama. İlgili listelerde eleman tekrarı olmamalı. Space ignore.
+sample = "buRa1k _Ayi?Lm2aZu"
+sesli_harfler = []
+sessiz_harfler = []
+typo_char = []
+space_char = []
+
+#region kendi çözümüm
+
+for char in sample.lower():
+    if char.isalpha():
+        if char in "aeıioöuü":
+            if char not in sesli_harfler:
+                sesli_harfler.append(char)
+        else:
+            if char not in sessiz_harfler:
+                sessiz_harfler.append(char)
+    else:
+        if char == " ":
+            continue #ignore attık
+        elif char not in typo_char:
+            typo_char.append(char)
+
+print(f"{sessiz_harfler}\n{sesli_harfler}\n{typo_char}")
+#endregion YAPTIKKKKKK
+
+#region Hocanın çözümü
+
+word = input("Type something: ")
+
+for ch in word.lower():
+    if ch.isalpha(): #karakter alfabetik mi diye bakıyoruz.
+        if ch not in sesli_harfler and ch not in sessiz_harfler:
+            if ch in "aeıioöuü":
+                sesli_harfler.append(ch)
+            else:
+                sessiz_harfler.append(ch)
+    else:
+        if ch == " ":
+            continue
+        typo_char.append(ch)
+
+print(sesli_harfler)
+print(sessiz_harfler)
+print(typo_char)
+#endregion
+
+
 # todo is password valid uygulaması
 # min 16 karakter
 # min 1 büyük 1 küçük harf
