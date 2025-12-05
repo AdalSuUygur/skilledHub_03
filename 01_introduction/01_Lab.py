@@ -70,3 +70,41 @@ kenar = int(input("Karenin kenarı = "))
 print(f"Karenin alanı = {kenar * kenar}")
 
 #endregion
+
+#! Built-in Functions (Yerleşik Fonksiyonlar)
+#* Python programlama dilinin en temel ve en sık kullanılan işlemler için doğrudan dilin içine gömülmüş olarak gelen fonksiyonlardır.
+#* Bu fonksiyonları kullanmak için herhangi bir kütüphane veya modül indirmenize gerek yoktur. Python'ı kurduğunuz anda kullanıma hazırdırlar.
+
+#? range() fonksiyonu - built in fonksiyon.
+for i in range(19):
+    print(i) #tek sayı verdik, başlangıç değeri 0, artış miktarı 1
+
+for i in range(3,6):
+    print(i) #2 değer verirsek ilk değer başlangıç, ikinci değer bitiş, artış miktarı 1
+
+for i in range(5,65,3):
+    print(i) #başlangıç, bitiş, artış miktarı olarak sıralandı.
+
+#! Operatörler
+#* Bir veya daha fazla işlenen, operand adı verilen değer üzerinde belirli bir matematiksel, mantıksal veya atama eylemini gerçekleştiren mekanizmalardır.
+
+#? in operatörü
+print('s' in 'su') #su içinde s varsa true döner
+print('a' in 'su') #içinde mi diye sorar
+#? not in operatörü
+print('s' not in 'su') #su içinde s yoksa true döner
+print('a' not in 'su') #içinde değil mi
+
+#! Modülden Fonksiyon Çağırma
+from random import randint #C ailesindeki randomizer gibi, farklı bir modül çağırmadım
+#bu python içinde tanımlıdır ancak direkt kullanılmaz
+#kullanılmak istenilince import edilinmeli
+
+import random #olduğu gibi modülü importlar
+from random import randint #burada ise random modülünden sadece randint fonksiyonu impotlanır, yani daha az maliyetli.
+
+#? bir modülden 1-2 fonksiyon çağırılacaksa, spesifik olaral fonksiyonları çağırmak daha doğru (daha az maliyetli)
+#? bir modülden 10 tane fonksiyon çağırılacaksa direkt modülün çağırılması daha doğru (daha az iş gücü)
+
+random_number = randint(a = 0, b = 100)
+print(random_number)
