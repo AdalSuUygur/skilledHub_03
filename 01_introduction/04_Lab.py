@@ -1,63 +1,41 @@
 
-#! LOOPS: 
-#* Tekrarlı işleri yaparken tercih edilen yazılım konsepti.
-
-#region While Loop
-#? While Loop
-#* Belirli bir koşul True olduğu sürece içerisindeki kod bloğunu çalıştırmaya devam eder. 
-#* Ne zaman duracağını, yani sayacı veya koşulu değiştirmeyi programcının kendisi yönetmelidir.
+#! Exception Handling (Try-Except-Finally)
+#* try-except-finally bloğu, programın çalışması sırasında oluşabilecek istisnaları (exceptions) yönetmek için kullanılan bir mekanizmadır.
 
 # SYNTAX YAPISI
-counter = 0 #Sayaç, çözülen problemin bağlamında başlangıç değeri ile başlar.
-while counter <= 9: #Anahtar kelimesi while, ve şart kelimesi.
-    print(counter)
-    counter = counter + 1 #counter += 1 şeklinde de yazılabilir.
-    # Koşulu değiştiren adım yazılmazsa sonsuz döngü olur
+try: #Hata beklediğimiz kodları try bloğunun içine alıyoruz.
+    bolunen = int(input("Bölünen: "))
+    bolen = int(input("Bölen: "))
+    sonuc = bolunen / bolen #bölen değerine 0 verirsek hata verir.
+    print(sonuc)
+except (ZeroDivisionError, ValueError) as err: #except satırına da beklediğimiz hatayı yazıyoruz ve takma isim veriyoruz.
+    print("Hatalı giriş.")
+    print(f'{err}')
+finally: #ne olursa olsun bu bloğa gel ve bunu çalıştır anlamına gelir.
+    print("Çalışıyor.") 
 
-#? Sonsuz döngü
-#* Bir döngünün durma koşulunun hiçbir zaman sağlanamadığı (yani koşulun sürekli True kaldığı) durumdur. İsteyerek oluşturulur.
+#? Her şeyi öngöremiyoruz ee neden her yere try-except yazmıyoruz. 
+#? Çünkü try-except maliyetli bir işlemdir. İşlemin memory ve işlemciden yediği miktar maliyetini belirler.
+try:
+    pass
+except Exception as err: #Burdaki tüm hepsine tüm hatalara bak demek. Bu da maliyeti iyice katlar. Çok nadir kullanılır.
+    pass
 
-#SYNTAX YAPISI
-while True:
-    print(counter) #Döngüden çıkılmadığı için sonsuza dek counter'ı yazdıracak ne olursa olsun.
-    break #Döngüden çıkması için break yazılır.
+#? Bazı durumlarda bilerek exception raise edilir. Mesela gelen data'da bir tanesinin mail adresinde @ yok, eklenmemiş.
+try: 
+    mail_adress = input("Type mail adress: ") #Normalde bu son kullanıcıdan gelmez, gelen datadan olur.
+    if '@' not in mail_adress:
+        raise TypeError('Mail adress have to containg "@"')
+except TypeError as err:
+    print(err)
+    #Genelde log tutuluyor
+    #Müşteri bilgilendirici feedback/mail gider
+    #Notification sistemleri de çalışabilir
+    #Kendimize mail atarız
+    #Bazı sistemlerde ticket açılır ve görevlendirme yapılır vs vs.
 
-#todo anket cevapları alınan uygulamada 3 kez hayır girilirse döngünün sonlandığı uygulama
-counter = 0
-while True:
-    cevap = input("Evet/Hayır: ").lower()
-    match cevap:
-        case "evet":
-            counter = 0
-        case "hayır":
-            counter += 1
-            if counter == 3:
-                print("Anket katılımı iptal edildi.")
-                break
-        case _:
-            print("Girdiniz evet ya da hayır dışında, lütfen girdinizi kontrol ediniz.")
+#region Examples
 
-#endregion
 
-#region For Loop
-#? FOR DÖNGÜSÜ
-#* bir koleksiyonun elemanları üzerinde veya belirli bir sayı aralığı üzerinde sırayla ilerlemek (iterate etmek) için kullanılan döngüdür.
-
-# SYNTAX YAPISI
-isim = "Python"
-# 'isim' (string) içindeki her bir harf için döngüyü çalıştır
-for harf in isim: #burada harf olarak adlandırılan şey, takma/geçici isim.
-    print(harf)
-
-#todo Girilen başlangıç bitiş ve artış miktarlarına göre for döngüsü kurulumu
-start = int(input("Başlangıç: "))
-finish = int(input("Bitiş: "))
-step = int(input("Artış miktarı: "))
-for i in range(start, finish, step):
-    print(i,end=" ")
-
-#todo 0-100 arası sayıların ekrana yazdırılması uygulaması
-for i in range(0,100):
-    print(i, end="-")
 
 #endregion
