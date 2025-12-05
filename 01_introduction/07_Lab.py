@@ -77,10 +77,21 @@ for index, item in enumerate(alpha_lst):
 print(isinstance(alpha_lst, str)) #alpha_lst öğesi string midir? HAYIR çünkü bir listedir :)
 print(isinstance(alpha_lst, list))
 
+#? zip() built-in-function
+#* Listeleri, tupleları, numply arraylerini YANİ koleksiyonları birbirleriyle eşleyerek birleştiren bir fonksiyon
+#* Elemanları sırasıyla birleştirir, Tuple çiftlerinden oluşan YENİ bir zip nesnesi oluşturur.
+
+esleştirilmiş_veri = zip(alpha_lst, numeric_lst) #bu bir veridir, bunu listeye çevirmek gerekir.
+eslestirilmiş_lst = list(esleştirilmiş_veri)
+print(eslestirilmiş_lst)
+
+#* En başta, her iki listenin de uzunluğunu yazdırdık ve birbirlerinden farklılardı, peki bu zip ile patlamadıysa zip kaç elemanlı oldu?
+print(
+    len(
+        eslestirilmiş_lst
+    )
+)
+#küçük olanı aldı, yani, verinin karşılığı yoksa bunu paketlemedi.
+
 #? map() built-in-function
 #* Her elemana bir fonksiyon uygular. (Genellikle list() ile kullanılır.)
-
-#? zip() built-in-function
-#* Birden fazla listeyi eleman eleman eşleştirir. (Genellikle list() ile kullanılır.)
-
-
