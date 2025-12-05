@@ -1,7 +1,5 @@
 
-#? Zip fonksiyonu
-#listeleri, tupleları, numply arraylerini yani koleksiyonları birbirleriyle eşleyerek birleştiren bir fonksiyon
-
+#! TEKRAR ET, DERS NOTLARINI DÜZELT
 # names = ["burak", "hakan", "ipek"]
 # age = [36, 39, 41]
 
@@ -16,6 +14,7 @@
 #     zip(names, age, occupation)
 # )
 # print(result)
+
 
 #todo rastgele 10 tane sayı ile number1 ve number2 doldurulacak
 # aynı indexlerde depolanan değerler toplanarak sonuçları liste olarak verilecek
@@ -68,3 +67,57 @@ matrix = [
 #bunlara bir bakmak lazım, aralarında fark ne
 #sadece belli classlara uygulanan fonksiyonlara ne deniyor?
 #generic class da var mesela
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+lst = ['ayhan', 'elton', 'adal', 'merve']
+
+print(
+    list(zip(range(len(lst)), lst))
+)
+
+character_1 = 'xyz'
+character_2 = 'XYZ'
+
+print(
+    list(
+        zip(character_1, character_2)
+    )
+)
+
+matrix = [
+    [34, 56, 123, 56], # --> bu iç listeler list comprehnsion ile rastgele sayılar ile doldurulacak
+    [23, 67, 12, 45],
+    [11, 54, 89, 22], # --> 3 line yeterli
+]
+
+# Output:
+# [(34, 23, 11), (56, 67, 54), (123, 12, 89), ....]
+
+# list vs tuple
+# prons & cons
+
+# dictionary, built-in, CRUD operasyonularını sözlük üzerinden uygulayın.
+
+#* Derin sulara atlarsak beceremediğimizde arzu ve şevke ket vuran hormonlar salgılanabilir.
+#* Ama başarılı olursa bu sefer de inanılmaz seratonin hormonları salgılanır. 
+#* Bu yüzden aslında çok bilmediğimiz noktalara ayak basmamak lazım bazen heves kırmamak için.
