@@ -2,7 +2,7 @@
 #! LIST COMPREHENSION
 
 #? List Comprehensions 
-#* Bir listeyi oluşturmak için gereken adımları (boş liste tanımlama, döngü kurma, .append() ile ekleme) tek bir sözdizimi içine yerleştirmektir.
+#* Bir listeyi oluşturmak için gereken adımları (boş liste tanımlama, döngü kurma, .append() ile ekleme), tek bir sözdizimi içine yerleştirmektir.
 #* Yani listeyi kısaca oluşturmak için List Comprehensions kullanılır.
 
 #Geleneksel yöntem ile liste oluşturma:
@@ -12,10 +12,11 @@ for i in range(10):
 print(lst_geleneksel)
 
 #YA DA list comprehension ile kısa yoldan liste oluşturma:
+#* append etme mantığı gibi düşün, bak geleneksek yöntemle i'yi ekliyoruz append ile ama tek satırda.
 lst_comprehension = [i for i in range(10)]
 print(lst_comprehension)
 
-#todo Ternary if + List Comprehension ile, meyve listesindeki meyvelerin içerisinde "an" geçiyorsa True, geçmiyorsa False eklenen uygulama
+#todo Ternary if + List Comprehension ile
 fruits = [
     "Apple", "Banana", "Orange", "Mango", "Pineapple",
     "Strawberry", "Grapes", "Watermelon", "Peach", "Cherry",
@@ -23,6 +24,12 @@ fruits = [
     "Pomegranate", "Lemon", "Apricot", "Fig", "Pear"
 ]
 
+#todo1 meyve listesindeki meyvelerin içerisinde "a" geçiyorsa bu meyveleri yazdıran uygulama
+lst_includes_a = [fruit for fruit in fruits if "a" in fruit.lower()] #fruit.lower() yazmamızın sebebi de içinde küçük a harfine bakıyor olmamız.
+print(lst_includes_a)
+
+#todo2 meyve listesindeki meyvelerin içerisinde "an" geçiyorsa True, geçmiyorsa False eklenen uygulama
+# Hint: "adult" if age >= 19 else "child"
 lst_includes_an = [True if "an" in fruit.lower() else False for fruit in fruits] #ternary if yapısı ile kullanabildik
 print(lst_includes_an)
 #* Comprehension kompleksleştikçe yazması da okuması da zorlaşıyor, peki neden tercih ediliyor? ÇÜNKÜ ÇOK DAHA AZ MALİYETLİ
@@ -38,20 +45,20 @@ for i in range(1,11):
     print("-------------------")
 
 #List comprehension ile yapılması:
-# lst_carpim_tablosu = [ 
-#     (i*j) #yazdırılacak sonuç 
-#     for i in range(1,11) #en dış döngü
-#     for j in range(1, 11) #en iç döngü
-# ]
-# print(lst_carpim_tablosu)
+lst_carpim_tablosu = [ 
+    (i*j) #yazdırılacak sonuç 
+    for i in range(1,11) #en dış döngü
+    for j in range(1, 11) #en iç döngü
+]
+print(lst_carpim_tablosu)
+#* Tek satır olmadı yine alt satıra geçtik, ee ne anlamı kaldı list comprehension'ın? Go for benchmark testing!
 
 #List comprehension ile PRINT FONKSİYONU İÇİNDE yapılması:
-# print(
-#     [
-#         [f"{i} x {j} = {i*j}"] for i in range(1,11) for j in range(1,11)
-#     ]
-# )
-
+print(
+    [
+        [f"{i} x {j} = {i * j}" for i in range(1, 11)] for j in range(1, 11) #liste içinde liste yaptık
+    ]
+    ) #Burda aslında list içinde for içinde for ve liste içinde liste de tanımlıyoruz, sınırımız yok.
 #endregion
 
 #region Dilimleme

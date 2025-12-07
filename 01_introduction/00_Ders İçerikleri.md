@@ -1,16 +1,25 @@
 
+#Sorular:
+    *ternary if ve list comprehension kullanırken ifi sona yazarak oluşturamıyor muyuz? örnek şu imiş:
+    lst_includes_an = [True if "an" in fruit.lower() else False for fruit in fruits]
+    ben şimdi tekrar ederken şunu denedim: 
+    lst_includes_an = [if "an" in fruit True for fruit in fruits else False]
+    ama hata veriyor.
+    lst_includes_a = [if "a" in fruit.lower() fruit for fruit in fruits] #fruit.lower() yazmamızın sebebi de içinde küçük a harfine bakıyor olmamız.
+    bu da çalışmıyor mesela?
+
+
 Ders 16 - 4 Aralık 2025 -tekrar
 
 
 
 Ders 15 - 3 Aralık 2025 -tekrar
+    -Benchmark ödevini çözme
 
 
-
-Ders 14 - 1 Aralık 2025 -tekrar
+Ders 14 - 1 Aralık 2025
     -List Comprehension
     -Filter function
-    
 
 Ders 13 - 27 Kasım 2025
     -Ödev çözümü
