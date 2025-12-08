@@ -117,7 +117,3 @@ matrix = [
 # prons & cons
 
 # dictionary, built-in, CRUD operasyonularını sözlük üzerinden uygulayın.
-
-#* Derin sulara atlarsak beceremediğimizde arzu ve şevke ket vuran hormonlar salgılanabilir.
-#* Ama başarılı olursa bu sefer de inanılmaz seratonin hormonları salgılanır. 
-#* Bu yüzden aslında çok bilmediğimiz noktalara ayak basmamak lazım bazen heves kırmamak için.

@@ -355,4 +355,3 @@
 # print(f'Şu anda mevsim: {mevsim}')
 
 #endregion
-

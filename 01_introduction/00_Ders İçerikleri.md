@@ -1,4 +1,8 @@
 
+### Derin sulara atlarsak beceremediğimizde arzu ve şevke ket vuran hormonlar salgılanabilir.
+### Ama başarılı olursa bu sefer de inanılmaz seratonin hormonları salgılanır. 
+### Bu yüzden aslında çok bilmediğimiz noktalara ayak basmamak lazım bazen heves kırmamak için.
+
 #Sorular:
     *ternary if ve list comprehension kullanırken ifi sona yazarak oluşturamıyor muyuz? örnek şu imiş:
     lst_includes_an = [True if "an" in fruit.lower() else False for fruit in fruits]
@@ -13,10 +17,10 @@ Ders 16 - 4 Aralık 2025 -tekrar
 
 
 
-Ders 15 - 3 Aralık 2025 -tekrar
+Ders 15 - 3 Aralık 2025 -Son ödevi tekrar almakta fayda var
     -Benchmark ödevini çözme
     -isinstance() built-in-function
-
+    -MIT lesson listening
 
 Ders 14 - 1 Aralık 2025
     -List Comprehension

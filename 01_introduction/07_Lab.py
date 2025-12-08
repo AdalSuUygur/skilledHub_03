@@ -66,7 +66,7 @@ print( #filter fonksiyonu ile üretilen liste, geçiçi bir liste olduğu için
 #* Hint: isgidit() fonksiyonunu kullan
 #* Lambda fonksiyonu bir performans sorunudur, bunu engellemek için kullanmadan yapalım:
 
-some_values = [None, "b", 3.14, False, 9, "Oscar Piastri"]
+some_values = ["123", "su", "zxc", "987", "345"]
 
 only_digit = list(
     filter(str.isdigit, some_values) #! lambdadan kurtulduk burda 
