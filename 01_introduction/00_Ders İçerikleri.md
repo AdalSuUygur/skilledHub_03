@@ -15,6 +15,7 @@ Ders 16 - 4 Aralık 2025 -tekrar
 
 Ders 15 - 3 Aralık 2025 -tekrar
     -Benchmark ödevini çözme
+    -isinstance() built-in-function
 
 
 Ders 14 - 1 Aralık 2025

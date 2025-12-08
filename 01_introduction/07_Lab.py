@@ -54,12 +54,27 @@ print(
 #* Listeler üzerinde filtrelemeye yarayan fonksiyon
 #* Listedeki tüm öğeleri gezer ve koşulu True döndüren öğeleri seçerek yeni bir sonuç dizisi oluşturur.
 #* Filtreleme kuralı basit olduğunda, genellikle yerleşik ve isimsiz Lambda fonksiyonları kullanılır, bu da kodu daha kısa yapar:
+#* Filter fonksiyonu obje içinde obje yarattığı için (Lambda aslında bir fonksiyon) aslında oldukça maliyetli O(N**2) kadar maliyetli oluyor.
 
 print( #filter fonksiyonu ile üretilen liste, geçiçi bir liste olduğu için
     list( #eldeki veriyi listeye çevirdik (çevirmezsek çalışmaz)
         filter(lambda x: x < 5, numeric_lst) #kümelere benzer, x öyle ki, numberic_lst'te 5'ten küçük olan x'leri al.
         )
     )
+
+#todo Verilen listedeki değerlerin karşılığı sayısal ise bunu yazdıran uygulama
+#* Hint: isgidit() fonksiyonunu kullan
+#* Lambda fonksiyonu bir performans sorunudur, bunu engellemek için kullanmadan yapalım:
+
+some_values = [None, "b", 3.14, False, 9, "Oscar Piastri"]
+
+only_digit = list(
+    filter(str.isdigit, some_values) #! lambdadan kurtulduk burda 
+                                     #! built in fonksiyonlarını tiplerine özel olarak çalıştırabiliriz. 
+                                     #! yani lambdayı built in fonksiyonlar özelinde kullanmayabiliriz.
+)
+print(only_digit)
+#* Python programlama dili, içerisindeki built in fonksiyonları kullandığımız zaman daha hızlı çalışır.
 
 #? enumarete() built-in-function
 #* Bir koleksiyonu döngüde gezerken hem elemana hem de sırasına (indeksine) ihtiyacınız olduğunda bunları veren fonksiyon
@@ -76,6 +91,15 @@ for index, item in enumerate(alpha_lst):
 
 print(isinstance(alpha_lst, str)) #alpha_lst öğesi string midir? HAYIR çünkü bir listedir :)
 print(isinstance(alpha_lst, list))
+
+#todo Verilen listeden tam ve ondalıklı sayıları alma uygulaması
+lst = [None, "b", 3.14, False, 9, "Oscar Piastri"]
+
+numbers = list( #listeye convert etmek için.
+    filter(
+        lambda x: isinstance(x, (int, float)), lst) #x yani lst'teki eleman int veya float mı
+)
+print(numbers) #çıktı olarak da: [3.14, False, 9] verir, çünkü isinstance değeri bool döndürür, bundan dolayı direkt öyle bir ifadeyi çıktı olarak verir.
 
 #? zip() built-in-function
 #* Listeleri, tupleları, numply arraylerini YANİ koleksiyonları birbirleriyle eşleyerek birleştiren bir fonksiyon

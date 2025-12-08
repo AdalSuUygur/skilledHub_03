@@ -37,31 +37,10 @@ numbers = [randint(a=-100, b=100) for i in range(1000)] #numbers diye 1000 iteml
 # even_numbers = list(filter(lambda x: x % 2 == 0, numbers))
 # print(even_numbers)
 
+#todo sonu .com ile biten mail adreslerini filter fonksiyonu ile yazdıran ifade
+#* Hint: endswith() fonksiyonunu kullan
 
-
-
-
-
-
-
-# #todo verilen listeden tam ve ondalıklı sayıları alma uygulaması
-# lst = [None, "b", 3.14, False, 9, "Oscar Piastri"]
-# # Burdan sadece tam ve ondalıklı sayıları almamız gerek.
-
-# numbers = list( #listeye convert etmek için.
-#     filter(lambda x: isinstance(x, (int, float)), lst) #x yani lstedeki eleman int veya float mı
-# )
-# print(numbers) #çıktı olarak da: [3.14, False, 9] verir, çünkü isinstance değeri bool döndürür, bundan dolayı direkt öyle bir ifadeyi çıktı olarak verir.
-
-
-
-
-
-
-# #todo sonu .com ile biten mail adreslerini filter fonksiyonu ile yazdıran ifade
-# # #* Hint: endswith() fonksiyonunu kullan
-
-# # mails = [
+# mails = [
 #     "burak.yilmaz@outloo.com", 
 #     "savage@mail.com", 
 #     "beast@", 
@@ -75,24 +54,3 @@ numbers = [randint(a=-100, b=100) for i in range(1000)] #numbers diye 1000 iteml
 #     )
 # )
 # print(correct_mails)
-
-# #todo Verilen listedeki değerlerin karşılığı sayısal ise bunu yazdıran uygulama
-# #* Hint: isgidit() fonksiyonunu kullan
-
-# some_values = ["123", "burak", "zxc", "987", "345"]
-# number_values = list(
-#     filter(
-#         lambda x: x.isdigit(), some_values
-#     )
-# )
-# print(number_values)
-
-# #Hocanın çözümü: Lambda fonksiyonu bir performans sorunudur, bunu engellemek için kullanmadan yapalım:
-# only_digit = list(
-#     filter(str.isdigit, some_values) #! lambdadan kurtulduk burda 
-#                                      #! built in fonksiyonlarını tiplerine özel olarak çalıştırabiliriz. 
-#                                      #! yani lambdayı built in fonksiyonlar özelinde kullanmayabiliriz.
-# )
-# print(only_digit)
-# #* python, içerisindeki built in fonksiyonları kullandığımız zaman daha hızlı çalışır.
-
