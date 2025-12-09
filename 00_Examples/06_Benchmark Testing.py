@@ -1,4 +1,53 @@
 
+#region Benchmark testing hocanın çözümü, TEKRAR İNCELE!!!
+#todo Benchmark testing with tryExcept / withIf
+#* bu, hocanın çözümü.
+
+"""
+with_try -> Runtime: 1640.39 ms | Peak memory: 0.0002 MB
+with_if -> Runtime: 310.65 ms | Peak memory: 0.0001 MB
+"""
+
+import time
+import tracemalloc
+
+def with_try():
+    for _ in range(1000000):
+        try:
+            x = 4
+            y = 0
+            z = x / y
+        except ZeroDivisionError:
+            pass
+
+def with_if():
+    x = 4
+    y = 0
+    if y != 0:
+        z = x / y
+    else:
+        pass
+
+def benchmark(func, label: str):
+    tracemalloc.start()
+    t0 = time.perf_counter()
+
+    func()
+
+    t1 = time.perf_counter()
+    current, peak = tracemalloc.get_traced_memory()
+    tracemalloc.stop()
+
+    runtime_ms = (t1 - t0) * 1000
+    peak_mb = peak / 1024 / 1024
+
+    print(f"{label} -> Runtime: {runtime_ms:.2f} ms | Peak memory: {peak_mb:.4f} MB")
+
+benchmark(with_try, "with_try")
+benchmark(with_if, "with_if")
+
+#endregion
+
 #region listComprehension / lambdaFilter / forLoop
 #todo Benchmark testing between listComprehension / lambdaFilter / forLoop
 #Random sayılardan oluşan bir liste üretilir (a=-100, b=100)
@@ -119,30 +168,33 @@ Peak memory: 664.00 Bytes
 #     timer_finish = time.perf_counter()
 #     current, peak = tracemalloc.get_traced_memory()
 #     tracemalloc.stop()
-#     runtime_micros = (timer_finish - timer_start) * 1000 * 1000
-#     return runtime_micros, peak
+#     runtime_s = (timer_finish - timer_start)
+#     peak_kb = peak / 1024 
+#     return runtime_s, peak_kb
 
-#path i -- without TryExcept
+# path i -- without TryExcept
 # p1_start = benchmark_start()
-# if bolen == 0:
-#     print("0'a bölünemez.")
-# else:
-#     sonuc = bolunen/bolen
-# p1_runtime, p1_memory = benchmark_finish(p1_start)
+# for _ in range(5_000_000):
+#     if bolen == 0:
+#         pass
+#     else:
+#         result = bolunen / bolen
+#     p1_runtime, p1_memory = benchmark_finish(p1_start)
 # print(f"Çözüm yolu: If Bloğu (without tryExcept)\n"
-#       f"Runtime ms: {p1_runtime:.2f} micro seconds\n"
-#       f"Peak memory: {p1_memory:.2f} Bytes")
+#       f"Runtime ms: {p1_runtime:.4f} s\n"
+#       f"Peak memory: {p1_memory:.2f} KB")
 
 #path ii -- with tryExcept
 # p2_start = benchmark_start()
-# try:
-#     result = bolunen / bolen
-# except ZeroDivisionError as err:
-#     print(f"Because of {err} program cannot continue.")
-# p2_runtime, p2_memory = benchmark_finish(p2_start)
+# for _ in range(5_000_000):
+#     try:
+#         result = bolunen / bolen
+#     except ZeroDivisionError:
+#         pass
+#     p2_runtime, p2_memory = benchmark_finish(p2_start)
 # print(f"Çözüm yolu: with tryExcept\n"
-#       f"Runtime ms: {p2_runtime:.2f} micro seconds\n"
-#       f"Peak memory: {p2_memory:.2f} Bytes")
+#     f"Runtime ms: {p2_runtime:.4f} s\n"
+#     f"Peak memory: {p2_memory:.2f} KB")
 
 #path iii -- raiseException
 # p3_start = benchmark_start()
