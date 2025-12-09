@@ -1,6 +1,26 @@
 
 #region WHILE LOOP
 
+#todo Girilen sayının asal olup olmadığını kontrol eden uygulama
+# while True:
+#     try:
+#         sayi = int(input("Lütfen bir sayı giriniz: "))
+#         is_asal = True
+#         if sayi < 2: #2den küçük asal sayı yoktur ve negatif sayılar asal olamaz.
+#             print("Negatif sayılarda asallık bakılmaz ve 2'den küçük sayılar asal değildir.")
+#             break
+#         else:
+#             for i in range(2, sayi):
+#                 if sayi % i == 0:
+#                     is_asal = False
+#                     break
+#             if is_asal == True:
+#                 print(f"Girilen sayı ({sayi}) asaldır.")
+#             else:
+#                 print(f"Girilen sayı ({sayi}) asal değildir.")
+#     except (ValueError, TypeError) as err:
+#         print(f"{err} sebebiyle hata verildi, lütfen sayıyı tekrar giriniz.")
+
 #todo random bir sayı üretilir, 3 tahmin hakkı, tahmin sonucu ekrana yazdırılır
 # from random import randint #* Random sayı üretebilmek için randint fonksiyonunu random kütüphanesinden çağırdık
 # deneme = 3
@@ -70,6 +90,24 @@
 #endregion
 
 #region FOR LOOP
+
+#todo Girilen sampledaki sesli harfleri, sessiz harfleri, typoları ayrı listelere ekleyen uygulama. İlgili listelerde eleman tekrarı olmamalı. Space ignore.
+sample = "buRa1k _Ayi?Lm2aZu"
+# for char in sample.lower():
+#     if char.isalpha():
+#         if char in "aeıioöuü":
+#             if char not in sesli_harfler:
+#                 sesli_harfler.append(char)
+#         else:
+#             if char not in sessiz_harfler:
+#                 sessiz_harfler.append(char)
+#     else:
+#         if char == " ":
+#             continue #ignore attık
+#         elif char not in typo_char:
+#             typo_char.append(char)
+
+# print(f"{sessiz_harfler}\n{sesli_harfler}\n{typo_char}")
 
 #todo bu sayı aralığındaki tek sayıların ve çift sayıların toplamını yazdıran uygulama
 # toplam_cift = 0

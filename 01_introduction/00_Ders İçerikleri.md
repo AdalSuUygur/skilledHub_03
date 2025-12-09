@@ -12,12 +12,19 @@
     lst_includes_a = [if "a" in fruit.lower() fruit for fruit in fruits] #fruit.lower() yazmamızın sebebi de içinde küçük a harfine bakıyor olmamız.
     bu da çalışmıyor mesela?
 
+    -Ternary ifte else olduğu için if elsei başa yazıyoruz
+    -Ama sadece tek bir if varsa onda ifi sona yazıyoruz.
+    -Örneklerde de bu şekilde zaten.
+
+Ders 17 - 8 Aralık 2025 -tekrar
+    -Ödev çözümü
+    -map bnuilt in
 
 Ders 16 - 4 Aralık 2025 -tekrar
 
 
 
-Ders 15 - 3 Aralık 2025 -Son ödevi tekrar almakta fayda var
+Ders 15 - 3 Aralık 2025
     -Benchmark ödevini çözme
     -isinstance() built-in-function
     -MIT lesson listening
