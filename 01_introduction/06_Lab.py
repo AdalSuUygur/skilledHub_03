@@ -15,7 +15,9 @@ print(lst_geleneksel)
 #* append etme mantığı gibi düşün, bak geleneksek yöntemle i'yi ekliyoruz append ile ama tek satırda.
 lst_comprehension = [i for i in range(10)]
 print(lst_comprehension)
+#* Comprehension kompleksleştikçe yazması da okuması da zorlaşıyor, peki neden tercih ediliyor? ÇÜNKÜ ÇOK DAHA AZ MALİYETLİ
 
+#region examples
 #todo Ternary if + List Comprehension ile
 fruits = [
     "Apple", "Banana", "Orange", "Mango", "Pineapple",
@@ -32,7 +34,7 @@ print(lst_includes_a)
 # Hint: "adult" if age >= 19 else "child"
 lst_includes_an = [True if "an" in fruit.lower() else False for fruit in fruits] #ternary if yapısı ile kullanabildik
 print(lst_includes_an)
-#* Comprehension kompleksleştikçe yazması da okuması da zorlaşıyor, peki neden tercih ediliyor? ÇÜNKÜ ÇOK DAHA AZ MALİYETLİ
+#endregion
 
 #region Satır Sutün Algoritması
 #? Satır-Sütun algoritması

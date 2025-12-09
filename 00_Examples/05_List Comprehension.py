@@ -68,24 +68,3 @@ numbers = [randint(a=-100, b=100) for i in range(1000)] #numbers diye 1000 iteml
 # lst_positive_numbers_lambda = list(temp_lst) #gelen değişkeni listeye çevirdik.
 # print(lst_positive_numbers_lambda)
 
-#todo filter fonksiyonu ile çift sayıların filtrelenip ve liste olarak ekrana yazdırılması
-# even_numbers = list(filter(lambda x: x % 2 == 0, numbers))
-# print(even_numbers)
-
-#todo sonu .com ile biten mail adreslerini filter fonksiyonu ile yazdıran ifade
-#* Hint: endswith() fonksiyonunu kullan
-
-# mails = [
-#     "burak.yilmaz@outloo.com", 
-#     "savage@mail.com", 
-#     "beast@", 
-#     "keko@com.xyz", 
-#     "adal@gmail.com"
-# ]
-
-# correct_mails = (list(
-#     filter(
-#         lambda x: x.endswith(".com"), mails)
-#     )
-# )
-# print(correct_mails)

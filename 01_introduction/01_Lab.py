@@ -128,6 +128,15 @@ else:
     exit()
 print(f'The maximum number is : {max_number}')
 
+#? * operatörü
+#* Eğer bir iterable'ın kaç öğe içerdiği bilinmiyor veya sadece ilk ve son öğeleri alınmak isteniyorsa kullanılır.
+
+rakamlar = [1, 2, 3, 4, 5, 6]
+ilk, *orta, son = rakamlar
+print(ilk)  # Çıktı: 1
+print(orta) # Çıktı: [2, 3, 4, 5]
+print(son)  # Çıktı: 6
+
 #! Modülden Fonksiyon Çağırma
 from random import randint #C ailesindeki randomizer gibi, farklı bir modül çağırmadım
 #bu python içinde tanımlıdır ancak direkt kullanılmaz

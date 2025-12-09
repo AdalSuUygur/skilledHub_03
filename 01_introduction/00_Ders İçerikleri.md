@@ -3,26 +3,15 @@
 ### Ama başarılı olursa bu sefer de inanılmaz seratonin hormonları salgılanır. 
 ### Bu yüzden aslında çok bilmediğimiz noktalara ayak basmamak lazım bazen heves kırmamak için.
 
-#Sorular:
-    *ternary if ve list comprehension kullanırken ifi sona yazarak oluşturamıyor muyuz? örnek şu imiş:
-    lst_includes_an = [True if "an" in fruit.lower() else False for fruit in fruits]
-    ben şimdi tekrar ederken şunu denedim: 
-    lst_includes_an = [if "an" in fruit True for fruit in fruits else False]
-    ama hata veriyor.
-    lst_includes_a = [if "a" in fruit.lower() fruit for fruit in fruits] #fruit.lower() yazmamızın sebebi de içinde küçük a harfine bakıyor olmamız.
-    bu da çalışmıyor mesela?
-
-    -Ternary ifte else olduğu için if elsei başa yazıyoruz
-    -Ama sadece tek bir if varsa onda ifi sona yazıyoruz.
-    -Örneklerde de bu şekilde zaten.
-
 Ders 17 - 8 Aralık 2025 -tekrar
-    -Ödev çözümü
-    -map bnuilt in
-
-Ders 16 - 4 Aralık 2025 -tekrar
 
 
+Ders 16 - 4 Aralık 2025
+    -any() built-in-function
+    -zip() built-in-function
+    -Okuma ödevleri: fonksiyon açıklamalarındaki strict nedir, list vs tuple, dictionary ve onun built in fonksiyonları
+    -built-in-fuctions aralarındaki farklar
+    -MIT lesson listening (6001 ders kodu, eric grimson hocanınki önerildi :D)
 
 Ders 15 - 3 Aralık 2025
     -Benchmark ödevini çözme
@@ -32,6 +21,18 @@ Ders 15 - 3 Aralık 2025
 Ders 14 - 1 Aralık 2025
     -List Comprehension
     -Filter function
+    Soru:
+*ternary if ve list comprehension kullanırken ifi sona yazarak oluşturamıyor muyuz? örnek şu imiş:
+lst_includes_an = [True if "an" in fruit.lower() else False for fruit in fruits]
+ben şimdi tekrar ederken şunu denedim: 
+lst_includes_an = [if "an" in fruit True for fruit in fruits else False]
+ama hata veriyor.
+lst_includes_a = [if "a" in fruit.lower() fruit for fruit in fruits] #fruit.lower() yazmamızın sebebi de içinde küçük a harfine bakıyor olmamız.
+bu da çalışmıyor mesela?
+    Hocanın cevabı:
+-Ternary ifte else olduğu için if elsei başa yazıyoruz
+-Ama sadece tek bir if varsa onda ifi sona yazıyoruz.
+-Örneklerde de bu şekilde zaten.
 
 Ders 13 - 27 Kasım 2025
     -Ödev çözümü
