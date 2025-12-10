@@ -3,6 +3,10 @@
 #* Doğrudan adıyla, nesneyi argüman olarak vererek çağrılırlar ve listelere özel değildir, yani herhangi bir nesneye bağlı değillerdir.
 #* Bu fonksiyonlar "genelde" iterable olan tüm nesnelerde kullanılabilir.
 
+# ****ÖNEMLİ******
+#* Built in fonksiyonlarda çıktı olarak liste değil de kendi nesnesini veriyorsa içindeki değerlerin yalnızca ihtiyaç duyulduğunda diğer nesnelere çevrilmesini sağladığı içindir.
+#* Neden önemli peki? ÇÜNKÜ Bu bellek verimliliği, büyük veri kümeleri için büyük bir avantajdır. MALİYET TATLIM!
+
 numeric_lst = [1,2,3,4,5,6,7,8,9,0]
 alpha_lst = ["a","b","c","d","e","f","g","h"]
 
