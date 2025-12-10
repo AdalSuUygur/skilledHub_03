@@ -1,14 +1,41 @@
 
 #todo 17. Ders ödevi #2
-# -100 ile + 100 arasında 10 tane rastegele sayı üretelim
-# sadece pozitif sayıları string dönüştürerek bir liste içerisinde çıktı verin
-#filtre ve map kullanılacak
+#* -100 ile + 100 arasında 10 tane rastegele sayı üretelim
+#* sadece pozitif sayıları string dönüştürerek bir liste içerisinde çıktı verin
+
+# from random import randint
+# numbers = [randint(-100,100) for _ in range(10)]
+# print(numbers) #test
+
+
+# print( #4. adım : terminale çıktısını verdik
+#     list( #3. adım : yazdırabilmek veya tutabilmek adına listeye çevirdik
+#         map(str, #2. adım : map ile, gelen int değerleri str'ye çevirdik
+#                 filter(lambda x: x>0, numbers) #1. adım : 0'dan büyük olan sayıları çektim
+#             )
+#         )
+#     )
 
 #todo 17. Ders ödevi #1
-# list comprehension ile 2 tane rastgele sayılar içeren liste oluşturun
-# üretilecek sayı aralıkları -100, +100
-# her iki listedeki sayıları toplayalım
-# toplamları negatif olanları pozitif dönüştürerek bir liste içerisinde yazıdralım
+#* list comprehension ile 2 tane rastgele sayılar içeren liste oluşturun
+#* üretilecek sayı aralıkları -100, +100
+#* her iki listedeki sayıları toplayalım
+#* toplamları negatif olanları pozitif dönüştürerek bir liste içerisinde yazdıralım
+
+# from random import randint
+# numbers_1 = [randint(-100,100) for _ in range(10)]
+# numbers_2 = [randint(-100,100) for _ in range(10)]
+# print(numbers_1) #test
+# print(numbers_2) #test
+
+# print( #5. adım : terminale çıktısını verdik
+#     list( #4. adım : bulunan değerleri listeye çevirdik.
+#         map(abs, #3. adım : burda da hesaplanan değerlerin mutlak değerini aldık
+#             map(lambda x: x[0] + x[1], #2. adım : map fonksiyonu ile tupledaki değerleri topladık
+#                 zip(numbers_1, numbers_2)) #1. adım : iterable nesnemizi yarattık ve 2 farklı listenin indexlerini birleştirdik
+#         )
+#     )
+# )
 
 #todo Girilen data sheetten ilkisim.soyisim@outlook.com şeklinde mail_adresses üretilip ekrana yazdırılan uygulama.
 #* İpucu1: split() fonksiyonu
