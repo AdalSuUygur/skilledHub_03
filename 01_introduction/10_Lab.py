@@ -26,9 +26,9 @@ unzipped_numeric, unzipped_alpha = zip(*eslestirilmiş_lst)
 print(unzipped_numeric) #burda ziplenmiş veriyi geri aldık ancak orijinal listedeki 9,0'ı almadı çünkü eşleştirilmiş listede kesip atılmıştı bunlar
 print(unzipped_alpha)
 
+#region Examples
 #todo Örnek zip() fonksiyonu uygulaması, 2 listede 10ar adet random sayılar üretilecek ve indexlerdeki değerler toplanarak sonuçları liste olarak veren uygulama
 from random import randint
-
 # number1 = [randint(a= 0, b=100) for _ in range(10)]
 # number2 = [randint(a= 0, b=100) for _ in range(10)]
 
@@ -49,103 +49,29 @@ from random import randint
 #     )
 
 #todo Ödev: Transpoz ödevi, 3 line 10ar tane rastgele sayı ile doldurulacak ve index değerleri olarak çıktı alınacak
-
-matrix = [
-    [randint(0,100) for _ in range(10)] #0-100 arasında 10 tane sayı ürettim
-    for _ in range(3) #bundan 3 tane üretmem gerekiyordu bunu da list comprehension ile ürettik
-]
-print(matrix) #test
-
-matrix_transpose = list(
-    zip(
-        matrix[0], matrix[1], matrix[2]
-    )
-)
-
-print(matrix_transpose)
-# print(matrix[i][j]) 
-# i = range(len(matrix))
-# j = range(10)
-
-
 # matrix = [
 #     [34, 56, 123, 56], # --> bu iç listeler list comprehnsion ile rastgele sayılar ile doldurulacak
 #     [23, 67, 12, 45],
 #     [11, 54, 89, 22], # --> 3 line yeterli
 # ]
-
 # Output:
 # [(34, 23, 11), (56, 67, 54), (123, 12, 89), ....]
 
-
-
-# #? ödev çözümü
-# from random import randint
-
-# matrix = [[randint(0,100) for _ in range(10)] for _ in range(3)]
-# print(matrix)
-
-# zipped_lst = list(
-#     zip(
-#         matrix[0], matrix[1], matrix[2]
-#     )
-# )
-# print(zipped_lst)
-
-# print(list(zip(*matrix))) #tek satırda çözüm
-
-
-
-
-
-
-
-
-
-# #unzip
-
-
-# #challenge CRUD sözlük üzerinden create, read, update, delete yapmaya çalış
-
-# #ödev:
-
 # matrix = [
-#     [34, 56, 123, 56], #bu iç listeler list comprehensytion ile rastgele sayılarla doldurulacak
-#     [23, 67, 12, 45] # 3 line yeterli
+#     [randint(0,100) for _ in range(10)] #0-100 arasında 10 tane sayı ürettim
+#     for _ in range(3) #bundan 3 tane üretmem gerekiyordu bunu da list comprehension ile ürettik
 # ]
+#print(matrix) #test
 
-# #output:
-# #[(34, 23, .. ) ... ] #zip ile
+#path i
+# matrix_transpose = list(    zip(  matrix[0], matrix[1], matrix[2]  )   )
+# print(matrix_transpose)
 
-
-
-
-
-
-
+#path ii
+# print(list(zip(*matrix)))
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# list vs tuple
-# prons & cons
-
-# dictionary, built-in, CRUD operasyonularını sözlük üzerinden uygulayın.
-
-
-
-
+# print(matrix[i][j]) 
+# i = range(len(matrix))
+# j = range(10)
+#endregion
