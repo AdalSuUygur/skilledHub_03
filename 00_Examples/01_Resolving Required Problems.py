@@ -1,4 +1,15 @@
 
+
+
+
+
+
+
+
+
+
+
+
 #todo Doğru loginde, ürün search ve fiyat output. Yanlış loginde yeni kayıt. Username'ler unique olacak.
 
 #bütün ürünlerin toplam fiyatı nedir

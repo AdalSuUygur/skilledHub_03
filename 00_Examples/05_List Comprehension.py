@@ -1,4 +1,15 @@
 
+#todo 17. Ders ödevi #2
+# -100 ile + 100 arasında 10 tane rastegele sayı üretelim
+# sadece pozitif sayıları string dönüştürerek bir liste içerisinde çıktı verin
+#filtre ve map kullanılacak
+
+#todo 17. Ders ödevi #1
+# list comprehension ile 2 tane rastgele sayılar içeren liste oluşturun
+# üretilecek sayı aralıkları -100, +100
+# her iki listedeki sayıları toplayalım
+# toplamları negatif olanları pozitif dönüştürerek bir liste içerisinde yazıdralım
+
 #todo Girilen data sheetten ilkisim.soyisim@outlook.com şeklinde mail_adresses üretilip ekrana yazdırılan uygulama.
 #* İpucu1: split() fonksiyonu
 #* İpucu2: bir listenin uzunluğu ne olursa olsun son elemanına nasıl ulaşırım
