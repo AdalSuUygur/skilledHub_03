@@ -22,9 +22,9 @@
 #* her iki listedeki sayıları toplayalım
 #* toplamları negatif olanları pozitif dönüştürerek bir liste içerisinde yazdıralım
 
-# from random import randint
-# numbers_1 = [randint(-100,100) for _ in range(10)]
-# numbers_2 = [randint(-100,100) for _ in range(10)]
+from random import randint
+numbers_1 = [randint(-100,100) for _ in range(10)]
+numbers_2 = [randint(-100,100) for _ in range(10)]
 # print(numbers_1) #test
 # print(numbers_2) #test
 
@@ -36,6 +36,13 @@
 #         )
 #     )
 # )
+
+#derste örneğin çözümü ve hocanın esktraları:
+result = [abs(x+y) for x,y in zip(numbers_1,numbers_2)]
+lst_result = list(map(str, result))
+#çıktının "-" ifadelerle bağlanmasını istiyoruz.
+print("-".join(lst_result))
+
 
 #todo Girilen data sheetten ilkisim.soyisim@outlook.com şeklinde mail_adresses üretilip ekrana yazdırılan uygulama.
 #* İpucu1: split() fonksiyonu
