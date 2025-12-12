@@ -2,6 +2,14 @@
 # 10 12 25
 # 18. ders
 
+
+# #challenge CRUD sözlük üzerinden create, read, update, delete yapmaya çalış
+# list vs tuple
+# prons & cons
+# set()
+# dictionary, built-in, CRUD operasyonularını sözlük üzerinden uygulayın.
+
+
 # from random import randint
 # numbers_1 = [randint(-100,100) for _ in range(10)]
 # numbers_2 = [randint(-100,100) for _ in range(10)]
