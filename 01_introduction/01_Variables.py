@@ -71,6 +71,35 @@ print(f"Karenin alanı = {kenar * kenar}")
 
 #endregion
 
+#! Built-in Method (Yerleşik Metodlar)
+#* Bir metot, bir nesneye ait olan ve o nesne üzerinde işlem yapmak için kullanılan bir fonksiyondur.
+#* Temel olarak, bir metot, bir sınıf (class) içinde tanımlanan bir fonksiyondur ve 
+#* sadece o sınıftan türetilmiş nesneler (örneğin bir dize, liste veya kendi oluşturduğunuz bir sınıf nesnesi) tarafından çağrılabilir.
+
+#1. Sözdizimi (Syntax) ve Çağırma Şekli
+#Metotlar, her zaman bir nesne üzerinden, nokta (.) operatörü kullanılarak çağrılır:
+
+#2. Metodun İlk Argümanı: self
+#Sınıflar içinde tanımlanan metotların ilk parametresi her zaman self (veya benzer bir ad, ancak geleneksel olarak self) olur. 
+#Bu parametre, metodun çağrıldığı nesnenin kendisine (instance) referans verir ve Python tarafından otomatik olarak sağlanır.
+
+#! join() Metodu
+#* join() metodu, bir iterable (liste, tuple, küme, dize vb.) içindeki tüm elemanları birleştirerek 
+# tek bir dize (string) oluşturan bir dize (string) metodudur. 
+# Birleştirme sırasında, metodun çağrıldığı dize, elemanlar arasına ayırıcı olarak eklenir.
+#f formating +larla birleştirmek gibi, +larla neden birleştirmek yeirne join, çünkü stringler değiştirilemez yapılardır ve + ile eklendiğinde yeni bir string oluşturulur
+#bu da haliyle maliyet demek, artılarla birleştirme, bu amatörce.
+
+
+#? join fonksiyonu çok önemli bir fonksiyondur.
+#* string birleştirme mevzusu var, iki string ifadeyi birleştirmek için " " = "" + "" gibi kullanılır, fstring içinde de benzer.
+#* stringler değiştirilemez yapılardır, iki string ifadeyi birleştirince ramde farklı bir yere yazdırır (memory leake sebep olur) bundan dolayı daha az maliyetli olan join kullanılır.
+#stringler immutable olduğu için.
+#tekrar yer kaplamasın diye
+
+
+#* Önemli Not: join() metodu, ayırıcı (separator) olarak kullanılacak olan dize üzerinde çağrılır, birleştirilecek iterable üzerinde değil.
+
 #! Built-in Functions (Yerleşik Fonksiyonlar)
 #* Python programlama dilinin en temel ve en sık kullanılan işlemler için doğrudan dilin içine gömülmüş olarak gelen fonksiyonlardır.
 #* Bu fonksiyonları kullanmak için herhangi bir kütüphane veya modül indirmenize gerek yoktur. Python'ı kurduğunuz anda kullanıma hazırdırlar.

@@ -38,11 +38,11 @@ numbers_2 = [randint(-100,100) for _ in range(10)]
 # )
 
 #derste örneğin çözümü ve hocanın esktraları:
-result = [abs(x+y) for x,y in zip(numbers_1,numbers_2)]
-lst_result = list(map(str, result))
+# result = [abs(x+y) for x,y in zip(numbers_1,numbers_2)]
+# lst_result = list(map(str, result))
+# print(list(map(str, result)))
 #çıktının "-" ifadelerle bağlanmasını istiyoruz.
-print("-".join(lst_result))
-
+# print("-".join(lst_result)) #stringe dönüştürmemizin sebebi join fonksiyonunu kullanmak.
 
 #todo Girilen data sheetten ilkisim.soyisim@outlook.com şeklinde mail_adresses üretilip ekrana yazdırılan uygulama.
 #* İpucu1: split() fonksiyonu
