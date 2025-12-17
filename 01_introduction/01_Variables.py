@@ -71,35 +71,6 @@ print(f"Karenin alanı = {kenar * kenar}")
 
 #endregion
 
-#! Built-in Method (Yerleşik Metodlar)
-#* Bir metot, bir nesneye ait olan ve o nesne üzerinde işlem yapmak için kullanılan bir fonksiyondur.
-#* Temel olarak, bir metot, bir sınıf (class) içinde tanımlanan bir fonksiyondur ve 
-#* sadece o sınıftan türetilmiş nesneler (örneğin bir dize, liste veya kendi oluşturduğunuz bir sınıf nesnesi) tarafından çağrılabilir.
-
-#1. Sözdizimi (Syntax) ve Çağırma Şekli
-#Metotlar, her zaman bir nesne üzerinden, nokta (.) operatörü kullanılarak çağrılır:
-
-#2. Metodun İlk Argümanı: self
-#Sınıflar içinde tanımlanan metotların ilk parametresi her zaman self (veya benzer bir ad, ancak geleneksel olarak self) olur. 
-#Bu parametre, metodun çağrıldığı nesnenin kendisine (instance) referans verir ve Python tarafından otomatik olarak sağlanır.
-
-#! join() Metodu
-#* join() metodu, bir iterable (liste, tuple, küme, dize vb.) içindeki tüm elemanları birleştirerek 
-# tek bir dize (string) oluşturan bir dize (string) metodudur. 
-# Birleştirme sırasında, metodun çağrıldığı dize, elemanlar arasına ayırıcı olarak eklenir.
-#f formating +larla birleştirmek gibi, +larla neden birleştirmek yeirne join, çünkü stringler değiştirilemez yapılardır ve + ile eklendiğinde yeni bir string oluşturulur
-#bu da haliyle maliyet demek, artılarla birleştirme, bu amatörce.
-
-
-#? join fonksiyonu çok önemli bir fonksiyondur.
-#* string birleştirme mevzusu var, iki string ifadeyi birleştirmek için " " = "" + "" gibi kullanılır, fstring içinde de benzer.
-#* stringler değiştirilemez yapılardır, iki string ifadeyi birleştirince ramde farklı bir yere yazdırır (memory leake sebep olur) bundan dolayı daha az maliyetli olan join kullanılır.
-#stringler immutable olduğu için.
-#tekrar yer kaplamasın diye
-
-
-#* Önemli Not: join() metodu, ayırıcı (separator) olarak kullanılacak olan dize üzerinde çağrılır, birleştirilecek iterable üzerinde değil.
-
 #! Built-in Functions (Yerleşik Fonksiyonlar)
 #* Python programlama dilinin en temel ve en sık kullanılan işlemler için doğrudan dilin içine gömülmüş olarak gelen fonksiyonlardır.
 #* Bu fonksiyonları kullanmak için herhangi bir kütüphane veya modül indirmenize gerek yoktur. Python'ı kurduğunuz anda kullanıma hazırdırlar.
@@ -114,68 +85,3 @@ for i in range(3,6):
 for i in range(5,65,3):
     print(i) #başlangıç, bitiş, artış miktarı olarak sıralandı.
 
-#! Operatörler
-#* Bir veya daha fazla işlenen, operand adı verilen değer üzerinde belirli bir matematiksel, mantıksal veya atama eylemini gerçekleştiren mekanizmalardır.
-
-#? in operatörü
-print('s' in 'su') #su içinde s varsa true döner
-print('a' in 'su') #içinde mi diye sorar
-#? not in operatörü
-print('s' not in 'su') #su içinde s yoksa true döner
-print('a' not in 'su') #içinde değil mi
-
-#todo Girilen 3 sayıdan büyük olanın ekrana yazdılması (and & or operatörlerinin kullanılması)
-n1 = int(input("First number: "))
-n2 = int(input("Second number: "))
-n3 = int(input("Third number: "))
-max_number = 0 #Maximum sayımıza atamak üzere bir değişken tanımladık
-
-#burada hep matematikteki mantık ifadelerini düşün, çünkü aynı şekilde çalışıyor.
-#Lisedeki ilk sınavında matematik sınavına girip mantık çözmüştün
-#Hiç çalışmamıştın ve 30 bekliyordun, sınıf birincisi oldun ve 80 aldın.
-#Daha sonra hiç çalışmayarak tüm liseyi geçeceğini sandın ama çok yanıldın :D Yine de bu güzel bir anı olarak kaldı. :)
-
-#and için: 
-# 1 1 = 1
-# 1 0 = 0
-# 0 1 = 0
-# 0 0 = 0
-
-#or için:
-# 1 1 = 1
-# 1 0 = 1
-# 0 1 = 1
-# 0 0 = 0
-if n1 > n2 and n1 > n3: 
-    max_number = n1
-elif n2 > n1 and n2 > n3:
-    max_number = n2
-elif n3 > n1 and n3 > n2:
-    max_number = n3
-else:
-    print(f'The given numbers could be same.')
-    exit()
-print(f'The maximum number is : {max_number}')
-
-#? * operatörü
-#* Eğer bir iterable'ın kaç öğe içerdiği bilinmiyor veya sadece ilk ve son öğeleri alınmak isteniyorsa kullanılır.
-
-rakamlar = [1, 2, 3, 4, 5, 6]
-ilk, *orta, son = rakamlar
-print(ilk)  # Çıktı: 1
-print(orta) # Çıktı: [2, 3, 4, 5]
-print(son)  # Çıktı: 6
-
-#! Modülden Fonksiyon Çağırma
-from random import randint #C ailesindeki randomizer gibi, farklı bir modül çağırmadım
-#bu python içinde tanımlıdır ancak direkt kullanılmaz
-#kullanılmak istenilince import edilinmeli
-
-import random #olduğu gibi modülü importlar
-from random import randint #burada ise random modülünden sadece randint fonksiyonu impotlanır, yani daha az maliyetli.
-
-#? bir modülden 1-2 fonksiyon çağırılacaksa, spesifik olaral fonksiyonları çağırmak daha doğru (daha az maliyetli)
-#? bir modülden 10 tane fonksiyon çağırılacaksa direkt modülün çağırılması daha doğru (daha az iş gücü)
-
-random_number = randint(a = 0, b = 100)
-print(random_number)

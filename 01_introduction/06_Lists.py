@@ -1,7 +1,44 @@
 
+#! LISTS
+#* Farklı veri tiplerini tek bir yerde tutmaya yarayan veri koleksiyonlarıdır.
+#* Listeler verileri kalıcı olarak depolamazlar, listeler RAM'de depolanır.
+#* LİSTELER DEĞİŞTİRİLEBİLİR (MUTABLE) BİR VERİ KOLEKSİYONUDUR
+
+#SYNTAX YAPISI
+meyveler = ["elma", "muz", "kiraz"]
+karisik_liste = [10, "Merhaba", 3.14, True] #burdan öğrenmemiz gereken şu, listelerde FARKLI VERI TİPLERİ AYNI ANDA DEPOLANABİLİR!!
+
+#? Index Nedir, nasıl çalışır
+#* Index, bir listedeki her bir öğenin konumunu belirten sayısal etikettir. 
+#* Listeler sıralı olduğu için, her öğenin sabit bir konumu vardır.
+#* Negatif indeksleme ile listenin son öğesine -1. elemanı ile ulaşabildiğimizi gösterir.
+
+#SYNTAX OLARAK GÖSTERİMİ
+isimler = ["Ali", "Burak", "Cem", "Deniz"]
+# Index:    0       1       2        3
+# Negatif: -4      -3      -2       -1
+
+print(isimler[0])   # Çıktı: Ali (İlk öğe)
+print(isimler[3])   # Çıktı: Deniz
+print(isimler[-1])  # Çıktı: Deniz (Son öğe)
+
+#region Nested List
+#? Nested List Yapısı
+#* Liste içerisinde liste yapısıdır, en basit anlatımıyla matematikteki matriks yapısı gibi düşün.
+
+alisveris_sepeti = [
+    "Ekmek",                        # 0. indexteki Tekil Ürün
+    "Süt",                          # 1. indexteki Tekil Ürün
+    ["Elma", "Muz", "Portakal"],    # 2. indexteki öğeler (Meyveler Kutusu)
+    ["Kalem", "Silgi"],             # 3. indexteki öğeler (Kırtasiye Kutusu)
+    15.99                           # 4 indexteki ürün (fiyat)
+]
+# alisveris_sepeti listesi 5 öğeye sahiptir ve 2 ve 3. indexteki öğeler de ayrıca listelerdir.
+print(alisveris_sepeti[2][2]) #Listenin 2. indexteki elemanının 2. indexindeki elemanını yazdır.
+#endregion
+
 #! LIST COMPREHENSION
 
-#? List Comprehensions 
 #* Bir listeyi oluşturmak için gereken adımları (boş liste tanımlama, döngü kurma, .append() ile ekleme), tek bir sözdizimi içine yerleştirmektir.
 #* Yani listeyi kısaca oluşturmak için List Comprehensions kullanılır.
 
