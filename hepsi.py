@@ -1,4 +1,119 @@
 
+#! Variables (Değişkenler)
+#* Programlamada değişken (variable), verileri geçici olarak saklamak için kullanılan, isimlendirilmiş bir bellek alanıdır.
+#* Değişkenin adı, programda runtime'da çalıştırılır.
+#* Python özelinde: Değişkenler içerisine atılan değerin tipine bürünürler, önceden tanımlama gerektirmez.
+
+#? SYNTAX
+x = 10 #integer
+y = 3.14 #float
+is_active = True #boolean
+isim = "Su" #string
+
+#todo Matematiksel işlemler
+number_1 = 2 #Dümmmmdüz tanımladık
+number_2 = input("Type a number: ") #Kullanıcıdan isteyerek tanımladık ama baktık ki input metodu ile bize string geliyor
+number_3 = int(input("Type a number: ")) #Bu sebeple burda int metodu içine alarak gelen ifadeyi integer'a çevirdik.
+
+print(number_1 + number_3) #Bu şekilde iki değerin toplamını yazdırabiliriz ancak
+addition = number_1 + number_3 #Best practice olarak (DRY Prensibine de uyması açısından)
+print(addition) #bu şekilde yazdırılması daha sağlıklı
+
+subtraction = number_1 - number_3
+#Neden number_2 değişkenini almıyoruz? Çünkü o string bir ifade, ve integer + string ifadesi hata verir program patlar.
+print(subtraction)
+
+#region Examples
+
+#todo Kullanıcıdan kenar bilgisi alınarak kare alan&çevre hesabı
+edge = float(input("Edge: "))
+square_area = edge * edge
+square_perimeter = 4* edge
+
+print(f'Square perimeter: {square_perimeter} - Square area: {square_area}') #f string ile değişkenleri de burada yazdırdık.
+#f string best practice olarak oldukça işimize yarar, çünkü dinamik olarak gerekli olan ifadeyi çağırır.
+
+#todo Kullanıcıdan kısa ve uzun kenar bilgisi alınarak dikdörtgenin alan&çevre hesabı
+short_edge = float(input("Edge 1: "))
+long_edge = float(input("Edge 2: "))
+rectangle_area = short_edge * long_edge
+rectangle_perimeter = 2 * (short_edge + long_edge) #kodlamada matematiksel işlem önceliği aynen geçerli olduğu için paranteze aldık.
+print(f'Rectangle perimeter: {rectangle_perimeter} - Rectangle area: {rectangle_area}')
+
+#todo Kullanıcıdan taban ve yükseklik bilgisi alınarak üçgenin alan&çevre hesabı
+taban = int(input("Üçgenin tabanı: "))
+h = int(input("Üçgenin yüksekliği: "))
+ucgen_alani = h * taban / 2
+print(f'Üçgenin alanı: {ucgen_alani}')
+
+#todo Kullanıcıdan yarıçap alınarak dairenin alan&çevre hesabı
+r = float(input("Dairenin yarıçapı: "))
+import math
+alan = math.pi * (r ** 2)
+cevre = 2 * math.pi * r
+print(f"Dairenin alanı {alan:.2f} birim ve çevresi {cevre:.2f} birimdir.") #:.2f ifadesi ondalıktan sonraki 2 basamağı göster anlamına geliyor.
+
+#todo Kullanıcıdan tabanlar ve yükseklik bilgisi alınarak yamuğun alan hesabı
+alt_taban = int(input("Yamuk alt kenarı: "))
+ust_taban = int(input("Yamuk üst kenar: "))
+h = int(input("Yamuk yükseklik: "))
+print(f"Yamuğun alanı {(alt_taban + ust_taban) * h / 2:.2f} kadardır.")
+
+#todo Ürünün adı ve fiyatını kullanıcıdan alıp fstring ile yazdırılması
+urun_adi = input("Ürünün adı: ")
+fiyat = input("Ürünün fiyatı: ")
+print(f"Ürünün adı {urun_adi}'dır ve fiyatı {fiyat}'tır.")
+
+#todo Kenarını kullanıcının verdiği karenin alanını f-string içerisinde hesaplayıp yazdırdık.
+#burda f-string içerisindeki {} içerisinde işlem yapılabildiğini öğrendik.
+kenar = int(input("Karenin kenarı = "))
+print(f"Karenin alanı = {kenar * kenar}")
+
+#endregion
+
+#! Operatörler
+#* Bir veya daha fazla işlenen, operand adı verilen değer üzerinde belirli bir matematiksel, mantıksal veya atama eylemini gerçekleştiren mekanizmalardır.
+
+#? in operatörü
+print('s' in 'su') #su içinde s varsa true döner
+print('a' in 'su') #içinde mi diye sorar
+#? not in operatörü
+print('s' not in 'su') #su içinde s yoksa true döner
+print('a' not in 'su') #içinde değil mi
+
+#todo Girilen 3 sayıdan büyük olanın ekrana yazdılması (and & or operatörlerinin kullanılması)
+n1 = int(input("First number: "))
+n2 = int(input("Second number: "))
+n3 = int(input("Third number: "))
+max_number = 0 #Maximum sayımıza atamak üzere bir değişken tanımladık
+
+#burada hep matematikteki mantık ifadelerini düşün, çünkü aynı şekilde çalışıyor.
+#Lisedeki ilk sınavında matematik sınavına girip mantık çözmüştün
+#Hiç çalışmamıştın ve 30 bekliyordun, sınıf birincisi oldun ve 80 aldın.
+#Daha sonra hiç çalışmayarak tüm liseyi geçeceğini sandın ama çok yanıldın :D Yine de bu güzel bir anı olarak kaldı. :)
+
+#and için: 
+# 1 1 = 1
+# 1 0 = 0
+# 0 1 = 0
+# 0 0 = 0
+
+#or için:
+# 1 1 = 1
+# 1 0 = 1
+# 0 1 = 1
+# 0 0 = 0
+if n1 > n2 and n1 > n3: 
+    max_number = n1
+elif n2 > n1 and n2 > n3:
+    max_number = n2
+elif n3 > n1 and n3 > n2:
+    max_number = n3
+else:
+    print(f'The given numbers could be same.')
+    exit()
+print(f'The maximum number is : {max_number}')
+
 #! Control Flow Statements / Karar Mekanizmaları (If-Else, Match-Case)
 #* Belirli bir koşulun sağlanıp sağlanmamasına göre farklı kod bloklarının çalıştırılmasının standart yoludur.
 
@@ -470,4 +585,361 @@ else:
 
 #endregion
 
+#endregion
+
+#! LOOPS: 
+#* Tekrarlı işleri yaparken tercih edilen yazılım konsepti.
+
+#? While Loop
+#* Belirli bir koşul True olduğu sürece içerisindeki kod bloğunu çalıştırmaya devam eder. 
+#* Ne zaman duracağını, yani sayacı veya koşulu değiştirmeyi programcının kendisi yönetmelidir.
+
+# SYNTAX YAPISI
+counter = 0 #Sayaç, çözülen problemin bağlamında başlangıç değeri ile başlar.
+while counter <= 9: #Anahtar kelimesi while, ve şart kelimesi.
+    print(counter)
+    counter = counter + 1 #counter += 1 şeklinde de yazılabilir.
+    # Koşulu değiştiren adım yazılmazsa sonsuz döngü olur
+
+#? Sonsuz döngü
+#* Bir döngünün durma koşulunun hiçbir zaman sağlanamadığı (yani koşulun sürekli True kaldığı) durumdur. İsteyerek oluşturulur.
+
+#SYNTAX YAPISI
+while True:
+    print(counter) #Döngüden çıkılmadığı için sonsuza dek counter'ı yazdıracak ne olursa olsun.
+    break #Döngüden çıkması için break yazılır.
+
+#todo anket cevapları alınan uygulamada 3 kez hayır girilirse döngünün sonlandığı uygulama
+counter = 0
+while True:
+    cevap = input("Evet/Hayır: ").lower()
+    match cevap:
+        case "evet":
+            counter = 0
+        case "hayır":
+            counter += 1
+            if counter == 3:
+                print("Anket katılımı iptal edildi.")
+                break
+        case _:
+            print("Girdiniz evet ya da hayır dışında, lütfen girdinizi kontrol ediniz.")
+
+#region WHILE LOOP
+
+#todo Girilen sayının asal olup olmadığını kontrol eden uygulama
+# while True:
+#     try:
+#         sayi = int(input("Lütfen bir sayı giriniz: "))
+#         is_asal = True
+#         if sayi < 2: #2den küçük asal sayı yoktur ve negatif sayılar asal olamaz.
+#             print("Negatif sayılarda asallık bakılmaz ve 2'den küçük sayılar asal değildir.")
+#             break
+#         else:
+#             for i in range(2, sayi):
+#                 if sayi % i == 0:
+#                     is_asal = False
+#                     break
+#             if is_asal == True:
+#                 print(f"Girilen sayı ({sayi}) asaldır.")
+#             else:
+#                 print(f"Girilen sayı ({sayi}) asal değildir.")
+#     except (ValueError, TypeError) as err:
+#         print(f"{err} sebebiyle hata verildi, lütfen sayıyı tekrar giriniz.")
+
+#todo random bir sayı üretilir, 3 tahmin hakkı, tahmin sonucu ekrana yazdırılır
+# from random import randint #* Random sayı üretebilmek için randint fonksiyonunu random kütüphanesinden çağırdık
+# deneme = 3
+# i = 1
+
+# random_sayi = randint(a=0,b=10)
+# while i <= deneme:
+#     tahmini_sayi = int(input("Tahmininiz: "))
+#     if tahmini_sayi ==  random_sayi:
+#         print("Doğru bildiniz")
+#         break
+#     else:
+#         print(f"{i}. hakkınız, yanlış tahmin.")
+#     i += 1
+
+# if i > deneme:
+#     print(f"Deneme hakkınız bitti.\n"
+#           f"Doğru tahmin: {random_sayi} olacaktı.")
+
+#todo 0-100 arasındaki çift ve tek sayıların toplamlarının ekrana yazdırılması
+# i = 0
+# sum_even = 0
+# sum_odd = 0
+
+# while i <= 100:
+#     if i %2 == 0:
+#         sum_even += i
+#     else:
+#         sum_odd += i
+#     i = i + 1
+# print(f'Sum of Even Numbers: {sum_even}\nSum of Odd Count: {sum_odd}')
+
+#todo (0-100) aralığındaki sayıların ekrana yazdırılması
+# i = 0 #counter olarak i, C ailesinde genelde o şekilde kullanılıyor, alıştık ^^
+# while i <= 100:
+#     print(i)
+#     i = i + 1 #i += 1 de olur
+# print("Döngü sonlandı")
+
+#* YA DA
+
+# i = 100
+# while i >= 0:
+#     print(i, end="-")
+#     i -= 1 # i = i - 1 de olur
+# print("Döngü sonlandı")
+
+#endregion
+
+#region SONSUZ LOOP
+
+#todo anket cevapları alınan uygulamada 3 kez hayır girilirse döngünün sonlandığı uygulama
+# counter = 0
+# while True:
+#     cevap = input("Evet/Hayır: ").lower()
+#     match cevap:
+#         case "evet":
+#             counter = 0
+#         case "hayır":
+#             counter += 1
+#             if counter == 3:
+#                 print("Anket katılımı iptal edildi.")
+#                 break
+#         case _:
+#             print("Girdiniz evet ya da hayır dışında, lütfen girdinizi kontrol ediniz.")
+
+#endregion
+
+#! LOOPS: 
+#* Tekrarlı işleri yaparken tercih edilen yazılım konsepti.
+
+#? FOR DÖNGÜSÜ
+#* bir koleksiyonun elemanları üzerinde veya belirli bir sayı aralığı üzerinde sırayla ilerlemek (iterate etmek) için kullanılan döngüdür.
+
+# SYNTAX YAPISI
+isim = "Python"
+# 'isim' (string) içindeki her bir harf için döngüyü çalıştır
+for harf in isim: #burada harf olarak adlandırılan şey, takma/geçici isim.
+    print(harf)
+
+#todo Girilen başlangıç bitiş ve artış miktarlarına göre for döngüsü kurulumu
+start = int(input("Başlangıç: "))
+finish = int(input("Bitiş: "))
+step = int(input("Artış miktarı: "))
+for i in range(start, finish, step):
+    print(i,end=" ")
+
+#todo 0-100 arası sayıların ekrana yazdırılması uygulaması
+for i in range(0,100):
+    print(i, end="-")
+
+#region FOR LOOP
+
+#todo Bozma Testi
+# Bir listenin üzerinden geçerken, o listeden eleman silmeye çalışırsak ne olur?
+
+# sayilar = [1, 2, 3, 4, 5] #Liste tanımlandı
+
+# for sayi in sayilar: #listedeki her bir elemanı geçerken
+#     if sayi == 2: #eğer eleman 2 ise 
+#         sayilar.remove(sayi) # Listeyi dönerken değiştirdik!
+#     print(sayi) # ve sayıyı yazdırdık
+
+# print("Sonuç:", sayilar) #döngüden çıktıktan sonra ise listenin tamamını yazdırdık
+
+#çıktılar sırasıyla:
+# 1
+# 2 Burda 2 var ama 3 yok
+# 4
+# 5
+# Sonuç: [1, 3, 4, 5] burda ise 3 var ama 2 yok NEDEN???
+
+# Çünküüü
+# 1. adımda, Python 0. indekste `1`'i buldu, bastı.
+# 2. adımda, 1. indekste `2`'yi buldu, sildi.
+# 3. adımda, Silince, arkadaki `3` sayısı kayarak `2`'nin (yani 1. indeksin) yerine geçti.
+# 4. adımda, Döngü "Sıra 2. indekste" dedi ve devam etti. Ama `3` artık 1. indekste olduğu için onu **ATLADI**.
+
+#* Bu koddan çıkartmamız gereken: Asla üzerinde iterasyon yaptığın listeyi (for döngüsü içindeyken) değiştirme! 
+#* Bunun yerine listenin bir kopyasını al veya yeni bir liste oluştur.
+
+#todo Girilen sampledaki sesli harfleri, sessiz harfleri, typoları ayrı listelere ekleyen uygulama. İlgili listelerde eleman tekrarı olmamalı. Space ignore.
+sample = "buRa1k _Ayi?Lm2aZu"
+# for char in sample.lower():
+#     if char.isalpha():
+#         if char in "aeıioöuü":
+#             if char not in sesli_harfler:
+#                 sesli_harfler.append(char)
+#         else:
+#             if char not in sessiz_harfler:
+#                 sessiz_harfler.append(char)
+#     else:
+#         if char == " ":
+#             continue #ignore attık
+#         elif char not in typo_char:
+#             typo_char.append(char)
+
+# print(f"{sessiz_harfler}\n{sesli_harfler}\n{typo_char}")
+
+#todo bu sayı aralığındaki tek sayıların ve çift sayıların toplamını yazdıran uygulama
+# toplam_cift = 0
+# toplam_tek = 0
+# for i in range(0,100):
+#     if i % 2 == 0:
+#         toplam_cift += i
+#     else:
+#         toplam_tek += i
+# print(f"Çiftlerin toplamı: {toplam_cift}\n"
+#       f"Teklerin toplamı: {toplam_tek}")
+
+#todo Girilen şifrenin min 8 karakter uzunluğunda ve boşluksuz olduğunu doğrulayan uygulama
+# password = input("Please enter your password: ")
+# is_valid = True
+# for char in password:
+#     if char == " ":
+#         is_valid = False
+#         msg = "gap is not accepted in passwords"
+#     elif len(password) < 8:
+#         is_valid = False
+#         msg = "length is too short"
+
+# if is_valid:
+#     print("Your password is valid!")
+# else:
+#     print(msg)
+
+#endregion
+
+#region BOTH LOOPS
+
+#todo 10 tane random sayı üreten uygulama
+from random import randint #random sınıfından randint fonksiyonunu çağırdık.
+
+# for i in range(1,11): #range fonksiyonunda son sayı dahil olmadığı için +1 ekledik
+#     random_number = randint(a = 0, b = 100)
+#     print(f'{i}. üretilen sayı = {random_number}')
+
+#* YA DA 
+
+# i = 0
+# while i < 10:
+#     random_number = randint(a=213, b=32425)
+#     i += 1
+#     print(f'{i}. üretilen sayı = {random_number}')
+
+#todo Girilen sayıya kadar toplamı veren uygulama
+# hedef_sayi = int(input("Kaça kadar olan sayılar toplansın: "))
+
+# i = 0
+# toplam = 0
+# while i <= hedef_sayi:
+#     toplam = toplam + i
+#     print(f'{i}. adımdaki toplam = {toplam}')
+#     i = i + 1
+# print(f'istenen toplam = {toplam}')
+
+#* YA DA
+
+# bitis = int(input("Kaça kadar gitsin? "))
+# sayi = range(1, bitis)
+# toplam = 0
+# for i in sayi:
+#     toplam = i + toplam
+#     print(f'her adımdaki toplam: {toplam}')
+# print(f'sonuçtaki toplam: {toplam}')
+
+#todo Girilen sayının faktöriyelini hesaplayan uygulama
+n = int(input("Faktöriyeli hesaplanacak sayı: "))
+faktoriyel = 1
+i = 1
+
+# if n > 0:
+#     while i <= n:
+#         faktoriyel = faktoriyel * i
+#         print(f'{i}. adımdaki toplam = {faktoriyel}')
+#         i = i + 1
+# elif n == 0:
+#     faktoriyel = 1
+# else:
+#     print("Faktöriyel hesabı yapılamaz.")
+#     exit()
+# print(f'istenen faktöriyel = {faktoriyel}')
+
+#* YA DA
+
+# for i in range(1, n + 1):
+#     faktoriyel = faktoriyel * i
+#     print(f'{i}. adımdaki toplam = {faktoriyel}')
+# print(f'istenen faktöriyel = {faktoriyel}')
+
+#endregion
+
+#! LISTS
+#* Farklı veri tiplerini tek bir yerde tutmaya yarayan veri koleksiyonlarıdır.
+#* Listeler verileri kalıcı olarak depolamazlar, listeler RAM'de depolanır.
+#* LİSTELER DEĞİŞTİRİLEBİLİR (MUTABLE) BİR VERİ KOLEKSİYONUDUR
+
+#SYNTAX YAPISI
+meyveler = ["elma", "muz", "kiraz"]
+karisik_liste = [10, "Merhaba", 3.14, True] #burdan öğrenmemiz gereken şu, listelerde FARKLI VERI TİPLERİ AYNI ANDA DEPOLANABİLİR!!
+
+#? Index Nedir, nasıl çalışır
+#* Index, bir listedeki her bir öğenin konumunu belirten sayısal etikettir. 
+#* Listeler sıralı olduğu için, her öğenin sabit bir konumu vardır.
+#* Negatif indeksleme ile listenin son öğesine -1. elemanı ile ulaşabildiğimizi gösterir.
+
+#SYNTAX OLARAK GÖSTERİMİ
+isimler = ["Ali", "Burak", "Cem", "Deniz"]
+# Index:    0       1       2        3
+# Negatif: -4      -3      -2       -1
+
+print(isimler[0])   # Çıktı: Ali (İlk öğe)
+print(isimler[3])   # Çıktı: Deniz
+print(isimler[-1])  # Çıktı: Deniz (Son öğe)
+
+#region Nested List
+#? Nested List Yapısı
+#* Liste içerisinde liste yapısıdır, en basit anlatımıyla matematikteki matriks yapısı gibi düşün.
+
+alisveris_sepeti = [
+    "Ekmek",                        # 0. indexteki Tekil Ürün
+    "Süt",                          # 1. indexteki Tekil Ürün
+    ["Elma", "Muz", "Portakal"],    # 2. indexteki öğeler (Meyveler Kutusu)
+    ["Kalem", "Silgi"],             # 3. indexteki öğeler (Kırtasiye Kutusu)
+    15.99                           # 4 indexteki ürün (fiyat)
+]
+# alisveris_sepeti listesi 5 öğeye sahiptir ve 2 ve 3. indexteki öğeler de ayrıca listelerdir.
+print(alisveris_sepeti[2][2]) #Listenin 2. indexteki elemanının 2. indexindeki elemanını yazdır.
+#endregion
+
+#region Dilimleme
+#? Slicing (Dilimleme) Operatörü
+#* Pandas (veri analizinde de) kullanılır, çok önemli!!!!
+#* Mevcut bir SIRALI YAPININ belirli bir bölümünü alarak YENİ BİR YAPI oluşturma işlemidir. 
+#* Bu dilimleme orjinal listeyi değiştirmez.
+
+#SYNTAX YAPISI
+#           yeni_liste = eski_liste [başlangıç_index(DAHİL) : bitiş_index(HARİÇ) : adım] 
+#             default değerleri --- [       0 (SIFIR)       :    listenin_sonu   :  1  ]
+
+fruits = [
+    "Apple", "Banana", "Orange", "Mango", "Pineapple",
+    "Strawberry", "Grapes", "Watermelon", "Peach", "Cherry",
+    "Papaya", "Kiwi", "Blueberry", "Raspberry", "Guava",
+    "Pomegranate", "Lemon", "Apricot", "Fig", "Pear"
+]
+
+print(fruits[2:7]) #birinci değer başlangıç indexi, ikinci değer n-1 olacak şekilde kapanış indexi
+print(fruits[:3]) #burada başlangıç belirtilmedi yani başlangıç 0 ve burada : ile 3.ye kadar diyoruz
+print(fruits[1::2]) #birden başla, iki iki zıplayarak git demek çift iki nokta ile 
+print(fruits[::4]) #gene başlangıCı vermedi ama 4er 4er zıplayarak git anlamına geldi 
+
+print(fruits[::-1]) #0dan başla, -1 -1 git dedik ve aslında listeyi tersine çevirmiş olduk. 
+# eksi koyunca reverse ediliyor gibi düşün, 0. eleman direkt son eleman gibi düşün
+print(fruits[10::-3]) #başlangıç verdik diye burda reverse düşünme, 10. elemandan başla geriye doğru 3er adımla git
+print(fruits[::-2])
 #endregion

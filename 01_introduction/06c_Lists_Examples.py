@@ -44,29 +44,7 @@ numbers_2 = [randint(-100,100) for _ in range(10)]
 #çıktının "-" ifadelerle bağlanmasını istiyoruz.
 # print("-".join(lst_result)) #stringe dönüştürmemizin sebebi join fonksiyonunu kullanmak.
 
-#todo Girilen data sheetten ilkisim.soyisim@outlook.com şeklinde mail_adresses üretilip ekrana yazdırılan uygulama.
-#* İpucu1: split() fonksiyonu
-#* İpucu2: bir listenin uzunluğu ne olursa olsun son elemanına nasıl ulaşırım
-users = ["Burak Yılmaz", "Adal Su Uygur", "Yasemin Uygur Erdem", "Sami Lütfü Esen Berk"]
-domain_name = "@outlook.com"
 
-#path i - list comprehension
-# for names in users:
-#     #print(names) #test
-#     divided_names = names.lower().split(" ")
-#     print(divided_names) #test
-#     mail_adresses = [f"{divided_names[0]}.{divided_names[-1]}{domain_name}" for item in divided_names]
-#     print(mail_adresses) #test
-
-#path ii - for loop
-# mail_addresses = []
-# mail_uzantisi = "@outlook.com"
-# for user in users:
-#     name_slices = user.split(" ")
-#     ilkisim = name_slices[0]
-#     soyisim = name_slices[-1]
-#     mail_addresses.append(f"{ilkisim}.{soyisim}{mail_uzantisi}")
-# print(mail_addresses)
 
 #todo Girilen sampledaki sesli harfleri, sessiz harfleri, typoları ayrı listelere ekleyen uygulama. İlgili listelerde eleman tekrarı olmamalı. Space ignore.
 sample = "buRa1k _Ayi?Lm2aZu"
@@ -113,75 +91,4 @@ numbers = [randint(a=-100, b=100) for i in range(1000)] #numbers diye 1000 iteml
 # lst_positive_numbers_lambda = list(temp_lst) #gelen değişkeni listeye çevirdik.
 # print(lst_positive_numbers_lambda)
 
-#todo 10ar tane rastgele sayı üretilip 2 listeye eklenecek. 3. listeye aktarılacak. append kullanılması yasak, index mantığıyla çalışılacak.
-lst_1 = []
-lst_2 = []
-lst_3 = []
-from random import randint
-
-#region kendi çözümüm
-for i in range(10):
-    sayi_1 = randint(a=0,b=100)
-    lst_1.insert(i, sayi_1)
-    sayi_2 = randint(a=0,b=100)
-    lst_2.insert(i, sayi_2)
-    lst_3.insert(i, lst_1[i] + lst_2[i])
-print(lst_1)
-print(lst_2)
-print(lst_3)
-#endregion
-
-#region hocanın çözümü
-for i in range(10):
-#    print(randint(a=0,b=100)) #1. adım, ürettik evet 10 tane
-    lst_1.insert(i, randint(a=0,b=100)) #2. adım ooh hemen üretilen kodla lst_1'e ekleyek
-    lst_2.insert(i, randint(a=0, b=100)) #4. adım, bak bunu da ürettik hatta test edelim yine.
-    lst_3.insert(i, lst_1[i]+lst_2[i]) #6. adım, oh misler gibi çalıştı bak, bir deyazdıralım da görelim
-#print(lst_1) #3. test adımı, ee düzgün çalışıyor demekki o zaman lst_2'ye de aynı şekilde ekleyek
-#print(lst_2) #5. adım, çözdük, o zaman devamke
-print(f"{lst_1}\n{lst_2}\n{lst_3}")
-#endregion
-
-boxers = ['Mike Tyson', 'Muhammed Ali', 'Lenox Lewix', "Evander Holyfiled", "George Foreman"]
-#? Listenin sonuna "Rocky Marciano"
-# boxers.append("Rocky Marciano") #Listenin sonuna ekler
-# #nokta notasyonu = bir objenin sonuna nokta konulduğunda ona ait features/functions gelir.
-# print(boxers)
-
-#? Kullanıcıdan alınan boksör ismini yine kullanıcıdan alınan index değerine yazdıralım
-# boxer_name = input("Name: ")
-# index_value = int(input("Index: "))
-# boxers.insert(index_value, boxer_name)
-# print(boxers)
-
-#? Merge Two Lists 
-# royal_division = ["Antorny Jasua", "Tyson Fury", "Deantony Wilder"]
-# boxers.extend(royal_division)
-# print(boxers)
-
-#? Read an Item
-# print(boxers[2])
-
-#? 5. indexte bulunan itemı "Joe Frazeir" ile değiştirin.
-# boxers[5] = "Joe Frazeir"
-# print(boxers)
-
-#? 0. Indexteki elemanı silelim
-# boxers.pop(0)
-# print(boxers)
-
-#YA DA
-
-# #boxers.remove("Lenox Lewix")
-# print(boxers)
-
-#? Listedeki içindeki itemları alıp işleme sokulması, yani teker teker sırayla dolaşılması
-# for boxer in boxers: #boxer geçiçi bir isim olarak verildi burada.
-#     print(boxer)
-
-# for i in range(len(boxers)): #boxers listesinin uzunluğu kadar
-#     print(boxers[i])
-
-# for ch in 'adal su': #"adal su" kısım da string aslında liste mantığı gibi çalışabilir.
-#     print(ch,end='-') #bundaki her karakteri de teker teker dolaşabiliyorum.
 

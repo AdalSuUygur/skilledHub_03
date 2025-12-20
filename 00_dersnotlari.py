@@ -149,36 +149,96 @@
 
 # Senden **Vücut Kitle İndeksi** hesaplayan ve sonucu yorumlayan bir program istiyorum.
 
-# **Gereksinimler:**
+# # **Gereksinimler:**
 
-# 1. Kullanıcıdan `kilo` (kg) bilgisini al (float).
-# 2. Kullanıcıdan `boy` (metre) bilgisini al (float). (Örn: 1.75)
-# 3. **Formül:** `vki = kilo / (boy ** 2)`
-# 4. **Karar Ağacı:**
-# * VKİ < 18.5 ise: Ekrana **"Zayıf"** yazsın.
-# * 18.5 ile 24.9 arasında ise: **"Normal"** yazsın.
-# * 25 ile 29.9 arasında ise: **"Fazla Kilolu"** yazsın.
-# * 30 ve üzeriyse: **"Obez"** yazsın.
-
-
-
-# Kodunu yaz, buraya yapıştır, inceleyip "Code Review" yapalım. Sonra LeetCode sorusuna geçeceğiz! 💻☕️
-
-kilo = float(input("Kilo: "))
-boy = float(input("Boy: "))
-if boy == 0:
-   print("Lütfen 0'dan farklı bir değer giriniz.")
-else:
-   vki = kilo / (boy ** 2)
-
-if vki < 18.5:
-    print("Zayıf")
-elif 18.5 <= vki < 24.9:
-    print("Normal")
-elif 25 <= vki < 29.9:
-    print("Fazla kilolu")
-elif vki > 30:
-    print("Obez")
+# # 1. Kullanıcıdan `kilo` (kg) bilgisini al (float).
+# # 2. Kullanıcıdan `boy` (metre) bilgisini al (float). (Örn: 1.75)
+# # 3. **Formül:** `vki = kilo / (boy ** 2)`
+# # 4. **Karar Ağacı:**
+# # * VKİ < 18.5 ise: Ekrana **"Zayıf"** yazsın.
+# # * 18.5 ile 24.9 arasında ise: **"Normal"** yazsın.
+# # * 25 ile 29.9 arasında ise: **"Fazla Kilolu"** yazsın.
+# # * 30 ve üzeriyse: **"Obez"** yazsın.
 
 
+
+# # Kodunu yaz, buraya yapıştır, inceleyip "Code Review" yapalım. Sonra LeetCode sorusuna geçeceğiz! 💻☕️
+
+# kilo = float(input("Kilo: "))
+# boy = float(input("Boy: "))
+# if boy == 0:
+#    print("Lütfen 0'dan farklı bir değer giriniz.")
+# else:
+#    vki = kilo / (boy ** 2)
+
+# if vki < 18.5:
+#     print("Zayıf")
+# elif 18.5 <= vki < 24.9:
+#     print("Normal")
+# elif 25 <= vki < 29.9:
+#     print("Fazla kilolu")
+# elif vki > 30:
+#     print("Obez")
+
+
+
+# While - Else (Python'un Gizli Silahı)
+#               hocaya sormakta fayda var
+
+
+# Bilgisayar 1-100 arası bir sayı tutsun. Sen bulmaya çalış.
+
+# Kütüphane: import random -> sayi = random.randint(1,100)
+
+# while True kullan.
+
+# Kullanıcıya ipucu ver: "Daha büyük gir", "Daha küçük gir".
+
+# Kullanıcı doğru bilirse break yap ve kaçıncı denemede bildiğini yaz.
+
+# QA Dokunuşu: Kullanıcı "çıkış" yazarsa oyunu nazikçe kapat (q tuşu).
+
+# from random import randint
+
+# sayi = randint(a=1, b=100)
+# deneme = 0
+
+# while True:
+#     tahmin_sayi = int(input("Sayı tahmini: "))
+#     deneme += 1
+#     if tahmin_sayi < sayi:
+#         print("Daha büyük gir")
+#     elif tahmin_sayi == sayi:
+#         print(f"Bravo! {deneme}. denemenizde bildiniz!")
+#         break
+#     elif tahmin_sayi > sayi:
+#         print("Daha küçük gir")
+#     else:
+#         print("Program kapatılıyor.")
+#         break
+
+
+# sayilar = [1, 2, 3, 4, 5]
+
+# for sayi in sayilar:
+#     if sayi == 2:
+#         sayilar.remove(sayi) # Listeyi dönerken değiştirdik!
+#     print(sayi)
+
+# print("Sonuç:", sayilar)
+
+
+
+
+
+toplam_maliyet = 0
+maaslar = [20000, 30000,40000,50000,25000,15000]
+
+for maas in maaslar:
+    if maas < 20_000:
+        yeni_maas = maas * 1.2
+    yeni_maas = maas * 1.1
+    print(f"Yeni maaş: {yeni_maas}")
+    toplam_maliyet += yeni_maas
+print(f"Şirketin toplam ödemesi: {toplam_maliyet} TL")
 

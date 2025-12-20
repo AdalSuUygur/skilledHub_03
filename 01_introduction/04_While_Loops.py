@@ -2,7 +2,6 @@
 #! LOOPS: 
 #* Tekrarlı işleri yaparken tercih edilen yazılım konsepti.
 
-#region While Loop
 #? While Loop
 #* Belirli bir koşul True olduğu sürece içerisindeki kod bloğunu çalıştırmaya devam eder. 
 #* Ne zaman duracağını, yani sayacı veya koşulu değiştirmeyi programcının kendisi yönetmelidir.
@@ -36,33 +35,6 @@ while True:
                 break
         case _:
             print("Girdiniz evet ya da hayır dışında, lütfen girdinizi kontrol ediniz.")
-
-#endregion
-
-#region For Loop
-#? FOR DÖNGÜSÜ
-#* bir koleksiyonun elemanları üzerinde veya belirli bir sayı aralığı üzerinde sırayla ilerlemek (iterate etmek) için kullanılan döngüdür.
-
-# SYNTAX YAPISI
-isim = "Python"
-# 'isim' (string) içindeki her bir harf için döngüyü çalıştır
-for harf in isim: #burada harf olarak adlandırılan şey, takma/geçici isim.
-    print(harf)
-
-#todo Girilen başlangıç bitiş ve artış miktarlarına göre for döngüsü kurulumu
-start = int(input("Başlangıç: "))
-finish = int(input("Bitiş: "))
-step = int(input("Artış miktarı: "))
-for i in range(start, finish, step):
-    print(i,end=" ")
-
-#todo 0-100 arası sayıların ekrana yazdırılması uygulaması
-for i in range(0,100):
-    print(i, end="-")
-
-#endregion
-
-#region examples
 
 #region WHILE LOOP
 
@@ -151,120 +123,5 @@ for i in range(0,100):
 #                 break
 #         case _:
 #             print("Girdiniz evet ya da hayır dışında, lütfen girdinizi kontrol ediniz.")
-
-#endregion
-
-#region FOR LOOP
-
-#todo Girilen sampledaki sesli harfleri, sessiz harfleri, typoları ayrı listelere ekleyen uygulama. İlgili listelerde eleman tekrarı olmamalı. Space ignore.
-sample = "buRa1k _Ayi?Lm2aZu"
-# for char in sample.lower():
-#     if char.isalpha():
-#         if char in "aeıioöuü":
-#             if char not in sesli_harfler:
-#                 sesli_harfler.append(char)
-#         else:
-#             if char not in sessiz_harfler:
-#                 sessiz_harfler.append(char)
-#     else:
-#         if char == " ":
-#             continue #ignore attık
-#         elif char not in typo_char:
-#             typo_char.append(char)
-
-# print(f"{sessiz_harfler}\n{sesli_harfler}\n{typo_char}")
-
-#todo bu sayı aralığındaki tek sayıların ve çift sayıların toplamını yazdıran uygulama
-# toplam_cift = 0
-# toplam_tek = 0
-# for i in range(0,100):
-#     if i % 2 == 0:
-#         toplam_cift += i
-#     else:
-#         toplam_tek += i
-# print(f"Çiftlerin toplamı: {toplam_cift}\n"
-#       f"Teklerin toplamı: {toplam_tek}")
-
-#todo Girilen şifrenin min 8 karakter uzunluğunda ve boşluksuz olduğunu doğrulayan uygulama
-# password = input("Please enter your password: ")
-# is_valid = True
-# for char in password:
-#     if char == " ":
-#         is_valid = False
-#         msg = "gap is not accepted in passwords"
-#     elif len(password) < 8:
-#         is_valid = False
-#         msg = "length is too short"
-
-# if is_valid:
-#     print("Your password is valid!")
-# else:
-#     print(msg)
-
-#endregion
-
-#region BOTH LOOPS
-
-#todo 10 tane random sayı üreten uygulama
-from random import randint #random sınıfından randint fonksiyonunu çağırdık.
-
-# for i in range(1,11): #range fonksiyonunda son sayı dahil olmadığı için +1 ekledik
-#     random_number = randint(a = 0, b = 100)
-#     print(f'{i}. üretilen sayı = {random_number}')
-
-#* YA DA 
-
-# i = 0
-# while i < 10:
-#     random_number = randint(a=213, b=32425)
-#     i += 1
-#     print(f'{i}. üretilen sayı = {random_number}')
-
-#todo Girilen sayıya kadar toplamı veren uygulama
-# hedef_sayi = int(input("Kaça kadar olan sayılar toplansın: "))
-
-# i = 0
-# toplam = 0
-# while i <= hedef_sayi:
-#     toplam = toplam + i
-#     print(f'{i}. adımdaki toplam = {toplam}')
-#     i = i + 1
-# print(f'istenen toplam = {toplam}')
-
-#* YA DA
-
-# bitis = int(input("Kaça kadar gitsin? "))
-# sayi = range(1, bitis)
-# toplam = 0
-# for i in sayi:
-#     toplam = i + toplam
-#     print(f'her adımdaki toplam: {toplam}')
-# print(f'sonuçtaki toplam: {toplam}')
-
-#todo Girilen sayının faktöriyelini hesaplayan uygulama
-n = int(input("Faktöriyeli hesaplanacak sayı: "))
-faktoriyel = 1
-i = 1
-
-# if n > 0:
-#     while i <= n:
-#         faktoriyel = faktoriyel * i
-#         print(f'{i}. adımdaki toplam = {faktoriyel}')
-#         i = i + 1
-# elif n == 0:
-#     faktoriyel = 1
-# else:
-#     print("Faktöriyel hesabı yapılamaz.")
-#     exit()
-# print(f'istenen faktöriyel = {faktoriyel}')
-
-#* YA DA
-
-# for i in range(1, n + 1):
-#     faktoriyel = faktoriyel * i
-#     print(f'{i}. adımdaki toplam = {faktoriyel}')
-# print(f'istenen faktöriyel = {faktoriyel}')
-
-#endregion
 
 #endregion
