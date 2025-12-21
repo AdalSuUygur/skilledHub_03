@@ -31,7 +31,3 @@ tuple_2 = ("Red Skins",
 
 tuple_3 = tuple_1 + tuple_2 #max yapılabilecek işlem toplama
 print(tuple_3[2:5]) #ve dilimleme yapılabilir
-
-#region Examples
-
-#endregion
