@@ -53,6 +53,23 @@ for driver in drivers:
     print(driver)
 
 #region examples
+
+#todo Bir Formula 1 yarışındaki anlık sıralama. Sıralama sürekli değişir, eleman eklenir ve çıkarılır.
+# Yarışın 10. turunda "Norris" kaza yapıp elendi (Listeden sil).
+# "Russell" arkadan gelip listeye son sıradan dahil oldu (Listeye ekle).
+# "Sainz" ile "Hamilton" yer değiştirdi (İndeks manipülasyonu yap).
+
+# yaris_siralamasi = ["Verstappen", "Norris", "Leclerc", "Hamilton", "Sainz"]
+
+# # 10. Tur gerçekleşti
+# yaris_siralamasi.remove("Norris") # Norris elendi
+# yaris_siralamasi.append("Russell") # Russell sona eklendi
+
+# # Hamilton (3. index) ve Sainz (4. index) yer değiştiriyor
+# yaris_siralamasi[3], yaris_siralamasi[4] = yaris_siralamasi[4], yaris_siralamasi[3]
+
+# print(f"Yarış Sonu Sıralaması: {yaris_siralamasi}")
+
 #todo Girilen data sheetten ilkisim.soyisim@outlook.com şeklinde mail_adresses üretilip ekrana yazdırılan uygulama.
 #* İpucu1: split() fonksiyonu
 #* İpucu2: bir listenin uzunluğu ne olursa olsun son elemanına nasıl ulaşırım
@@ -84,25 +101,26 @@ lst_3 = []
 from random import randint
 
 #region kendi çözümüm
-for i in range(10):
-    sayi_1 = randint(a=0,b=100)
-    lst_1.insert(i, sayi_1)
-    sayi_2 = randint(a=0,b=100)
-    lst_2.insert(i, sayi_2)
-    lst_3.insert(i, lst_1[i] + lst_2[i])
-print(lst_1)
-print(lst_2)
-print(lst_3)
+# for i in range(10):
+#     sayi_1 = randint(a=0,b=100)
+#     lst_1.insert(i, sayi_1)
+#     sayi_2 = randint(a=0,b=100)
+#     lst_2.insert(i, sayi_2)
+#     lst_3.insert(i, lst_1[i] + lst_2[i])
+# print(lst_1)
+# print(lst_2)
+# print(lst_3)
 #endregion
 
 #region hocanın çözümü
-for i in range(10):
-#    print(randint(a=0,b=100)) #1. adım, ürettik evet 10 tane
-    lst_1.insert(i, randint(a=0,b=100)) #2. adım ooh hemen üretilen kodla lst_1'e ekleyek
-    lst_2.insert(i, randint(a=0, b=100)) #4. adım, bak bunu da ürettik hatta test edelim yine.
-    lst_3.insert(i, lst_1[i]+lst_2[i]) #6. adım, oh misler gibi çalıştı bak, bir deyazdıralım da görelim
-#print(lst_1) #3. test adımı, ee düzgün çalışıyor demekki o zaman lst_2'ye de aynı şekilde ekleyek
-#print(lst_2) #5. adım, çözdük, o zaman devamke
-print(f"{lst_1}\n{lst_2}\n{lst_3}")
+# for i in range(10):
+# #    print(randint(a=0,b=100)) #1. adım, ürettik evet 10 tane
+#     lst_1.insert(i, randint(a=0,b=100)) #2. adım ooh hemen üretilen kodla lst_1'e ekleyek
+#     lst_2.insert(i, randint(a=0, b=100)) #4. adım, bak bunu da ürettik hatta test edelim yine.
+#     lst_3.insert(i, lst_1[i]+lst_2[i]) #6. adım, oh misler gibi çalıştı bak, bir deyazdıralım da görelim
+# #print(lst_1) #3. test adımı, ee düzgün çalışıyor demekki o zaman lst_2'ye de aynı şekilde ekleyek
+# #print(lst_2) #5. adım, çözdük, o zaman devamke
+# print(f"{lst_1}\n{lst_2}\n{lst_3}")
 #endregion
+
 #endregion
