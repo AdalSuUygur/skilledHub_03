@@ -4,7 +4,7 @@
 #* Listeler verileri kalıcı olarak depolamazlar, listeler RAM'de depolanır.
 #* LİSTELER DEĞİŞTİRİLEBİLİR (MUTABLE) BİR VERİ KOLEKSİYONUDUR
 
-#SYNTAX YAPISI
+# SYNTAX YAPISI
 meyveler = ["elma", "muz", "kiraz"]
 karisik_liste = [10, "Merhaba", 3.14, True] #burdan öğrenmemiz gereken şu, listelerde FARKLI VERI TİPLERİ AYNI ANDA DEPOLANABİLİR!!
 
