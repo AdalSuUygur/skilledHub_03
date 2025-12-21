@@ -83,4 +83,20 @@ print(drivers ^ last_drivers)
 
 #region Examples
 
+#todo Bir e-ticaret siten var. Günlük ziyaretçi ID'lerini topluyorsun ama bazıları siteye 10 kere girmiş. Analiz için bize sadece "tekil" (unique) kişiler lazım.
+
+gunluk_ziyaretciler = [101, 102, 101, 105, 102, 108, 101] #listesini bir set'e çevirerek tekrarlayanları temizle.
+
+eski_ziyaretciler = {101, 102, 103} #adında bir kümemiz daha var.
+
+set_gunluk_ziyaretciler = set(gunluk_ziyaretciler)
+
+print(
+    eski_ziyaretciler & set_gunluk_ziyaretciler
+) #Hem bugün hem de eskiden gelen ortak ziyaretçileri bul
+
+print(
+    set_gunluk_ziyaretciler - eski_ziyaretciler
+) #Sadece bugün gelen (eski listede olmayan) "yeni" ziyaretçileri bul
+
 #endregion
