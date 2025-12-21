@@ -7,7 +7,7 @@
 
 # SYNTAX YAPISI
 isim = "Python"
-# 'isim' (string) içindeki her bir harf için döngüyü çalıştır
+# "isim" (string) içindeki her bir harf için döngüyü çalıştır
 for harf in isim: #burada harf olarak adlandırılan şey, takma/geçici isim.
     print(harf)
 
