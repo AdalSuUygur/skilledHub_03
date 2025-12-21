@@ -112,7 +112,6 @@ else:
 #endregion
 
 #region examples
-
 #region IF-ELIF-ELSE KULLANIMI
 
 #todo Kenar uzunlukları girilen üçgenin eşkenar, ikizkenar, çeşitkenar olduğunu yazdıran uygulama
