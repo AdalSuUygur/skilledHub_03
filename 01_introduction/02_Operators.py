@@ -31,6 +31,7 @@ max_number = 0 #Maximum sayımıza atamak üzere bir değişken tanımladık
 # 1 0 = 1
 # 0 1 = 1
 # 0 0 = 0
+
 if n1 > n2 and n1 > n3: 
     max_number = n1
 elif n2 > n1 and n2 > n3:
