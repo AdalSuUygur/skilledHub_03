@@ -22,8 +22,7 @@ fruits = [
     "Apple", "Banana", "Orange", "Mango", "Pineapple",
     "Strawberry", "Grapes", "Watermelon", "Peach", "Cherry",
     "Papaya", "Kiwi", "Blueberry", "Raspberry", "Guava",
-    "Pomegranate", "Lemon", "Apricot", "Fig", "Pear"
-]
+    "Pomegranate", "Lemon", "Apricot", "Fig", "Pear"]
 
 #todo1 meyve listesindeki meyvelerin içerisinde "a" geçiyorsa bu meyveleri yazdıran uygulama
 lst_includes_a = [fruit for fruit in fruits if "a" in fruit.lower()] #fruit.lower() yazmamızın sebebi de içinde küçük a harfine bakıyor olmamız.
