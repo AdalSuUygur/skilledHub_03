@@ -61,7 +61,3 @@ release_year_movie.update( #update fonksiyonu bizden sözlük ister
 
 del release_year_movie["Dune II"]
 print(release_year_movie)
-
-#region Examples
-
-#endregion
