@@ -1,5 +1,5 @@
 
-#! SET FONKSIYONU
+#! SETS - KÜMELER
 #* Matematikteki kümeler yapısıdır. Bir koleksiyondur.
 #* Öğeler sırasızdır, değiştirilebilirdir. Ancak öğeler UNIQUE yapıdadır.
 #* Yani: tekrarlı eleman olmaz ama kendine has unique bir dönüş tipi vardır.
@@ -80,3 +80,7 @@ print(drivers - last_drivers) #difference methodu
 #* Simetrik Fark (Symmetric Difference) `^`
 #(Kesişimin tam tersi gibi düşün)
 print(drivers ^ last_drivers)
+
+#region Examples
+
+#endregion

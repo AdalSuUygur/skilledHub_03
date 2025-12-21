@@ -1,11 +1,11 @@
 
-#! TUPLES - Demetler
-#* Koleksiyonlardır. 
+#! TUPLES - DEMETLER
+#* Koleksiyonlardır.
 #* Immutable yapısı sebebiyle CRUD operasyonları yapılamaz.
 #* Değiştirilemediği için sabitleri tanımlamak için tercih edilir.
 #* Yapısı gereği okuma operasyonlarında diğer koleksiyonlara göre daha hızlı çalışır.
 
-#? Örneğin: Bir data sheet geliyor ve programcı buradan okuma yapacak. Bu noktada değiştirilmemesi istendidiği için, tuple'a dönüştürülür.
+#? Örneğin: Bir data sheet geliyor ve programcı buradan okuma yapacak. Bu noktada verilen değiştirilmemesi istendidiği için, tuple'a dönüştürülür.
 
 #? SYNTAX YAPISI
 # tuple tanımlaması = () yani normal parantez kullanılarak tanımlanır.
@@ -31,3 +31,7 @@ tuple_2 = ("Red Skins",
 
 tuple_3 = tuple_1 + tuple_2 #max yapılabilecek işlem toplama
 print(tuple_3[2:5]) #ve dilimleme yapılabilir
+
+#region Examples
+
+#endregion

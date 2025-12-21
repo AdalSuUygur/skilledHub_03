@@ -1,5 +1,5 @@
 
-#! LISTS
+#! LISTS - LİSTELER
 #* Farklı veri tiplerini tek bir yerde tutmaya yarayan veri koleksiyonlarıdır.
 #* Listeler verileri kalıcı olarak depolamazlar, listeler RAM'de depolanır.
 #* LİSTELER DEĞİŞTİRİLEBİLİR (MUTABLE) BİR VERİ KOLEKSİYONUDUR

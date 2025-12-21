@@ -1,62 +1,55 @@
 
-# # #challenge CRUD sözlük üzerinden create, read, update, delete yapmaya çalış
-# # list vs tuple
-# # prons & cons
-# # set()
-# # dictionary, built-in, CRUD operasyonularını sözlük üzerinden uygulayın.
+#! DICTIONARIES - SÖZLÜKLER
+#* Koleksiyondur, key-value ile çalışır.
+#* Sırasızlardır ve değiştirilebilirler ancak key value'ları eşsizdir. Değiştirlemezler, sabitlerdir.
+#* Key(anahtar) tanımlanır karşılığında value tanımlanır.
+#* key value ile çalışır
 
+#? SYNTAX Yapısı
+# Sözlükler süslü parantez "{}" ile tanımlanır. Set'ten farkı ne? Sette Key:Value şeklinde tanımlama yapılamaz.
+# Sözlükte ise yapısından gereği tanımlama key:value şeklinde olmalıdır.
 
+# sözlük_ismi = {key : value} şeklinde tanımlama yapılır.
 
-
-#? DICTIONARIES
-#süslü parantez ile tanımlanır
-#key value ile çalışır
-#anahtar tanımlanır karşılığında anahtar tanımlanır
-#genelde keyler için tuplelar kullanılır
-
-release_year_movie = { #sol taraf key sağ taraf value
-    'Fight Club': 1999,
+release_year_movie = { #Sözlüğün ismi,
+    'Fight Club': 1999, #İlk elemanı, Key: Fight Club, Value: 1999.
+    #Neden key ismi? Çünkü aynı isimde tek film olur, ancak 1999 yılında 1 film olmaz.
     'Matrix': 1999,
     'Interstaller': 2014,
     'Inception': 2018,
     'Dune': 2021
 }
 
-# #region read
-# #todo fight club anahtarında tutulan value ekrana yazdırın
-# #path i
-# print(release_year_movie["Fight Club"])
-# #path ii
-# print(release_year_movie.get("Fight Club"))
+#? CRUD Operasyonları
 
-# #end region
+#* Create:
+# Sözlüğe yeni bir item ekleneceğinde key:value şeklinde eklenmelidir.
 
-# #get ALL values:
-# for value in release_year_movie.values():
-#     print(value)
+release_year_movie["Dune II"] = 2023 # "Dune II" keyiyle bir item ekledik, value'su da 2023
 
-# #get ALL keys: 
-# for keys in release_year_movie.keys():
-#     print(keys)
+#* Read: "Fight Club" anahtarında tutulan value değerlerini okumak için
+# Path I
+print(release_year_movie["Fight Club"])
 
-# #get ALL items:
-# for key,value in release_year_movie.items():
-#     print(
-#         f"Movie name: {key}\n"
-#         f"Release year: {value}"
-#     )
+# Path II
+print(release_year_movie.get("Fight Club"))
 
-# #endregion
+# get ALL values: #Tüm VALUEları okur
+for value in release_year_movie.values():
+    print(value)
 
-#region create item
-# yeni bir item eklerken de: key - value olarak eklemek gerek sözlüğün yapısından dolayı
-release_year_movie["Dune II"] = 2023
-print(release_year_movie)
+# get ALL keys: #Tüm KEYleri okur
+for keys in release_year_movie.keys():
+    print(keys)
 
-#endregion
+#get ALL items: #HER ŞEYİ OKUR
+for key,value in release_year_movie.items():
+    print(
+        f"Movie name: {key}\n"
+        f"Release year: {value}"
+    )
 
-#region update
-#dune ii'nin çıkış tarihini 2024 yapalım:
+#* Update: "Dune II"nin çıkış tarihini yanlış yazdığımızı varsayalım ve value değerini 2024 yapalım
 
 release_year_movie.update( #update fonksiyonu bizden sözlük ister
     {
@@ -64,14 +57,11 @@ release_year_movie.update( #update fonksiyonu bizden sözlük ister
     }
 )
 
-#endregion
+#* Delete:
 
-#region delete
-#path i
 del release_year_movie["Dune II"]
 print(release_year_movie)
 
+#region Examples
+
 #endregion
-
-#todo ödev
-
