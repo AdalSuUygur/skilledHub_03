@@ -16,7 +16,7 @@ while counter <= 9: #Anahtar kelimesi while, ve şart kelimesi.
 #? Sonsuz döngü
 #* Bir döngünün durma koşulunun hiçbir zaman sağlanamadığı (yani koşulun sürekli True kaldığı) durumdur. İsteyerek oluşturulur.
 
-#SYNTAX YAPISI
+# SYNTAX YAPISI
 while True:
     print(counter) #Döngüden çıkılmadığı için sonsuza dek counter'ı yazdıracak ne olursa olsun.
     break #Döngüden çıkması için break yazılır.
