@@ -24,7 +24,6 @@ subtraction = number_1 - number_3
 print(subtraction)
 
 #region Examples
-
 #todo Kullanıcıdan kenar bilgisi alınarak kare alan&çevre hesabı
 edge = float(input("Edge: "))
 square_area = edge * edge
