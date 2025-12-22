@@ -64,3 +64,30 @@ print(fruits[::-1]) #0dan başla, -1 -1 git dedik ve aslında listeyi tersine ç
 print(fruits[10::-3]) #başlangıç verdik diye burda reverse düşünme, 10. elemandan başla geriye doğru 3er adımla git
 print(fruits[::-2])
 #endregion
+
+#region Satır Sutün Algoritması
+#? Satır-Sütun algoritması
+#* SATIR SÜTUN ALGORİTMALARINDA: i satırı, j sütunu yönetir, yani i 1. adımındayken j orada belirtilen adım kadar çalışır.
+
+#Geleneksel yöntem:
+for i in range(1,11):
+    for j in range(1,11):
+        print(f"{i} x {j} = {i * j}")
+    print("-------------------")
+
+#List comprehension ile yapılması:
+lst_carpim_tablosu = [ 
+    (i*j) #yazdırılacak sonuç 
+    for i in range(1,11) #en dış döngü
+    for j in range(1, 11) #en iç döngü
+]
+print(lst_carpim_tablosu)
+#* Tek satır olmadı yine alt satıra geçtik, ee ne anlamı kaldı list comprehension'ın? Go for benchmark testing!
+
+#List comprehension ile PRINT FONKSİYONU İÇİNDE yapılması:
+print(
+    [
+        [f"{i} x {j} = {i * j}" for i in range(1, 11)] for j in range(1, 11) #liste içinde liste yaptık
+    ]
+    ) #Burda aslında list içinde for içinde for ve liste içinde liste de tanımlıyoruz, sınırımız yok.
+#endregion

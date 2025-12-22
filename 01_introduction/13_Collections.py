@@ -1,4 +1,41 @@
 
+#! COLLECTIONS
+
+#? Unpacking - Unboxing (Söz dizimi özelliği)
+#* Bir koleksiyonun öğelerini alıp bu öğeleri ayrı ayrı değişkenlere atanması durumudur.
+
+my_family = [ #Bu listemiz
+    ["Lale Selam", 29, "Analyst-Unemployed"],
+    ["Aslı Meram", 33, "Guidance Counselor"],
+    ["Karam Çalık", 37, "English Teacher"],
+    ["Alık Balık", 61, "Retired"],
+    ["Sade Kanık", 67, "Chauffeur"]
+]
+
+for item in my_family: #şimdi ailedeki her bir öğeyi dışarı çıkartıyoruz (bu da unboxing aslında)
+    print(item) #Kısaca liste içindeki listenin dış listesinden kurtardık.
+
+#* Unpacking yaparken karşılaması gereken valueların tam olması lazım, eksik veya fazla olursa patlar
+for name, age, occupation in my_family: #myfamilyden bana gelen bilgileri öyle bir karşılayayım ki tık tık tık eşleşsin
+    print(                              #Ki bu da unboxing bak
+        f"Full name: {name}\n"
+        f"Age: {age}\n"
+        f"Occupation: {occupation}"
+    )
+
+#? .join() Metodu
+#* join() metodu, bir iterable (liste, tuple, küme, dize vb.) içindeki tüm elemanları birleştirerek tek bir dize (string) oluşturan bir metoddur. 
+# Birleştirme sırasında, metodun çağrıldığı dize, elemanlar arasına ayırıcı olarak eklenir.
+#f formating +larla birleştirmek gibi, +larla neden birleştirmek yeirne join, çünkü stringler değiştirilemez yapılardır ve + ile eklendiğinde yeni bir string oluşturulur
+#bu da haliyle maliyet demek, artılarla birleştirme, bu amatörce.
+
+#* İki string ifadeyi birleştirmek için " " = "" + "" gibi kullanılır.
+#* fstring içinde de benzer bir yapı ile ifadeler birleştirilir.
+#* stringler değiştirilemez yapılardır, iki string ifadeyi birleştirince ramde farklı bir yere yazdırır (memory leake sebep olur) bundan dolayı daha az maliyetli olan join kullanılır.
+
+#* Önemli Not: join() metodu, ayırıcı (separator) olarak kullanılacak olan dize üzerinde çağrılır, birleştirilecek iterable üzerinde değil.
+
+#region Examples
 #todo E-Ticaret Sepet Analizi
 #* Sistemde bir hata olmuş ve bazı ürünlerin fiyatı negatif (`-`) girilmiş. Ayrıca 100 TL üzerindeki ürünlere %10 indirim yapman gerekiyor.
 # fiyatlar = [150, -20, 300, 50, -5, 120]
@@ -60,3 +97,5 @@ notlar = [85, 90, 70]
 #Path II:
 # sozluk = dict(zip(isimler, notlar))
 # print(sozluk)
+
+#endregion
