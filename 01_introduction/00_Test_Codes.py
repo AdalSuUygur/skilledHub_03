@@ -1,5 +1,5 @@
 
-#todo Ödev (22 Aralık Ödevi-2):
+#todo Ödev (22 Aralık Ödevi-2): Girilen bilgilerin doğruluğunu check eden fonksiyon yapılarıyla kurulmuş uygulama
 
 #* 1 sign in ve sign up
 #* sign up işleminde kullanıcının girdiği password valid mi, user_name unique mi? e_mail valid mi?
@@ -9,70 +9,136 @@
 #* aşağıda sample data structure
 
 users = {
-    "xyz.xyz@skilledhub.com": "şifresineyse artık",
-
+    "adal": {"adal@skilledhub.com": "Adal.123"},
+    "su": {"su@outlook.com": "Su.123"},
+    "ahmet": {"ahmet@gmaiwindowslive.com": "Ahmet.123"},
+    "mehmet": {"mehmet@skilledhub.com": "Mehmet.123"},
+    "kerim": {"kerim@hotmail.com": "Kerim.123"},
+    "cemal": {"cemal@yahoo.com": "Cemal.123"},
     }
 
+print(
+users.values() # bu liste içinde de sözlük var
+)
+
+for item in users.values(): 
+    print(item) #item şu an iç sözlük yapısı
+    print(item["cemal@yahoo.com"]) #bu şifreler
 
 
-#todo Ödev (22 Aralık Ödevi-1): Rakamlardan oluşan bir liste içerisinde bulunan rakamların geçme sıklığını bulan fonksiyonları main() fonksiyonu ile execute eden uygulama
-#* Çıktısı aşağıdaki formatta olmalı:
 
-{
-    1: 10, #1den 10 tane üretti
-    2: 30, #2den 30 tane üretti
-    #... böyle tüm rakamları saydıran
-}
 
-def main():
 
-    from random import randint
 
-    def random_figure_generator(count: int = 100) -> list:
-        """Verilen sayı kadar rastgele rakam üreten fonksiyon
-        :param count: Üretilecek sayı miktarı
-        :type count: int
-        :return: Üretilen sayıların geri dönüşü
-        :rtype: list
-        """
-        return [randint(a= 0, b=9) for _ in range(count)]
+# def check_login(identity: str, input_password: str) -> bool:
+#     # Tüm çekmeceleri (kullanıcıları) tek tek gezelim
+#     for username, details in users.items(): 
+#         if identity == username or identity == details["email"]: # Eğer girdiğimiz kimlik, kullanıcı adına EŞİTSE veya o çekmecedeki mail'e EŞİTSE
+#             if input_password == details.values(): # O zaman şifreyi kontrol et
+#                 return True
+#     return False
 
-    def number_counter(number_list: list = []) -> dict:
-        """Verilen listedeki sayıları sayan fonksiyon
-        
-        :param number_list: Integer sayılardan oluşan bir liste.
-        :type number_list: list
-        :return: Keylerin sayıları ve valueların kaç kere döndürdüğünü veren blok.
-        :rtype: dict
-        """
-    # Path III: Pythonic yol?
-        counter = {}
-        for n in number_list: counter[n] = counter.get(n, 0) + 1
-        return counter
-    # Path II: Bence daha amatörce yol:
-    # for number in number_list:
-    #     if number in counter:
-    #         counter[number] += 1
-    #     else:
-    #         counter[number] = 1
-    # pprint(f"In list {number_list} ve have {counter}")
-    # Path I:
-    # (counter[number] += 1 if number in counter else counter[number] = 1 for number in number_list)
-    # bu kodum çalışmyıor çünkü generator bir işlem yapmıyor bu da syntax hatası veriyor. Ayrıca dict comprehensiona da uygun değil
-    # yine işlem sonucunda ekleme yapmak yerine sözlüğe ekleme yaptığım için list comprehension falan da yapamıyorum.
+# username = input("Username/mail: ")
+# password = input("password: ")
+# is_login = check_login(username, password)
 
-    def print_dict(input_dict: dict = None):
-        if input_dict is None:
-            input_dict = {}
-        print("{") 
-        for key in sorted(input_dict.keys()): #Tüm keyleri çekiyoruz, ve sıralı şekilde yazdırmak istiyoruz.
-            value = input_dict[key]
-            print(f"  {key}: {value}") # Her satırın başına boşluk (indent) ekleyerek daha düzenli yapıyoruz
-        print("}")
+# def is_in_domain_names(domain_name: str = "skilledHub.com") -> bool:
+#     domain_names = [
+#         "gmail.com",
+#         "hotmail.com",
+#         "windowslive.com",
+#         "yahoo.com",
+#         "outlook.com",
+#         "skilledHub.com"
+#     ]
+    
+#     if domain_name in domain_names:
+#         return True
+#     else:
+#         return False
+    
+# def user_database(username: str, mail: str, password: str):
+#     user_database = {
+#         (username, mail) : password
+#     }
+#     #sözlük olcan, anahtar username ya da e-mail, şifre 1 tane olmalı. yani value da bu
 
-    print_dict(number_counter(random_figure_generator(100)))
 
-#pprint ile çıktıyı güzelleştirebilirdik.
-#Counter ile saydırabilirdik.
-#Muhtemelen random sayı üreten de bir fonksiyon vardır ama biz kendimiz yazdık hepsini.
-main()
+
+
+
+
+
+
+
+
+
+# # Büyük Arşiv Dolabı (Dış Sözlük)
+# users = {
+#     "maledordana": { # Çekmece ismi (Key)
+#         "email": "maledordana@hotmail.com", # Çekmecenin içindeki bilgiler (İç Sözlük)
+#         "password": "Sifre123!",
+#         "level": 5
+#     },
+#     "deniz_123": {
+#         "email": "deniz@mail.com",
+#         "password": "Password99",
+#         "level": 2
+#     }
+# }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import string
+def is_valid_password(password: str) -> bool: #uygunsa true, değilse false olarak döner
+    min_character = 6
+    if len(password) <= min_character:
+        return False
+    
+    if any(ch.isspace() for ch in password): #burda da boşluk var mı yok mu
+        return False
+
+    checks = [
+    any(ch.islower() for ch in password),
+    any(ch.isupper() for ch in password),
+    any(ch.isdigit() for ch in password),
+    any(ch for ch in password if ch in string.punctuation)
+            ]
+    
+    return all(checks)
+
+
+def sign_up():
+    pass
+
+def sign_in():
+    pass
+
+
+domain_name = "skilledHub.com"
+
+def verify_email(email: str, domain_name: str) -> str:
+    if email == "":
+        return "Email kısmı boş bırakılamaz"
+    elif not email.endswith(f"@{domain_name}"):
+        return "Mailinizin domain ismi sistemimizde kayıtlı değildir, lütfen farklı bir mail adresi ile deneyin."
+    else:
+        return "Mailinize gönderilen onaylama mailindeki linke tıklayarak üyeliğinizi aktif olarak kullanabilirsiniz."
+
