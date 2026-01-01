@@ -27,8 +27,8 @@ greeting(full_name="Adal") # fonksiyonu çağırmak/execute etmek.
 
 def greeting_default(full_name: str = "User"): #parametre alan ve default değeri olan fonks
     print(f"Hello, {full_name}!")
-greeting() # fonksiyonu çağırmak/execute etmek. Burda değer girilmediyse default değer gelir.
-greeting(full_name="Adal") # Bu şekilde default değerin üzerine yazarsak da default değer ezilir ve en son yazılan gelir.
+greeting_default() # fonksiyonu çağırmak/execute etmek. Burda değer girilmediyse default değer gelir.
+greeting_default(full_name="Adal") # Bu şekilde default değerin üzerine yazarsak da default değer ezilir ve en son yazılan gelir.
 
 #? Fonksiyonlarda tanımlama yapmak:
 #* Bunu yapabilmek için 1 autodocs extension'ı kurulumu olmalı
@@ -184,7 +184,6 @@ print(result)
 
 #todo Ödev (22 Aralık Ödevi-1): Rakamlardan oluşan bir liste içerisinde bulunan rakamların geçme sıklığını bulan fonksiyonları main() fonksiyonu ile execute eden uygulama
 #* Çıktısı aşağıdaki formatta olmalı:
-
 {
     1: 10, #1den 10 tane üretti
     2: 30, #2den 30 tane üretti
@@ -192,7 +191,6 @@ print(result)
 }
 
 # def main():
-
 #     from random import randint
 
 #     def random_figure_generator(count: int = 100) -> list:
@@ -206,7 +204,7 @@ print(result)
 
 #     def number_counter(number_list: list = []) -> dict:
 #         """Verilen listedeki sayıları sayan fonksiyon
-        
+
 #         :param number_list: Integer sayılardan oluşan bir liste.
 #         :type number_list: list
 #         :return: Keylerin sayıları ve valueların kaç kere döndürdüğünü veren blok.
@@ -242,6 +240,95 @@ print(result)
 # #pprint ile çıktıyı güzelleştirebilirdik.
 # #Counter ile saydırabilirdik.
 # #Muhtemelen random sayı üreten de bir fonksiyon vardır ama biz kendimiz yazdık hepsini.
+# main()
+
+#todo Ödev (22 Aralık Ödevi-2): Girilen bilgilerin doğruluğunu check eden fonksiyon yapılarıyla kurulmuş uygulama
+#* Sign in ve Sign up
+#* Sign up işleminde kullanıcının girdiği password valid mi, user_name unique mi? e_mail valid mi?
+#* Kurallardan geçerse üyelik işlemi tamamlanacak
+#* Sign in'da password doğru mu, e-mail ve password doğruysa giriş yap
+#* Tüm bu problem main() fonksiyonu içinde çalışacak
+
+# users = {
+#     "adal@skilledhub.com": "Adal.123",
+#     "su@outlook.com": "Su.123",
+#     "ahmet@gmaiwindowslive.com": "Ahmet.123",
+#     "mehmet@skilledhub.com": "Mehmet.123",
+#     "kerim@hotmail.com": "Kerim.123",
+#     "kemal@yahoo.com": "Kemal.123",
+#     'xyz.xyz@skilledhub.com': 'pwd',
+#     'qwe.qwe@skilledhub.com': '987'
+#     }
+
+# import string
+
+# #region Doğrulayıcılar
+
+# def is_valid_password(password: str) -> bool: #uygunsa true, değilse false olarak döner
+#     min_character = 6
+#     if len(password) <= min_character:
+#         return False
+#     if any(ch.isspace() for ch in password): #burda da boşluk var mı yok mu
+#         return False
+    
+# # gelen passwordu setten geçireceğiz ama neden?
+#     ch_set = set(password)
+# # kontrol etmek için döngüye sokmadan önce performans sağlamak için.
+
+#     checks = [
+#     any(ch.islower() for ch in ch_set),
+#     any(ch.isupper() for ch in ch_set),
+#     any(ch.isdigit() for ch in ch_set),
+#     any(ch for ch in ch_set if ch in string.punctuation)
+#             ]
+#     return all(checks)
+
+# def is_valid_email(mail_adresses: str) -> bool: #bool ihtiyacımız oldu aşağıdaki sign up kısmı için ondan sildik
+#     try:
+#         if "@" not in mail_adresses:
+#             raise TypeError("The mail adress must contain the @ symbol.")
+#         if mail_adresses in users.keys():
+#             raise ValueError("This mail adress has already taken.")
+#         return True #iflerden geçerse true dönecek
+    
+#     except (TypeError, ValueError) as err:
+#         print(err) #bu da kendimize log gibi düşün
+#         return False
+
+# #region işlemler
+# def sign_up(mail_adresses: str, password: str) -> str:
+#     if is_valid_password(password=password) and is_valid_email(mail_adresses=mail_adresses):
+#         users[mail_adresses] = password
+#         return "Your membership has been completed!"
+#     else:
+#         return "Invalid credentials."
+
+# def sign_in(mail_adresses: str, password: str) -> str:
+#     for key, values in users.items():
+#         if key == mail_adresses and values == password:
+#             return f"Welcome to the jungle"
+#     return "Invalid credentials."
+
+# def main():
+#     while True:
+#         process = input("Type a process: ")
+
+#         match process:
+#             case "sign in":
+#                 sign_in(
+#                     mail_adresses= input("Mail adress: "),
+#                     password= input("Password: ")
+#                 )
+
+#             case "sign up":
+#                 sign_up(
+#                     mail_adresses= input("Mail adress: "),
+#                     password= input("Password: ")
+#                 )
+#                 print(users) #kendimize backdoor
+#             case _:
+#                 print("Type a valid process name.")
+
 # main()
 
 

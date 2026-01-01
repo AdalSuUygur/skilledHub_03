@@ -1,125 +1,35 @@
 
-#region 22 aralık ödevi
-# #todo Ödev (22 Aralık Ödevi-2): Girilen bilgilerin doğruluğunu check eden fonksiyon yapılarıyla kurulmuş uygulama
+#todo Sign in/Sign up ve Filtering uygulaması
 
-# #* 1 sign in ve sign up
-# #* sign up işleminde kullanıcının girdiği password valid mi, user_name unique mi? e_mail valid mi?
-# #* bu kurallardan geçerse üyelik işlemi tamamlanacak
-# #* sign inta da yine pass word doğru mu bu sefer, e-mail ve password doğruysa giriş yap
-# #* veri yapısı: 
-# #* aşağıda sample data structure
+#* Doğru loginde, ürün search ve fiyat output. 
+#* Yanlış loginde yeni kayıt. Username'ler unique olacak.
+#* Bütün ürünlerin toplam fiyatı nedir
+#* Ürün adı laptop olan ürünlerin fiyatlarını toplayalım
+#* Kullanıcı ürün search edebilsin, yani ürün search etti monitör yazdı varsa fiyatını verdi
+#* Fiyatı X tl altında olan ürünler listelensin
 
-# users = {
-#     "adal": {"adal@skilledhub.com": "Adal.123"},
-#     "su": {"su@outlook.com": "Su.123"},
-#     "ahmet": {"ahmet@gmaiwindowslive.com": "Ahmet.123"},
-#     "mehmet": {"mehmet@skilledhub.com": "Mehmet.123"},
-#     "kerim": {"kerim@hotmail.com": "Kerim.123"},
-#     "cemal": {"cemal@yahoo.com": "Cemal.123"}
-#     }
+users = {
+    "adal@skilledhub.com": "Adal.123",
+    "su@outlook.com": "Su.123",
+    "ahmet@gmaiwindowslive.com": "Ahmet.123",
+    "mehmet@skilledhub.com": "Mehmet.123",
+    "kerim@hotmail.com": "Kerim.123",
+    "kemal@yahoo.com": "Kemal.123",
+    "xyz.xyz@skilledhub.com": "pwd",
+    "qwe.qwe@skilledhub.com": "987",
+    "beast@hotmail.com": "123",
+    "bear@gmail.com": "456",
+    "keko@outlook.com": "789"
+}
 
-# #region Doğrulayıcılar
-# import string
-# def is_valid_password(password: str) -> bool: #uygunsa true, değilse false olarak döner
-#     min_character = 6
-#     if len(password) <= min_character:
-#         return False
-    
-#     if any(ch.isspace() for ch in password): #burda da boşluk var mı yok mu
-#         return False
-    
-# # gelen passwordu setten geçireceğiz ama neden?
-#     ch_set = set(password)
-# # performans sağlamak için
+username = input("username: ")
+#bu true ise daha önce alınmış diyelim
+# print(
+#     any(user == username for user in users.keys())
+# )
 
-#     checks = [
-#     any(ch.islower() for ch in ch_set),
-#     any(ch.isupper() for ch in ch_set),
-#     any(ch.isdigit() for ch in ch_set),
-#     any(ch for ch in ch_set if ch in string.punctuation)
-#             ]
-#     return all(checks)
+print(username in users) #python in dediğinde direkt keys'e bakar. Bu yüzden any ile yazmadım.
 
-# # def is_valid_email(mail_adresses: str) -> bool | str:
-# #     try:
-# #         if "@" not in mail_adresses:
-# #             raise TypeError("The mail adress must contain the @ symbol.")
-# #         if mail_adresses in users.keys():
-# #             raise ValueError("This mail adress has already taken.")
-# #         return True #iflerden geçerse true dönecek
-    
-# #     except (TypeError, ValueError) as err:
-# #         return str(err)
-# #     #öbür türlü zaten patlayacak ve string olarak errorü vercek.
-
-# def is_valid_email(mail_adresses: str) -> bool: #bool ihtiyacımız oldu aşağıdaki sign up kısmı için ondan sildik
-#     try:
-#         if "@" not in mail_adresses:
-#             raise TypeError("The mail adress must contain the @ symbol.")
-#         if mail_adresses in users.keys():
-#             raise ValueError("This mail adress has already taken.")
-#         return True #iflerden geçerse true dönecek
-    
-#     except (TypeError, ValueError) as err:
-#         print(err) #bu da kendimize log gibi düşün
-#         return False
-
-# #region işlemler
-# def sign_up(mail_adresses: str, password: str) -> str:
-#     if is_valid_password(password=password) and is_valid_email(mail_adresses=mail_adresses):
-#         users[mail_adresses] = password
-#         return "Your membership has been completed!"
-#     else:
-#         return "Invalid credentials."
-
-# def sign_in(mail_adresses: str, password: str) -> str:
-#     for key, values in users.items():
-#         if key == mail_adresses and values == password:
-#             return f"Welcome to the jungle"
-#     return "Invalid credentials."
-
-# def main():
-#     while True:
-#         process = input("Type a process: ")
-
-#         match process:
-#             case "sign in":
-#                 sign_in(
-#                     mail_adresses= input("Mail adress: "),
-#                     password= input("Password: ")
-#                 )
-
-#             case "sign up":
-#                 sign_up(
-#                     mail_adresses= input("Mail adress: "),
-#                     password= input("Password: ")
-#                 )
-#                 print(users) #kendimize backdoor
-#             case _:
-#                 print("Type a valid process name.")
-
-# main()
-
-#endregion
-
-#region yapamadığım ve yapmak ZORUNDA olduğum örnek
-
-#hatalarım
-# u_plus_p = list(zip(*(username for username in users))) #bu yapı bana usernames listesi ve şifreler listesi verdi, ben burdan usernames çekmeye çalışıyorum
-
-#todo Doğru loginde, ürün search ve fiyat output. Yanlış loginde yeni kayıt. Username'ler unique olacak.
-
-#bütün ürünlerin toplam fiyatı nedir
-#ürün adı laptop olan ürünlerin fiyatlarını toplayalım
-#kullanıcı ürün search edebilsin, yani ürün search etti monitör yazdı varsa fiyatını verdi
-#fiyatı 200 tl altında olan ürünler listelensin
-#register olsun, yani kayıt da olsun; username varsa hali hazırda ekleyemesin
-
-# users = [
-#     ["beast", "123"],
-#     ["bear", "456"],
-#     ["keko", "789"]
-# ]
 
 # def is_login(user_name, pass_word):
 #     for USERNAME, PASSWORD in users:
@@ -304,16 +214,3 @@ products = [
 # # # #faz 5: kullancıı değer girmeyi atlarsa ne olacak?
 
 
-
-
-# fruits = [
-#     "Apple", "Banana", "Orange", "Mango", "Pineapple",
-#     "Strawberry", "Grapes", "Watermelon", "Peach", "Cherry",
-#     "Papaya", "Kiwi", "Blueberry", "Raspberry", "Guava",
-#     "Pomegranate", "Lemon", "Apricot", "Fig", "Pear"
-# ]
-
-# b = fruits[:]
-# print(b)
-
-#endregion
