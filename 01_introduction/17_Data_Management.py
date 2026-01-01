@@ -32,7 +32,6 @@
 # Ancak artık hayatımız mikro servisler girdi ve bununla birlikte her farklı bir özellik için farklı bir API kullanılıyor. 
 # Mesela e-ticaret sitesindeki search için bir API, ödeme için bir API, kategoriler için API, mobil uygulama için APIler kullanılıyor.
 
-
 #* Bütün paketler pypi.org sitesinde. Buradan requests adlı paket indirilecek.
 #* Bir modül nasıl yüklenir?
 # 1. pypi.org sitesine gidilerek ilgili modül aratılır.
@@ -42,20 +41,68 @@
 # 5. venv aktif değilse terminale: .\venv\Scripts\activate yazmak gerekli. Aktif olduktan sonra yapıştır ve modülü yükle.
 #* Not: Bu neden önemli? Çünkü modüller venv içerisine yüklenir.
 
-#todo 
 from requests import get #request modülünden get fonksiyonunu kullanacağımız için bunu aldık.
 from requests.exceptions import HTTPError, ConnectionError, Timeout, RequestException #her farklı modülün kendi exception sınıfları vardır
 from pprint import pprint #güzel gözülmesi için
 
-#Şu anda kendimizce bir API yazdık sanırım?
+#todo var olan bir API ile işlemler
 try: #Her API'nin bir endpointi vardır. Biz bu endpoint'e request atarız.
-    end_point = "https://newsapi.org/v2/everything?q=tesla&from=2025-11-18&sortBy=publishedAt&apiKey=47f3419f49864ca889f632677d485de1"
+    end_point = "https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=d8aaaaadcc674ee181cd1457e811c0df"
     # NewsAPI'den aldığımız beleş API key'ini yapıştırıyoruz.
 
     response = get(end_point, timeout= 6000) # endpointten talepte bulunduk, 6 sn içinde yanıt gelmezse timeout olur dedik.
 
     data = response.json() #gelen yanıtı json'a dönüştürüyoruz.
-    pprint(data) #yazdırdık ve veriye ulaştık!
+    # pprint(data) #yazdırdık ve veriye ulaştık!
+
+#* ilk makalenin yazarını ve title'ını ekrana basmak için:
+    #region Kendi çözümüm
+    # 1. adım: data'nın içine giriyoruz. Data bir sözlük yapısı. Data içerisindeki "articles" keyine gidiyorum.
+    # data.get("articles")
+    # 2. adım: Şu an elimde bir liste var. 
+    # details for details in data.get("articles")
+    # 3. adım: Listenin her elemanı bir sözlük. Yani details yazar ve makale detaylarını içeren bir sözlük.
+    # details.get("author")
+    # 4. adı: sözlüğün yazar isimli keyini aldım. Yey!
+
+# Şimdi bunları toparlayalım ve tek satırda yazdıralım:
+    # pprint(
+    #     list(
+    #         details.get("author") for details in data.get("articles")
+    #     )
+    # )
+
+    #region Hocanın çözümü
+    # print(
+    #     f'Author: {data.get("articles")[0].get("author")}\n'
+    #     #datanın articles keyine girdik
+    #     #burası bir liste
+    #     #listenin 0. indexindeki elemana eriştik
+    #     #burası bir sözlük
+    #     #sözlüğün yazarını aldık
+    #     f'Title: {data.get("articles")[0].get("title")}\n'
+    # )
+
+    #todo ödev1
+    #* End-User'dan alınan "author name"in makalelerini yazdıran uygulama
+    #region Kendi çözümüm
+    # author_name = input("Please enter the author's name: ").lower()
+    # results = [details for details in data.get("articles") if details.get("author").lower() == author_name]
+    # for result in results:
+    #     pprint(result)
+    
+    #region Hocanın çözümü:
+    # author_name = input('Author Name: ')
+    # Path I
+    # for article in data.get('articles'):
+    #     if article.get('author') == author_name:
+    #         pprint(article)
+            
+    # Path II
+    # results = [article for article in data.get('articles') if article.get('author') == author_name]
+    
+    # for result in results:
+    #     pprint(result)
 
 except HTTPError as err: #alınan her hataya farklı cevaplar vermek için
     print(f"HTTP error: {err}")
@@ -64,24 +111,21 @@ except ConnectionError as err: #her bir hatayı ayrı ayrı yazabiliriz
 except (Timeout, RequestException) as err: #ya da hepsini böyle parantez içinde tek bir çıktıda yazabiliriz
     print(err)
 
+#todo bulunan bir free API'den veri alalım bu da ikinci ödev
+try:
+    poke_name = input("Pokemon's name: ").lower()
 
-#ilk makalenin yazarını ve titleını ekrana yazdıran program. bu kod bloğuna ihtiyacım var ama
+    url = f"https://pokeapi.co/api/v2/pokemon/{poke_name}"
+    print(f"{poke_name} aranıyor...")
 
+    response_2 = get(url, timeout=5)
+    data_2 = response_2.json()
 
-# # # 18 12 25 - ders notları
-# # #ödev çözümü
+    print(f'{data_2.get("name").upper()} YETENEKLERİ:')
 
-# # # özlemin çözümü
+    ability_names = [item.get('ability').get('name') for item in data_2.get('abilities')]
+    pprint(ability_names)
 
-# # # author_name = input("Auther name:")
-# # # articles = []
-# # # for article in data["articles"]:
-# # #     author = article.get("author")
-    
-# # #     if author and author_name.lower() in author.lower():
-# # #         articles.append(article)
-# # # if articles:
-# # #     print(f"\nArticles by {author_name}:\n")
-# # #     for art in articles:
-# # #         print(art["title"])
+except (HTTPError, ConnectionError, Timeout, RequestException) as err:
+    pprint(err)
 
