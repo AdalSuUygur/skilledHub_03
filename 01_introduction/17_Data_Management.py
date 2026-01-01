@@ -1,6 +1,5 @@
 
 #! DATA MANAGEMENT
-
 # 1. HTTP Döngüsü (Pizzacı Analojisi): İstemci (Sen) ve Sunucu (Pizzacı) arasındaki o "kurallı konuşma".
 # 2. JSON Yapısı (Koli Analojisi): Verilerin o "standart kutunun" içinde nasıl düzenli durduğunu hatırla.
 # 3. API Mantığı (Garson Analojisi): Senin mutfağa girmene gerek kalmadan, garsonun (API) aradaki köprüyü nasıl kurduğu.
@@ -15,7 +14,7 @@
 #* Bütün web siteleri (Google, YouTube, Instagram) bu kurallar sayesinde, senin bilgisayarın hangi marka olursa olsun aynı şekilde açılır.
 #? Yani HTTP Protokolü: Farklı dildeki istemlerin server tarafında anlaşılabilmesi için konulmuş kurallar bütünüdür.
 
-#! JSON
+#! JSON (Java Script Object Notation)
 #* Diyelim ki evini taşıyorsun (Veri transferi).
 #* Eşyalarını (Verilerini) kamyona rastgele atamazsın. Kırılır, kaybolur.
 #* Hepsini standart kolilere (JSON) koyarsın. Üzerine ne olduğunu yazarsın.
@@ -34,18 +33,37 @@
 # Mesela e-ticaret sitesindeki search için bir API, ödeme için bir API, kategoriler için API, mobil uygulama için APIler kullanılıyor.
 
 
+#* Bütün paketler pypi.org sitesinde. Buradan requests adlı paket indirilecek.
+#* Bir modül nasıl yüklenir?
+# 1. pypi.org sitesine gidilerek ilgili modül aratılır.
+# 2. modülün sitesinde isminin altında "copy to clipboard" seçeneği seçilir.
+# 3. VS Code'da terminal açılır.
+# 4. venv aktif olunup olunmadığı kontrol edilir. Aktifse; yapıştır ve paketi yükle.
+# 5. venv aktif değilse terminale: .\venv\Scripts\activate yazmak gerekli. Aktif olduktan sonra yapıştır ve modülü yükle.
+#* Not: Bu neden önemli? Çünkü modüller venv içerisine yüklenir.
 
-from requests import get
+#todo 
+from requests import get #request modülünden get fonksiyonunu kullanacağımız için bunu aldık.
 from requests.exceptions import HTTPError, ConnectionError, Timeout, RequestException #her farklı modülün kendi exception sınıfları vardır
-from pprint import pprint
+from pprint import pprint #güzel gözülmesi için
 
-try:
-    pass
-except HTTPError as err:
+#Şu anda kendimizce bir API yazdık sanırım?
+try: #Her API'nin bir endpointi vardır. Biz bu endpoint'e request atarız.
+    end_point = "https://newsapi.org/v2/everything?q=tesla&from=2025-11-18&sortBy=publishedAt&apiKey=47f3419f49864ca889f632677d485de1"
+    # NewsAPI'den aldığımız beleş API key'ini yapıştırıyoruz.
+
+    response = get(end_point, timeout= 6000) # endpointten talepte bulunduk, 6 sn içinde yanıt gelmezse timeout olur dedik.
+
+    data = response.json() #gelen yanıtı json'a dönüştürüyoruz.
+    pprint(data) #yazdırdık ve veriye ulaştık!
+
+except HTTPError as err: #alınan her hataya farklı cevaplar vermek için
     print(f"HTTP error: {err}")
+except ConnectionError as err: #her bir hatayı ayrı ayrı yazabiliriz
+    print(f"Connection error: {err}")
+except (Timeout, RequestException) as err: #ya da hepsini böyle parantez içinde tek bir çıktıda yazabiliriz
+    print(err)
 
-#.json java script object notation - bir notasyon
-#yani ortak dil 
 
 #ilk makalenin yazarını ve titleını ekrana yazdıran program. bu kod bloğuna ihtiyacım var ama
 
