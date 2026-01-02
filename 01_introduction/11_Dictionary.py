@@ -214,4 +214,135 @@ print(str(uuid4()))
 #         case _:
 #             print("Invalid process type.")
 
+#todo Sign in/Sign up ve Filtering uygulaması
+#* Doğru loginde, ürün search ve fiyat output. 
+#* Yanlış loginde yeni kayıt. Username'ler unique olacak.
+#* Kullanıcı ürün search edebilsin, yani ürün search etti monitör yazdı varsa fiyatını verdi
+#* Fiyatı X tl altında olan ürünler listelensin
+
+# users = {
+#     "adal@skilledhub.com": "Adal.123",
+#     "su@outlook.com": "Su.123",
+#     "ahmet@gmaiwindowslive.com": "Ahmet.123",
+#     "mehmet@skilledhub.com": "Mehmet.123",
+#     "kerim@hotmail.com": "Kerim.123",
+#     "kemal@yahoo.com": "Kemal.123",
+#     "xyz.xyz@skilledhub.com": "pwd",
+#     "qwe.qwe@skilledhub.com": "987",
+#     "beast@hotmail.com": "123",
+#     "bear@gmail.com": "456",
+#     "keko@outlook.com": "789"
+# }
+
+# products = [
+#     {"name": "Laptop", "price": 850},
+#     {"name": "Laptop", "price": 1250},
+#     {"name": "Smartphone", "price": 499},
+#     {"name": "Headphones", "price": 79},
+#     {"name": "Keyboard", "price": 45},
+#     {"name": "Monitor", "price": 220},
+#     {"name": "Mouse", "price": 25},
+#     {"name": "Smartwatch", "price": 150},
+#     {"name": "Tablet", "price": 310},
+#     {"name": "External Hard Drive", "price": 95},
+#     {"name": "Webcam", "price": 60}
+# ]
+
+# # print(username in users) #python in dediğinde direkt keys'e bakar. Bu yüzden any ile yazmadım.
+# import string
+# from pprint import pprint
+
+# def search(input_product_name: str):
+#     # .lower() ekleyerek aramayı kolaylaştırdık
+#     lst = [item for item in products if item.get("name").lower() == input_product_name]
+#     return lst
+
+# def filter_price(max_price: float, min_price:float = 0):
+#     lst = [item for item in products if min_price <= item.get("price") <= max_price]
+#     return lst
+
+# def is_login(username: str = "", password: str = "") -> bool:
+#     if username in users: #eğer username varsa
+#         if users[username] == password: #username key'inin karşılığı yani şifre eşit mi
+#             return True
+#     return False #eğer listede yoksa direkt false zaten
+
+# def is_valid_password(password: str):
+#     min_character = 6
+#     return all([
+#         len(password) >= min_character,
+#         any(ch.isdigit() for ch in password),
+#         any(ch.islower() for ch in password),
+#         any(ch.isupper() for ch in password),
+#         any(ch in string.punctuation for ch in password)
+#     ])
+
+# def new_register() -> bool:
+#     new_username = input("New e-mail: ").lower().strip()
+#     new_password = input("New Password: ")
+    
+#     if new_username in users:
+#         print("Account already exists.")
+#         return False
+#     elif is_valid_password(new_password):
+#         users[new_username] = new_password
+#         print(f"Registration Successful! Welcome {new_username}")
+#         return True # Kayıt başarılı olduğu için True döndürüyoruz
+#     else:
+#         print("Password is weak! (Needs: 6 chars, digit, lower, upper, punctuation)")
+#         return False
+
+# def main():
+#     print("Welcome to the program! Please enter your credentials.")
+#     # Giriş Durumunu Kontrol Eden Değişken
+#     is_authenticated = False
+    
+#     input_username = input("e-mail: ").lower().strip()
+#     input_password = input("Password: ")
+
+
+#     if is_login(input_username, input_password):
+#         print(f"Welcome back {input_username}!")
+#         is_authenticated = True
+#     else:
+#         print("User not found or wrong password.")
+#         if new_register(): # Eğer kayıt başarılı olursa, giriş yapmış sayılsın
+#             is_authenticated = True
+
+
+#     while is_authenticated:
+#         print("--- MENU ---")
+#         input_process = input("Type 'search', 'filter', or 'exit': ").lower().strip()
+        
+#         result = "" # Sonucu tutacak değişken
+
+
+#         match input_process:
+#             case "search":
+#                 term = input("Product name to search: ").lower().strip()
+#                 result = search(input_product_name=term)
+            
+#             case "filter":
+#                 # input boş gelirse hata vermemesi için try-except veya or kullanımı
+#                 try:
+#                     p_max = float(input("Max price: ") or 999999)
+#                     p_min = float(input("Min price: ") or 0)
+#                     result = filter_price(max_price=p_max, min_price=p_min)
+#                 except ValueError:
+#                     result = "Please enter valid numbers!"
+
+#             case "exit":
+#                 print("Exiting the program.")
+#                 break
+            
+#             case _:
+#                 result = "Invalid command."
+        
+#         print("-" * 20)
+#         pprint(result)
+#         print("-" * 20)
+
+# main()
+
+
 #endregion
