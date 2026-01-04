@@ -45,7 +45,7 @@ def generate_docs(a: int, b:int):
     # 5. Adım: İçeriğini uygun şekilde doldur.
     print(a+b)
 
-#region Examples
+#region Examples about defining a function
 #todo FullName ve DomainName olan data ile kurumsal mail adresi craft etmek
 # full_name = input("Lütfen isminizi giriniz: ")
 
@@ -122,7 +122,7 @@ print(result)
 
 #* ve Seperation of concern (SOC): Evindeki odaların ayrılması gibidir; mutfakta yemek pişer, banyoda duş alınır.
 
-#region Examples
+#region Examples about functions that returns a value
 
 #todo Kullanıcıdan alınan 3 adet sayıyı toplayan fonksiyon
 
@@ -340,3 +340,92 @@ print(result)
 
 
 #endregion
+
+#! *args vs **kwargs
+#? args ve keywords and their operators
+# fonksiyonumuza gelecek değerlerin sayısını yönetemediğimiz/bilemediğimiz durumlarda kullandığımız iki yapı.
+# Fonksiyonlara gelen değerleri argümanlarla karşılıyorduk.
+
+#* Burada önemli olan "*" ve "**" operatörleridir. args ve kwargs kısmı isimlendirmedir.
+#* *args gelen parametreleri tuple olarak; **kwargs ise dict olarak tutar.
+
+#region Examples about *args and **kwargs
+
+#todo: *args kullanımının örneği:
+# def total(*args): #fonksiyon tanımı
+#     return sum(args)
+
+# print(total(1, 2, 3)) #Çıktısı: 6
+# print(total(9, 8, 12, 45, 23)) #Çıktısı: 97
+# print(total()) #Çıktısı: 0
+
+#todo *args kullanımının string üzerindeki örneği:
+# def concat_str(*args, seperator: str = " "): #dinamik şekilde gelecek string ifadeleri
+#     return seperator.join(args) #birleştiriyoruz
+
+# print(concat_str("burak", 'yılmaz', '36')) #Çıktısı: "burak yılmaz 36"
+# print(concat_str("bugün", 'sınıf', 'mevcudu', 'çok', 'az')) #Çıktısı: bugün sınıf mevcudu çok az
+
+#todo *args kullanımı 
+from datetime import datetime
+
+# def system_log(*args): #Kaç tane mesaj geliyosa onu yazdıracağımız bir fonksiyon
+#     for msg in args:
+#         print(f"System log: {msg}\n"
+#               f"Log Date: {datetime.now()}") #datetime.now() Şu anı veriyor.
+
+# system_log('Status Code --> 200', 'DB Connection has been lost', 'Passive')
+
+# """ Çıktısı: 
+# Log Date: 2026-01-03 21:11:54.248049
+# System log: DB Connection has been lost
+# Log Date: 2026-01-03 21:11:54.248049
+# System log: Passive
+# Log Date: 2026-01-03 21:11:54.248049
+# """
+
+#todo: **kwargs arguments örneği
+# # Parametreler sözlük olarak gittiği için değerlere erişimimiz hashmap mantığı.
+# def get_info(**kwargs):
+#     return (
+#         f'Full Name: {kwargs.get("full_name")}\n'
+#         f'Occupation: {kwargs.get("occupation")}\n'
+#         f'Alias: {kwargs.get("alias")}'
+#     )
+
+# print(get_info(full_name='Burak Yılmaz'))
+# print(get_info(full_name='Hakan Yılmaz', occupation='Chemist'))
+# print(get_info(full_name='İpek Yılmaz', occupation='Art Historian', alias='keko'))
+
+# """ Çıktısı:
+# Full Name: Burak Yılmaz
+# Occupation: None
+# Alias: None
+# Full Name: Hakan Yılmaz
+# Occupation: Chemist
+# Alias: None
+# Full Name: İpek Yılmaz
+# Occupation: Art Historian
+# Alias: keko
+# """
+
+#todo makine bilgilerine kwargs ile erişme uygulaması
+from socket import gethostname, gethostbyname
+
+# def log(*args, **kwargs):
+#     return (
+#         f'Message: {kwargs.get("msg")}\n'
+#         f'IP Address: {kwargs.get("ip_address")}\n'
+#         f'Machine Name: {kwargs.get("machine_name")}\n'
+#         f'Exception Date: {kwargs.get("exception_date")}\n'
+#     )
+
+# print(
+#     log(
+#         msg='Internal Gateway', 
+#         ip_address=gethostbyname(gethostname()), 
+#         machine_name=gethostname(), 
+#         exception_date=datetime.now()
+#     )
+# )
+
