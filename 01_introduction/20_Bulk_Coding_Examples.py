@@ -153,7 +153,7 @@ def account_information(account: dict):
 # Case 1: Paramızın yettiği senaryo
 # withdraw_money(account=adal_account, amount=1000)
 # Case 2: Additional hesaptan para çektiğimiz senaryo
-withdraw_money(account=adal_account, amount=2999)
+# withdraw_money(account=adal_account, amount=2999)
 # Case 3: Her türlü paramızın yetmediği senaryo
 # withdraw_money(account=adal_account, amount=3500)
 
@@ -161,22 +161,32 @@ withdraw_money(account=adal_account, amount=2999)
 #dışarda bir ek balance için default değer tanımlaması gerek bence
 default_additional_balance = 1000
 
-#region Bu hocanın çözümü ve negatif balance gördük.
-def deposit_money(account: dict, amount: int):
-    if account["additional balance"] < default_additional_balance: #ek hesap default değerinde mi diye sorduk
-        account["balance"] += amount #gelen tüm parayı balancea yatırdık
-        short = default_additional_balance - account["additional balance"] #eksik olan meblağ hesabını yaptık
-        if account["balance"] >= short:
-            account["balance"] -= short
-            account["additional balance"] += short
-        else:
-            account["balance"] -= amount
-            account["additional balance"] += amount
+#region hocanın çözümü
+#* (TRY1) ve negatif balance gördük.
+# def deposit_money(account: dict, amount: int):
+#     if account["additional balance"] < default_additional_balance: #ek hesap default değerinde mi diye sorduk
+#         account["balance"] += amount #gelen tüm parayı balancea yatırdık
+#         short = default_additional_balance - account["additional balance"] #eksik olan meblağ hesabını yaptık
+#         if account["balance"] >= short:
+#             account["balance"] -= short
+#             account["additional balance"] += short
+#         else:
+#             account["balance"] -= amount
+#             account["additional balance"] += amount
+#         account_information(account=account)
+
+#* Bu da fixed hali (TRY2)
+def deposit_money(account: dict, amount: int, transaction_name: str = "owner"):
+    short = 1000 - account['additional balance']
+    if amount >= short:
+        kalan = amount - short
+        account['additional balance'] += short
+        account['balance'] += kalan
+    else:
+        account['additional balance'] += amount
+    if transaction_name == "owner":
         account_information(account=account)
-
 #endregion
-
-deposit_money(adal_account, 500)
 
 #region Kendi çözümüm ancak gemini beğenmedi ki bence de big o notation kısmına uymadı.
 # def deposit_money(account: dict, amount: int):
@@ -190,8 +200,8 @@ deposit_money(adal_account, 500)
 #     else:
 #         account["balance"] += amount
 #         account_information(account=account)
-
 #endregion
+
 #region gemini çözümü ama anlamadım
 # def deposit_money(account: dict, amount: int):
     # # 1. Ek bakiyenin dolması için ne kadar lazım?
@@ -209,7 +219,104 @@ deposit_money(adal_account, 500)
     # account["balance"] += eklenecek_ana_bakiye
 
     # account_information(account=account)
-
 #endregion
+
+#testing 2 aşaması
+# deposit_money(adal_account, 367)
+# deposit_money(adal_account, 3435)
+
+#? EFT işlemleri için yazılacak fonksiyon
+# Para yollama işlemleri için yazılacak fonksiyon
+
+# First try, burada aslında para gönderme işlemini yaptık, ancak sonucunda giden paranın hesap bilgileri de göndericiye gösteriliyor olacak
+def eft(account: dict, receiver_no: str, amount: int) -> None:
+    withdraw_money(account=account, amount=amount)
+
+    for user in users:
+        if user.get("account no") == receiver_no:
+            deposit_money(account=user, amount=amount, )
+
+# eft(account=adal_account, receiver_no="369874", amount=1500) #bu aşamadan yolladığımın hesabın tüm bilgilerini ben yollayıcı olarak görüyorum. Görmemem gerek.
+# Peki neden görüyorum? Çünkü içerde parayı deposit ile yani hali hazırda var olan bir fonksiyonla aslında yatırdım
+# ilk önce gönderici hesaptaki parayı çektim (withdraw fonksiyonu ile) ve alıcı hesaba bu parayı yatırdım (deposit fonksiyonu ile)
+# ancak deposit fonksiyonu içerisinde account informationları bastırıyor bu yüzden de gönderici de bu fonksiyondaki printleri görüyor.
+
+#* Peki nasıl çözebiliriz?
+# Basit düşün, deposit_money fonskiyonuna gidip transaction name adında bir parametre verip defaultunu owner yaparsak sorunumuz çözülür.
+
+# def deposit_money(account: dict, amount: int, transaction_name: str = "owner"):
+#     ...
+#     ...
+#     ...
+#     if transaction_name == "owner": #transaction name
+#         account_information(account=account)
+
+# def eft...
+#     ...
+#     ...
+#     ...
+#             deposit_money(account=user, amount=amount, transaction_name="eft") #Ve burdaki minik düzeltme ile
+
+# depositte eklediğimiz tek satır ve eftdeki fix ile sorun çözüldü.
+
+#region EFT Çözüm 2
+# def eft(account: dict, receiver_no: str, amount: int) -> None:
+#     withdraw_money(account=account, amount=amount)
+
+#     finded_user = [user for user in users if user.get("account no") == receiver_no]
+#     deposit_money(account=finded_user[0], amount=amount, transaction_name="eft")
+#endregion
+
+# testing 3 aşaması
+# eft(account=adal_account, receiver_no="369874", amount=1000)
+
+#? Login aşaması!!!
+
+def login(account_no: str, password: str) -> dict:
+    for user in users:
+        if user.get("account no") == account_no and user.get("password") == password:
+            return user
+    
+    return None
+
+#testing 4 aşaması
+# print(login(account_no=369874,password="789"))
+
+def main():
+    counter = 3
+    while counter > 0:
+        login_account = login(
+            account_no=input("Account no: "),
+            password=input("Password: "))
+
+        if login_account is not None:
+            print(f"Welcome to the jungle.")
+
+            while True:
+                transaction_no = input("Transaction No: ")
+                
+                match transaction_no:
+                    case "1":
+                        withdraw_money(
+                            account=login_account, 
+                            amount=int(input("Amount: ")))
+                    case "2":
+                        deposit_money(
+                            account=login_account, 
+                            amount=int(input("Amount: ")))
+                    case "3":
+                        eft(
+                            account=login_account,
+                            receiver_no=input("Receiver no: "),
+                            amount=int(input("Amount: ")))
+                    case _:
+                        print("Please enter the valid transaction number.")
+
+        else:
+            print("Invalid credentials.")
+            counter -= 1
+    print("Hesabınız kilitlendi since you've reached maximum amount of tries.")
+
+main()
 
 # #endregion
