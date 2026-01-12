@@ -63,3 +63,96 @@ print(dir(boxers))
 # encapsulation
 # çok biçimlilik
 # abstraction (soyutlama)
+
+class Circle:
+    pi = 3.14
+
+    def __init__(self, r: int):
+        self.radius = r
+    
+    def calculate_area(self):
+        return self.pi * self.radius ** 2
+    
+    def calculate_perimeter(self):
+        return 2 * self.pi * self.radius
+
+c1 = Circle(r=1.02)
+print(c1.calculate_area())
+print(c1.calculate_perimeter())
+
+
+class Department:
+    # class attribute
+    departmant_name = ''
+    employee_count = 0
+
+    def __init__(self, name: str, age: int):
+        # object attribute türkçe isimlendiriler
+        self.adi = name
+        self.yas = age
+        Department.employee_count += 1
+    
+    def show_info(self):
+        print(
+            f'Name: {self.adi}\n'
+            f'Age: {self.yas}\n'
+            f'Depermant Name. {self.departmant_name}'
+        )
+    
+    def show_employee_count(self):
+        print(f'Total Employee: {self.employee_count}')
+
+d1 = Department(name='burak', age=36)
+d1.departmant_name = 'ARGE'
+d1.show_info()
+d1.show_employee_count()
+
+d2 = Department(name='hakan', age=39)
+d2.departmant_name = 'Amele'
+d2.show_info()
+d2.show_employee_count()
+
+d3 = Department(name='ipek', age=42)
+d3.departmant_name = 'qwe'
+d3.show_info()
+d3.show_employee_count()
+
+
+#! SoftwareDeveloper sınıfı yaratalım
+#? first_name, last_name --> object attribute olsun
+#* knowledge_languages = [] --> class attribute
+#todo: add_new_language()
+#? sampe input --> 'python, C#, go'
+#! sample -- knowledge_languages = ['python', 'c#', 'go']
+#* sample input --> 'python'
+#todo: show_info()
+
+class SoftwareDeveloper:
+    knowledge_languages = []
+
+    def __init__(self, first_name: str, last_name: str):
+        self.first_name = first_name
+        self.last_name = last_name
+    
+    def add_new_language(self, input_language: str) -> str:
+        lst_language = input_language.split(',')
+
+        for item in lst_language:
+            if item not in self.knowledge_languages:
+                self.knowledge_languages.append(item)
+        
+        return 'Language has been added.'
+
+    def show_info(self):
+        return (
+            f'First Name: {self.first_name}\n'
+            f'Last Name: {self.last_name}\n'
+            f'Languages: {self.knowledge_languages}'
+        )
+
+s1 = SoftwareDeveloper(first_name='Burak', last_name='Yılmaz')
+print(
+    s1.add_new_language(input_language='python, c#, vb.net'))
+print(
+    s1.show_info()
+)
