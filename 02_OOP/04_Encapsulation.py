@@ -68,7 +68,7 @@ class BaseEntity:
     def __hello(self):
         print("Dış erişime kapatıldı.")
 
-class Product(BaseEntity): #çocuk sınıfı yazdık
+class Product(BaseEntity): # Child sınıfı yazdık
     def __init__(self, name: str, description: str):
         super().__init__()
         self.description = description
